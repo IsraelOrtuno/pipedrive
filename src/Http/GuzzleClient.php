@@ -55,7 +55,7 @@ class GuzzleClient implements Client
      */
     public function post($url, $options = [])
     {
-        return $this->execute('post', $url, $options);
+        // TODO: to implement
     }
 
     /**
@@ -67,7 +67,7 @@ class GuzzleClient implements Client
      */
     public function put($url, $options = [])
     {
-        return $this->execute('put', $url, $options);
+        // TODO: to implement
     }
 
     /**
@@ -79,7 +79,7 @@ class GuzzleClient implements Client
      */
     public function delete($url, $options = [])
     {
-        return $this->execute('delete', $url, $options);
+        // TODO: to implement
     }
 
     /**
