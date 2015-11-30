@@ -42,7 +42,7 @@ abstract class Resource
      */
     public function find($id)
     {
-        $this->request->get('/:id', compact('id'));
+        return $this->request->get(':id', compact('id'));
     }
 
     /**
