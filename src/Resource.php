@@ -2,7 +2,7 @@
 
 namespace Devio\Pipedrive;
 
-abstract class Endpoint
+abstract class Resource
 {
     /**
      * The API caller object.
@@ -18,7 +18,7 @@ abstract class Endpoint
      */
     public function __construct(Request $request)
     {
-        $request->setEndpoint($this->getName());
+        $request->setResource($this->getName());
 
         $this->request = $request;
     }
@@ -30,7 +30,7 @@ abstract class Endpoint
      */
     public function all($options = [])
     {
-        $this->request->get($this->getName(), $options);
+        $this->request->get('', $options);
     }
 
     /**
@@ -40,7 +40,7 @@ abstract class Endpoint
      */
     public function find($id)
     {
-        $this->request->get($this->getName() . '/:id', compact('id'));
+        $this->request->get('/:id', compact('id'));
     }
 
     /**

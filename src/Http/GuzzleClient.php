@@ -3,6 +3,7 @@
 namespace Devio\Pipedrive\Http;
 
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\ClientException;
 
 class GuzzleClient implements Client
 {
@@ -28,11 +29,11 @@ class GuzzleClient implements Client
      *
      * @param       $url
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function get($url, $options = [])
     {
-        return $this->client->get($url, $options);
+        return $this->execute('get', $url, $options);
     }
 
     /**
@@ -40,11 +41,11 @@ class GuzzleClient implements Client
      *
      * @param       $url
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function post($url, $options = [])
     {
-        return $this->client->post($url, $options);
+        return $this->execute('post', $url, $options);
     }
 
     /**
@@ -52,11 +53,11 @@ class GuzzleClient implements Client
      *
      * @param       $url
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function put($url, $options = [])
     {
-        return $this->client->put($url, $options);
+        return $this->execute('put', $url, $options);
     }
 
     /**
@@ -64,10 +65,34 @@ class GuzzleClient implements Client
      *
      * @param       $url
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function delete($url, $options = [])
     {
-        return $this->client->delete($url, $options);
+        return $this->execute('delete', $url, $options);
+    }
+
+    /**
+     * Execute the request and returns the Response object.
+     *
+     * @param       $method
+     * @param       $url
+     * @param array $options
+     * @return Response
+     */
+    protected function execute($method, $url, $options = [])
+    {
+        try {
+            $response = $this->client->{$method}($url, $options);
+
+            return new Response(
+                $response->getStatusCode(), json_decode($response->getBody())
+            );
+        } catch (ClientException $e) {
+            return new Response(
+                $e->getCode(), json_decode($e->getResponse()->getBody())
+            );
+        }
+
     }
 }

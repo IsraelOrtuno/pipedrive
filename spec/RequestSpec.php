@@ -16,13 +16,14 @@ class RequestSpec extends ObjectBehavior
     public function let(Client $client)
     {
         $this->beConstructedWith($client);
+        $this->setToken('foobarbaz');
     }
 
     public function it_makes_a_request(Client $client)
     {
-        $client->get('foo/1', [])->shouldBeCalled();
-        $client->put('foo/1', ['name' => 'bar'])->shouldBeCalled();
-        $client->post('foo', [])->shouldBeCalled();
+        $client->get('https://api.pipedrive.com/v1/foo/1?token=foobarbaz', [])->shouldBeCalled();
+        $client->put('https://api.pipedrive.com/v1/foo/1?token=foobarbaz', ['name' => 'bar'])->shouldBeCalled();
+        $client->post('https://api.pipedrive.com/v1/foo?token=foobarbaz', [])->shouldBeCalled();
 
         $this->get('foo/:id', ['id' => 1]);
         $this->put('foo/:id', ['id' => 1, 'name' => 'bar']);

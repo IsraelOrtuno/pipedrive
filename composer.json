@@ -4,13 +4,14 @@
     "authors": [
         {
             "name": "Israel Ortuño",
-            "email": "ai.ortuno@gmail.com",
+            "email": "ai.ortuno@gmail.com"
         }
     ],
     "require": {
         "guzzlehttp/guzzle": "^6.1",
         "illuminate/support": "^5.1",
-        "phpspec/phpspec": "^2.4"
+        "phpspec/phpspec": "^2.4",
+        "vlucas/phpdotenv": "^2.1"
     },
     "require-dev": {
         "mockery/mockery": "^0.9.4",

@@ -3,17 +3,14 @@
 namespace Devio\Pipedrive;
 
 use Devio\Pipedrive\Http\Client;
+use Devio\Pipedrive\Exceptions\PipedriveException;
+use Devio\Pipedrive\Http\Response;
 
 class Request
 {
     /**
-     * The endpoint name to play with.
+     * The Http client instance.
      *
-     * @var string
-     */
-    protected $endpoint = '';
-
-    /**
      * @var Client
      */
     protected $client;
@@ -26,25 +23,26 @@ class Request
     public function __construct(Client $client)
     {
         $this->client = $client;
+        $this->builder = new Builder();
     }
 
     /**
      * Prepare and run the query.
      *
      * @param       $type
-     * @param       $uri
+     * @param       $target
      * @param array $options
      * @return mixed
      */
-    protected function performRequest($type, $uri, $options = [])
+    protected function performRequest($type, $target, $options = [])
     {
-        $builder = new Builder($this->getEndpoint());
-        $endpoint = $builder->buildURI($uri, $options);
+        $this->builder->setTarget($target);
 
+        $endpoint = $this->builder->buildEndpoint($options);
         // We will first extract the parameters required by the endpoint URI. Once
         // got, we can create the URI signature replacing those parameters. Any
         // other info will be part of the query and placed in URL or headers.
-        $query = $builder->getQueryVars($uri, $options);
+        $query = $this->builder->getQueryVars($options);
 
         return $this->executeRequest($type, $endpoint, $query);
     }
@@ -53,33 +51,56 @@ class Request
      * Execute the query against the HTTP client.
      *
      * @param $type
-     * @param $uri
+     * @param $endpoint
      * @param $query
      * @return mixed
      */
-    protected function executeRequest($type, $uri, $query = [])
+    protected function executeRequest($type, $endpoint, $query = [])
     {
-        return call_user_func_array([$this->client, $type], [$uri, $query]);
+        return $this->handleResponse(
+            call_user_func_array([$this->client, $type], [$endpoint, $query])
+        );
     }
 
     /**
-     * Get the endpoint name.
-     *
-     * @return string
+     * @param $response
+     * @return mixed
+     * @throws PipedriveException
      */
-    public function getEndpoint()
+    protected function handleResponse(Response $response)
     {
-        return $this->endpoint;
+        $content = $response->getContent();
+
+        // If the request did not succeed, we will notify the user via Exception
+        // and include the server error if found. If it is OK and also server
+        // inludes the success variable, we will return the response data.
+        if ($response->getStatusCode() != 200 || ! $content->success) {
+            throw new PipedriveException(
+                isset($response->error) ? $response->error : "Error unknown."
+            );
+        }
+
+        return $response->data;
     }
 
     /**
      * Set the endpoint name.
      *
-     * @param string $endpoint
+     * @param string $resource
      */
-    public function setEndpoint($endpoint)
+    public function setResource($resource)
     {
-        $this->endpoint = $endpoint;
+        $this->builder->setResource($resource);
+    }
+
+    /**
+     * Set the token.
+     *
+     * @param string $token
+     */
+    public function setToken($token)
+    {
+        $this->builder->setToken($token);
     }
 
     /**
@@ -92,10 +113,12 @@ class Request
     public function __call($name, $args = [])
     {
         if (in_array($name, ['get', 'post', 'put', 'delete'])) {
+            $options = ! empty($args[1]) ? $args[1] : [];
+
             // Will pass the function name as the request type. The second argument
             // is the URI passed to the method. The third parameter will include
             // the request option values array which are stored in the index 1.
-            return $this->performRequest($name, $args[0], $args[1]);
+            return $this->performRequest($name, $args[0], $options);
         }
     }
 }

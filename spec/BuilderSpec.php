@@ -13,37 +13,50 @@ class BuilderSpec extends ObjectBehavior
         $this->shouldHaveType('Devio\Pipedrive\Builder');
     }
 
+    public function let()
+    {
+        $this->setToken('foobarbaz');
+    }
+
     public function it_will_remove_the_options_used_in_the_uri()
     {
-        $this->getQueryVars('foo/:id', ['id' => 1])
+        $this->setTarget('foo/:id');
+        $this->getQueryVars(['id' => 1])
              ->shouldReturn([]);
-        $this->getQueryVars('foo/:id', ['id' => 1, 'name' => 'bar', 'country' => 'es'])
+        $this->getQueryVars(['id' => 1, 'name' => 'bar', 'country' => 'es'])
              ->shouldReturn(['name' => 'bar', 'country' => 'es']);
-        $this->getQueryVars('foo', ['id' => 1])
+
+        $this->setTarget('foo');
+        $this->getQueryVars(['id' => 1])
              ->shouldReturn(['id' => 1]);
     }
 
     public function it_get_an_array_of_the_uri_parameters()
     {
-        $this->getURIParameters('foo/:id')
+        $this->getParameters('foo/:id')
              ->shouldReturn(['id']);
-        $this->getURIParameters('foo/:id/:name')
+        $this->getParameters('foo/:id/:name')
              ->shouldReturn(['id', 'name']);
-        $this->getURIParameters('foo')
+        $this->getParameters('foo')
              ->shouldReturn([]);
-        $this->getURIParameters(':name/foo/:id')
+        $this->getParameters(':name/foo/:id')
              ->shouldReturn(['name', 'id']);
-        $this->getURIParameters('foo/:id/bar/:name')
+        $this->getParameters('foo/:id/bar/:name')
              ->shouldReturn(['id', 'name']);
     }
 
     public function it_replaces_uri_parameters_with_option_values()
     {
-        $this->buildURI('foo/:id', ['id' => 1])
-             ->shouldReturn('foo/1');
-        $this->buildURI(':id/:name', ['id' => 1, 'name' => 'foo'])
-             ->shouldReturn('1/foo');
+        $this->setTarget('foo/:id');
+        $this->buildEndpoint(['id' => 1])
+             ->shouldReturn('https://api.pipedrive.com/v1/foo/1?token=foobarbaz');
+
+        $this->setTarget(':id/:name');
+        $this->buildEndpoint(['id' => 1, 'name' => 'foo'])
+             ->shouldReturn('https://api.pipedrive.com/v1/1/foo?token=foobarbaz');
+
+        $this->setTarget(':id/foo');
         $this->shouldThrow(InvalidArgumentException::class)
-             ->duringBuildURI(':id/foo', ['bar' => 'baz']);
+             ->duringBuildEndpoint(['bar' => 'baz']);
     }
 }

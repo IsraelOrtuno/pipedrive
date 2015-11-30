@@ -9,7 +9,7 @@ interface Client
      *
      * @param       $url
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function get($url, $options = []);
 
@@ -18,7 +18,7 @@ interface Client
      *
      * @param       $url
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function post($url, $options = []);
 
@@ -27,7 +27,7 @@ interface Client
      *
      * @param       $url
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function put($url, $options = []);
 
@@ -36,7 +36,7 @@ interface Client
      *
      * @param       $url
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function delete($url, $options = []);
 }
