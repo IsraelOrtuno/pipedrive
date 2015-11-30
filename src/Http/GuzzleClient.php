@@ -4,9 +4,6 @@ namespace Devio\Pipedrive\Http;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\BadResponseException;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\ServerException;
 
 class GuzzleClient implements Client
 {

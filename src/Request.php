@@ -2,10 +2,10 @@
 
 namespace Devio\Pipedrive;
 
-use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 use Devio\Pipedrive\Http\Client;
-use Devio\Pipedrive\Exceptions\PipedriveException;
 use Devio\Pipedrive\Http\Response;
+use Devio\Pipedrive\Exceptions\PipedriveException;
+use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 
 class Request
 {
