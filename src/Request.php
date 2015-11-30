@@ -39,15 +39,14 @@ class Request
     protected function performRequest($type, $uri, $options = [])
     {
         $builder = new Builder($this->getEndpoint());
-        $parameters = $builder->getURIParameters($uri);
-        $uri = $builder->buildURI($uri, array_only($options, $parameters));
+        $endpoint = $builder->buildURI($uri, $options);
 
         // We will first extract the parameters required by the endpoint URI. Once
         // got, we can create the URI signature replacing those parameters. Any
         // other info will be part of the query and placed in URL or headers.
-        $query = array_except($options, $parameters);
+        $query = $builder->getQueryVars($uri, $options);
 
-        return $this->executeQuery($type, $uri, $query);
+        return $this->executeRequest($type, $endpoint, $query);
     }
 
     /**
@@ -84,6 +83,8 @@ class Request
     }
 
     /**
+     * Pointing request operations to the request performer.
+     *
      * @param       $name
      * @param array $args
      * @return mixed
@@ -91,7 +92,10 @@ class Request
     public function __call($name, $args = [])
     {
         if (in_array($name, ['get', 'post', 'put', 'delete'])) {
-            return $this->performRequest($name, $args[0], $args);
+            // Will pass the function name as the request type. The second argument
+            // is the URI passed to the method. The third parameter will include
+            // the request option values array which are stored in the index 1.
+            return $this->performRequest($name, $args[0], $args[1]);
         }
     }
 }

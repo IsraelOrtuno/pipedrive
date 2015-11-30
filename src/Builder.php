@@ -64,4 +64,18 @@ class Builder
 
         return $uri;
     }
+
+    /**
+     * Get the options that are not replaced in the URI.
+     *
+     * @param       $uri
+     * @param array $options
+     * @return array
+     */
+    public function getQueryVars($uri, $options = [])
+    {
+        $uriVars = $this->getURIParameters($uri);
+
+        return array_except($options, $uriVars);
+    }
 }

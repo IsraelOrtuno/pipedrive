@@ -13,6 +13,15 @@ class BuilderSpec extends ObjectBehavior
         $this->shouldHaveType('Devio\Pipedrive\Builder');
     }
 
+    public function it_will_remove_the_options_used_in_the_uri()
+    {
+        $this->getQueryVars('foo/:id', ['id' => 1])->shouldReturn([]);
+        $this->getQueryVars('foo/:id', ['id' => 1, 'name' => 'bar', 'country' => 'es'])
+             ->shouldReturn(['name' => 'bar', 'country' => 'es']);
+        $this->getQueryVars('foo', ['id' => 1])
+             ->shouldReturn(['id' => 1]);
+    }
+
     public function it_get_an_array_of_the_uri_parameters()
     {
         $this->getURIParameters('foo/:id')
@@ -30,10 +39,10 @@ class BuilderSpec extends ObjectBehavior
     public function it_replaces_uri_parameters_with_option_values()
     {
         $this->buildURI('foo/:id', ['id' => 1])
-            ->shouldReturn('foo/1');
+             ->shouldReturn('foo/1');
         $this->buildURI(':id/:name', ['id' => 1, 'name' => 'foo'])
-            ->shouldReturn('1/foo');
+             ->shouldReturn('1/foo');
         $this->shouldThrow(InvalidArgumentException::class)
-            ->duringBuildURI(':id/foo', ['bar' => 'baz']);
+             ->duringBuildURI(':id/foo', ['bar' => 'baz']);
     }
 }
