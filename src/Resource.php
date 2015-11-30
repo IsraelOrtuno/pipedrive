@@ -32,7 +32,7 @@ abstract class Resource
      */
     public function all($options = [])
     {
-        $this->request->get('', $options);
+        return $this->request->get('', $options);
     }
 
     /**
