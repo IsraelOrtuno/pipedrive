@@ -27,9 +27,8 @@ abstract class Endpoint
      * Get all the entities.
      *
      * @param array      $options   Endpoint accepted options
-     * @param bool|false $forceAll  Get all without pagination limits
      */
-    public function all($options = [], $forceAll = false)
+    public function all($options = [])
     {
         $this->request->get($this->getName(), $options);
     }
