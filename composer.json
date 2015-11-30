@@ -1,0 +1,24 @@
+{
+    "name": "devio/pipedrive",
+    "description": "Pipedrive API SDK for PHP",
+    "authors": [
+        {
+            "name": "Israel Ortuño",
+            "email": "ai.ortuno@gmail.com",
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.1",
+        "illuminate/support": "^5.1",
+        "phpspec/phpspec": "^2.4"
+    },
+    "require-dev": {
+        "mockery/mockery": "^0.9.4",
+        "symfony/var-dumper": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Devio\\Pipedrive\\": "src/"
+        }
+    }
+}
