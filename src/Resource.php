@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive;
 
+use ReflectionClass;
+
 abstract class Resource
 {
     /**
@@ -50,6 +52,8 @@ abstract class Resource
      */
     public function getName()
     {
-        return studly_case(get_class($this));
+        $reflection = new ReflectionClass($this);
+
+        return camel_case($reflection->getShortName());
     }
 }

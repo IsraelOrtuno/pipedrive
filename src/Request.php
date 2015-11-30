@@ -76,7 +76,7 @@ class Request
         // inludes the success variable, we will return the response data.
         if ($response->getStatusCode() != 200 || ! $content->success) {
             throw new PipedriveException(
-                isset($response->error) ? $response->error : "Error unknown."
+                isset($content->error) ? $content->error : "Error unknown."
             );
         }
 

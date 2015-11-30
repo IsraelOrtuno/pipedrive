@@ -1,6 +1,6 @@
 <?php
 
-namespace Devio\Pipedrive\Targets;
+namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Resource;
 

@@ -3,7 +3,10 @@
 namespace Devio\Pipedrive\Http;
 
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
 
 class GuzzleClient implements Client
 {
@@ -88,7 +91,7 @@ class GuzzleClient implements Client
             return new Response(
                 $response->getStatusCode(), json_decode($response->getBody())
             );
-        } catch (ClientException $e) {
+        } catch (BadResponseException $e) {
             return new Response(
                 $e->getCode(), json_decode($e->getResponse()->getBody())
             );
