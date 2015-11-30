@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive;
 
+use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 use Devio\Pipedrive\Http\Client;
 use Devio\Pipedrive\Exceptions\PipedriveException;
 use Devio\Pipedrive\Http\Response;
@@ -75,6 +76,10 @@ class Request
         // and include the server error if found. If it is OK and also server
         // inludes the success variable, we will return the response data.
         if ($response->getStatusCode() != 200 || ! $content->success) {
+            if ($response->getStatusCode() == 404) {
+                throw new ItemNotFoundException($content->error);
+            }
+
             throw new PipedriveException(
                 isset($content->error) ? $content->error : "Error unknown."
             );
