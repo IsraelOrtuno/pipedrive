@@ -15,7 +15,8 @@ class BuilderSpec extends ObjectBehavior
 
     public function it_will_remove_the_options_used_in_the_uri()
     {
-        $this->getQueryVars('foo/:id', ['id' => 1])->shouldReturn([]);
+        $this->getQueryVars('foo/:id', ['id' => 1])
+             ->shouldReturn([]);
         $this->getQueryVars('foo/:id', ['id' => 1, 'name' => 'bar', 'country' => 'es'])
              ->shouldReturn(['name' => 'bar', 'country' => 'es']);
         $this->getQueryVars('foo', ['id' => 1])
