@@ -64,8 +64,11 @@ class Request
     }
 
     /**
-     * @param $response
+     * Handling the server response.
+     *
+     * @param Response $response
      * @return mixed
+     * @throws ItemNotFoundException
      * @throws PipedriveException
      */
     protected function handleResponse(Response $response)

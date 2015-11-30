@@ -130,6 +130,8 @@ class Builder
     }
 
     /**
+     * Get the resource name.
+     *
      * @return string
      */
     public function getResource()
@@ -138,6 +140,8 @@ class Builder
     }
 
     /**
+     * Set the resource name.
+     *
      * @param string $name
      */
     public function setResource($name)
@@ -146,6 +150,8 @@ class Builder
     }
 
     /**
+     * Get the target.
+     *
      * @return string
      */
     public function getTarget()
@@ -154,6 +160,8 @@ class Builder
     }
 
     /**
+     * Set the target.
+     *
      * @param string $target
      */
     public function setTarget($target)
@@ -172,6 +180,8 @@ class Builder
     }
 
     /**
+     * Get the base URL.
+     *
      * @return string
      */
     public function getBase()
