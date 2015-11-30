@@ -2,8 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-use Devio\Pipedrive\Resource;
+use Devio\Pipedrive\Resources\Traits\FindsByName;
 
-class Organizations extends Resource
+class Organizations extends AbstractResource
 {
+    use FindsByName;
 }

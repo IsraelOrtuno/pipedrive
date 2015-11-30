@@ -30,13 +30,13 @@ class RequestSpec extends ObjectBehavior
                  ->shouldBeCalled()
                  ->willReturn(200);
 
-        $client->get('https://api.pipedrive.com/v1/foo/1?api_token=foobarbaz', [])
+        $client->get('foo/1', [])
                ->shouldBeCalled()
                ->willReturn($response);
-        $client->put('https://api.pipedrive.com/v1/foo/1?api_token=foobarbaz', ['name' => 'bar'])
+        $client->put('foo/1', ['name' => 'bar'])
                ->shouldBeCalled()
                ->willReturn($response);
-        $client->post('https://api.pipedrive.com/v1/foo?api_token=foobarbaz', [])
+        $client->post('foo', [])
                ->shouldBeCalled()
                ->willReturn($response);
 

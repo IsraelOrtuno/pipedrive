@@ -1,10 +1,11 @@
 <?php
 
-namespace Devio\Pipedrive;
+namespace Devio\Pipedrive\Resources;
 
 use ReflectionClass;
+use Devio\Pipedrive\Request;
 
-abstract class Resource
+abstract class AbstractResource
 {
     /**
      * The API caller object.

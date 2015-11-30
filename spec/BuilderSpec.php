@@ -49,11 +49,11 @@ class BuilderSpec extends ObjectBehavior
     {
         $this->setTarget('foo/:id');
         $this->buildEndpoint(['id' => 1])
-             ->shouldReturn('https://api.pipedrive.com/v1/foo/1?api_token=foobarbaz');
+             ->shouldReturn('foo/1');
 
         $this->setTarget(':id/:name');
         $this->buildEndpoint(['id' => 1, 'name' => 'foo'])
-             ->shouldReturn('https://api.pipedrive.com/v1/1/foo?api_token=foobarbaz');
+             ->shouldReturn('1/foo');
 
         $this->setTarget(':id/foo');
         $this->shouldThrow(InvalidArgumentException::class)

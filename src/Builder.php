@@ -93,7 +93,7 @@ class Builder
             $result = $this->getResource() . '/' . $result;
         }
 
-        $result = $this->buildFullURL($result);
+//        $result = $this->buildFullURL($result);
 
         return $result;
     }

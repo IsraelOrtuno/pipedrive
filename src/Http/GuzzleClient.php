@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Http;
 
+use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\BadResponseException;
 
@@ -28,12 +29,21 @@ class GuzzleClient implements Client
      * Perform a GET request.
      *
      * @param       $url
-     * @param array $options
+     * @param array $parameters
      * @return Response
      */
-    public function get($url, $options = [])
+    public function get($url, $parameters = [])
     {
-        return $this->execute('get', $url, $options);
+        $options = $this->getClient()
+                       ->getConfig();
+        array_set(
+            $options, 'query', array_merge($parameters, $options['query'])
+        );
+
+        // For this particular case we have to include the parameters into the
+        // URL query. Merging the request default query configuration to the
+        // request parameters will make the query key contain everything.
+        $this->execute(new Request('GET', $url), $options);
     }
 
     /**
@@ -75,24 +85,36 @@ class GuzzleClient implements Client
     /**
      * Execute the request and returns the Response object.
      *
-     * @param       $method
-     * @param       $url
-     * @param array $options
+     * @param Request $request
+     * @param array   $options
+     * @param null    $client
      * @return Response
      */
-    protected function execute($method, $url, $options = [])
+    protected function execute(Request $request, array $options = [], $client = null)
     {
-        try {
-            $response = $this->client->{$method}($url, $options);
+        $client = $client ?: $this->getClient();
 
-            return new Response(
-                $response->getStatusCode(), json_decode($response->getBody())
-            );
+        // We will just execute the given request using the default or given client
+        // and with the passed options wich may contain the query, body vars, or
+        // any other info. Both OK and fail will generate a response object.
+        try {
+            $response = $client->send($request, $options);
         } catch (BadResponseException $e) {
+            $response = $e->getResponse();
+        } finally {
             return new Response(
-                $e->getCode(), json_decode($e->getResponse()->getBody())
+                $response->getStatusCode(), $response->getBody()->getContents()
             );
         }
+    }
 
+    /**
+     * Return the client.
+     *
+     * @return Client
+     */
+    public function getClient()
+    {
+        return $this->client;
     }
 }
