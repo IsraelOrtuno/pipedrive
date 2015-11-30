@@ -80,7 +80,7 @@ class Request
             );
         }
 
-        return $response->data;
+        return $content->data;
     }
 
     /**
