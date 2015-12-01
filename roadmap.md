@@ -76,16 +76,16 @@ State: 6/6
 - [x] `PUT`       Update e-mail message thread details `/emailThreads/:id`
 - [x] `DELETE`    Delete an e-mail message thread `/emailThreads/:id`
 - [x] `DELETE`    Delete multiple e-mail message threads in bulk `/emailThreads`
-- [ ] `GET`       List e-mail messages inside a thread `/emailThreads/:id/messages`
+- [x] `GET`       List e-mail messages inside a thread `/emailThreads/:id/messages`
 
 ### Files
-State: 5/8
+State: 7/8
 - [x] `GET`       Get all files `/files`
 - [x] `GET`       Get one file `/files/:id`
 - [ ] `GET`       Download one file `/files/:id/download`
 - [x] `POST`      Add file(s) `/files`
-- [ ] `POST`      Create a remote file and link it to an item `/files/remote`
-- [ ] `POST`      Link a remote file to an item `/files/remoteLink`
+- [x] `POST`      Create a remote file and link it to an item `/files/remote`
+- [x] `POST`      Link a remote file to an item `/files/remoteLink`
 - [x] `PUT`       Update file details `/files/:id`
 - [x] `DELETE`    Delete a file `/files/:id`
 
