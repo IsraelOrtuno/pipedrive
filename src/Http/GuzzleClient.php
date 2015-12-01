@@ -102,8 +102,13 @@ class GuzzleClient implements Client
         } catch (BadResponseException $e) {
             $response = $e->getResponse();
         } finally {
+            // As there are a few responses that are supposed to perform the
+            // download of a file, we will filter them. If found, we will
+            // set the file download URL as the response content data.
+            $body = $response->getHeader('location') ? : json_decode($response->getBody(), true);
+
             return new Response(
-                $response->getStatusCode(), json_decode($response->getBody(), true)
+                $response->getStatusCode(), $body
             );
         }
     }
