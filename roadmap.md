@@ -26,14 +26,14 @@ State: 1/1
 - [x] `GET`       Get all supported currencies/currencies
 
 ### Deals
-State: 11/26
+State: 12/26
 - [x] `GET`       Get all deals/deals
 - [x] `GET`       Get details of a deal/deals/:id
 - [x] `POST`      Add a deal/deals
 - [x] `PUT`       Update a deal/deals/:id
 - [x] `DELETE`    Delete a deal/deals/:id
 - [x] `DELETE`    Delete multiple deals in bulk/deals
-- [ ] `POST`      Duplicate deal/deals/:id/duplicate
+- [x] `POST`      Duplicate deal/deals/:id/duplicate
 - [ ] `PUT`       Merge two deals/deals/:id/merge
 - [x] `POST`      Add a follower to a deal/deals/:id/followers
 - [x] `GET`       List followers of a deal/deals/:id/followers
