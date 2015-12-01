@@ -26,7 +26,7 @@ State: 1/1
 - [x] `GET`       Get all supported currencies/currencies
 
 ### Deals
-State: 8/26
+State: 9/26
 - [x] `GET`       Get all deals/deals
 - [x] `GET`       Get details of a deal/deals/:id
 - [x] `POST`      Add a deal/deals
@@ -35,7 +35,7 @@ State: 8/26
 - [x] `DELETE`    Delete multiple deals in bulk/deals
 - [ ] `POST`      Duplicate deal/deals/:id/duplicate
 - [ ] `PUT`       Merge two deals/deals/:id/merge
-- [ ] `POST`      Add a follower to a deal/deals/:id/followers
+- [x] `POST`      Add a follower to a deal/deals/:id/followers
 - [x] `GET`       List followers of a deal/deals/:id/followers
 - [ ] `DELETE`    Delete a follower from a deal/deals/:id/followers/:follower_id
 - [ ] `GET`       List products attached to a deal/deals/:id/products
@@ -130,7 +130,7 @@ State: 6/6
 - [x] `DELETE`    Delete multiple organization fields in bulk/organizationFields
 
 ### Organizations
-State: 8/19
+State: 9/19
 - [x] `GET`       Get all organizations/organizations
 - [x] `GET`       Get details of an organization/organizations/:id
 - [x] `POST`      Add an organization/organizations
@@ -139,7 +139,7 @@ State: 8/19
 - [x] `DELETE`    Delete multiple organizations in bulk/organizations
 - [ ] `GET`       List files attached to an organization/organizations/:id/files
 - [ ] `GET`       List e-mail messages associated with an organization/organizations/:id/emailMessages
-- [ ] `POST`      Add a follower to an organization/organizations/:id/followers
+- [x] `POST`      Add a follower to an organization/organizations/:id/followers
 - [x] `GET`       List followers of an organization/organizations/:id/followers
 - [ ] `DELETE`    Delete a follower from an organization/organizations/:id/followers/:follower_id
 - [ ] `GET`       List persons of an organization/organizations/:id/persons
@@ -168,7 +168,7 @@ State: 3/6
 - [ ] `DELETE`    Delete a permission set assignment/permissionSets/:id/assignments
 
 ### Persons
-State: 8/20
+State: 9/20
 - [x] `GET`       Get all persons/persons
 - [x] `GET`       Get details of a person/persons/:id
 - [x] `POST`      Add a person/persons
@@ -177,7 +177,7 @@ State: 8/20
 - [x] `DELETE`    Delete multiple persons in bulk/persons
 - [ ] `GET`       List files attached to a person/persons/:id/files
 - [ ] `GET`       List e-mail messages associated with a person/persons/:id/emailMessages
-- [ ] `POST`      Add a follower to a person/persons/:id/followers
+- [x] `POST`      Add a follower to a person/persons/:id/followers
 - [x] `GET`       List followers of a person/persons/:id/followers
 - [ ] `DELETE`    Delete a follower from a person/persons/:id/followers/:follower_id
 - [ ] `GET`       List products associated with a person/persons/:id/products
