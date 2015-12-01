@@ -262,10 +262,10 @@ State: 2/2
 - [x] `GET`       Perform a search using a specific field value `/searchResults/field`
 
 ### Stages
-State: 6/7
+State: 7/7
 - [x] `GET`       Get all stages `/stages`
 - [x] `GET`       Get one stage `/stages/:id`
-- [ ] `GET`       Get deals in a stage `/stages/:id/deals`
+- [x] `GET`       Get deals in a stage `/stages/:id/deals`
 - [x] `POST`      Add a new stage `/stages`
 - [x] `PUT`       Update stage details `/stages/:id`
 - [x] `DELETE`    Delete a stage `/stages/:id`
