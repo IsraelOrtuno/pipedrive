@@ -211,10 +211,10 @@ State: 5/8
 - [ ] `GET`       Get deals movements in pipeline/pipelines/:id/movement_statistics
 
 ### Products
-State: 8/9
+State: 9/9
 - [x] `GET`       Get all products/products
 - [x] `GET`       Get one product/products/:id
-- [ ] `GET`       Get deals where a product is attached to/products/:id/deals
+- [x] `GET`       Get deals where a product is attached to/products/:id/deals
 - [x] `POST`      Add a product/products
 - [x] `PUT`       Update a product/products/:id
 - [x] `DELETE`    Delete a product/products/:id
