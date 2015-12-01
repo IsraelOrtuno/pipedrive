@@ -159,13 +159,13 @@ State: 5/5
 - [x] `DELETE`    Delete an organization relationship `/organizationRelationships/:id`
 
 ### PermissionSets
-State: 3/6
+State: 6/6
 - [x] `GET`       Get all permission sets `/permissionSets`
 - [x] `GET`       Get one permission set `/permissionSets/:id`
 - [x] `PUT`       Update permission set details `/permissionSets/:id`
-- [ ] `GET`       List permission set assignments `/permissionSets/:id/assignments`
-- [ ] `POST`      Add permission set assignment `/permissionSets/:id/assignments`
-- [ ] `DELETE`    Delete a permission set assignment `/permissionSets/:id/assignments`
+- [x] `GET`       List permission set assignments `/permissionSets/:id/assignments`
+- [x] `POST`      Add permission set assignment `/permissionSets/:id/assignments`
+- [x] `DELETE`    Delete a permission set assignment `/permissionSets/:id/assignments`
 
 ### Persons
 State: 18/20
@@ -243,16 +243,16 @@ State: 1/1
 - [x] `GET`       Get recents `/recents`
 
 ### Roles
-State: 5/11
+State: 8/11
 - [x] `GET`       Get all roles `/roles`
 - [x] `GET`       Get one role `/roles/:id`
 - [x] `POST`      Add a role `/roles`
 - [x] `PUT`       Update role details `/roles/:id`
 - [x] `DELETE`    Delete a role `/roles/:id`
 - [ ] `GET`       List role sub-roles `/roles/:id/roles`
-- [ ] `GET`       List role assignments `/roles/:id/assignments`
-- [ ] `POST`      Add role assignment `/roles/:id/assignments`
-- [ ] `DELETE`    Delete a role assignment `/roles/:id/assignments`
+- [x] `GET`       List role assignments `/roles/:id/assignments`
+- [x] `POST`      Add role assignment `/roles/:id/assignments`
+- [x] `DELETE`    Delete a role assignment `/roles/:id/assignments`
 - [ ] `GET`       List role settings `/roles/:id/settings`
 - [ ] `POST`      Add or update role setting `/roles/:id/settings`
 
