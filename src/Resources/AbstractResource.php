@@ -23,6 +23,13 @@ abstract class AbstractResource
     protected $enabled = ['*'];
 
     /**
+     * List of abstract methods disabled.
+     *
+     * @var array
+     */
+    protected $disabled = [];
+
+    /**
      * Endpoint constructor.
      *
      * @param Request $request
@@ -89,6 +96,17 @@ abstract class AbstractResource
     }
 
     /**
+     * Bulk deleting entities.
+     *
+     * @param array $ids
+     * @return mixed
+     */
+    public function deleteBulk(array $ids)
+    {
+        return $this->request->delete('', compact('ids'));
+    }
+
+    /**
      * Get the endpoint name based on the name class.
      *
      * @return string
@@ -108,6 +126,10 @@ abstract class AbstractResource
      */
     public function isEnabled($method)
     {
+        if ($this->isDisabled($method)) {
+            return false;
+        }
+
         // First we will make sure the method only belongs to this abtract class
         // as this does not have to interfiere with methods described in child
         // classes. We can now check if it is found in the enabled property.
@@ -116,6 +138,17 @@ abstract class AbstractResource
         }
 
         return in_array($method, $this->enabled) || $this->enabled == ['*'];
+    }
+
+    /**
+     * Check if the method is disabled for use.
+     *
+     * @param $method
+     * @return bool
+     */
+    public function isDisabeld($method)
+    {
+        return in_array($method, $this->disabled);
     }
 
     /**

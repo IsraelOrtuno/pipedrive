@@ -1,13 +1,13 @@
 ## Roadmap
 
 ### Activities
-State: 5/6
+State: 6/6
 - [x] `GET`       Get all activities assigned to a particular user/activities
 - [x] `GET`       Get details of an activity/activities/:id
 - [x] `POST`      Add an activity/activities
 - [x] `PUT`       Edit an activity/activities/:id
 - [x] `DELETE`    Delete an activity/activities/:id
-- [ ] `DELETE`    Delete multiple activities in bulk/activities
+- [x] `DELETE`    Delete multiple activities in bulk/activities
 
 ### ActivityTypes
 State: 4/5
@@ -15,7 +15,7 @@ State: 4/5
 - [x] `POST`      Add new activity type/activityTypes
 - [x] `PUT`       Edit activity type/activityTypes/:id
 - [x] `DELETE`    Delete an activity type/activityTypes/:id
-- [ ] `DELETE`    Delete multiple activity types in bulk/activityTypes
+- [x] `DELETE`    Delete multiple activity types in bulk/activityTypes
 
 ### Authorizations
 State: 1/1
@@ -26,17 +26,17 @@ State: 1/1
 - [x] `GET`       Get all supported currencies/currencies
 
 ### Deals
-State: 4/26
+State: 8/26
 - [x] `GET`       Get all deals/deals
 - [x] `GET`       Get details of a deal/deals/:id
 - [x] `POST`      Add a deal/deals
 - [x] `PUT`       Update a deal/deals/:id
-- [ ] `DELETE`    Delete a deal/deals/:id
-- [ ] `DELETE`    Delete multiple deals in bulk/deals
+- [x] `DELETE`    Delete a deal/deals/:id
+- [x] `DELETE`    Delete multiple deals in bulk/deals
 - [ ] `POST`      Duplicate deal/deals/:id/duplicate
 - [ ] `PUT`       Merge two deals/deals/:id/merge
 - [ ] `POST`      Add a follower to a deal/deals/:id/followers
-- [ ] `GET`       List followers of a deal/deals/:id/followers
+- [x] `GET`       List followers of a deal/deals/:id/followers
 - [ ] `DELETE`    Delete a follower from a deal/deals/:id/followers/:follower_id
 - [ ] `GET`       List products attached to a deal/deals/:id/products
 - [ ] `POST`      Add a product to the deal, eventually creating a new item called a deal-product./deals/:id/products
@@ -54,20 +54,20 @@ State: 4/26
 - [ ] `GET`       Get deals timeline/deals/timeline
 
 ### DealFields
-State: 5/6
+State: 6/6
 - [x] `GET`       Get all deal fields/dealFields
 - [x] `GET`       Get one deal field/dealFields/:id
 - [x] `POST`      Add a new deal field/dealFields
 - [x] `PUT`       Update a deal field/dealFields/:id
 - [x] `DELETE`    Delete a deal field/dealFields/:id
-- [ ] `DELETE`    Delete multiple deal fields in bulk/dealFields
+- [x] `DELETE`    Delete multiple deal fields in bulk/dealFields
 
 ### EmailMessages
 State: 3/4
 - [x] `GET`       Get one e-mail message/emailMessages/:id
 - [x] `PUT`       Update e-mail message details/emailMessages/:id
 - [x] `DELETE`    Delete an e-mail message/emailMessages/:id
-- [ ] `DELETE`    Delete multiple e-mail messages in bulk/emailMessages
+- [x] `DELETE`    Delete multiple e-mail messages in bulk/emailMessages
 
 ### EmailThreads
 State: 4/6
@@ -75,7 +75,7 @@ State: 4/6
 - [x] `GET`       Get one e-mail message thread/emailThreads/:id
 - [x] `PUT`       Update e-mail message thread details/emailThreads/:id
 - [x] `DELETE`    Delete an e-mail message thread/emailThreads/:id
-- [ ] `DELETE`    Delete multiple e-mail message threads in bulk/emailThreads
+- [x] `DELETE`    Delete multiple e-mail message threads in bulk/emailThreads
 - [ ] `GET`       List e-mail messages inside a thread/emailThreads/:id/messages
 
 ### Files
@@ -96,7 +96,7 @@ State: 5/6
 - [x] `POST`      Add a new filter/filters
 - [x] `PUT`       Update filter/filters/:id
 - [x] `DELETE`    Delete a filter/filters/:id
-- [ ] `DELETE`    Delete multiple filters in bulk/filters
+- [x] `DELETE`    Delete multiple filters in bulk/filters
 
 ### GlobalMessages
 State: 2/2
@@ -121,26 +121,26 @@ State: 5/5
 - [x] `DELETE`    Delete a note/notes/:id
 
 ### OrganizationFields
-State: 5/6
+State: 6/6
 - [x] `GET`       Get all organization fields/organizationFields
 - [x] `GET`       Get one organization field/organizationFields/:id
 - [x] `POST`      Add a new organization field/organizationFields
 - [x] `PUT`       Update an organization field/organizationFields/:id
 - [x] `DELETE`    Delete an organization field/organizationFields/:id
-- [ ] `DELETE`    Delete multiple organization fields in bulk/organizationFields
+- [x] `DELETE`    Delete multiple organization fields in bulk/organizationFields
 
 ### Organizations
-State: 6/19
+State: 8/19
 - [x] `GET`       Get all organizations/organizations
 - [x] `GET`       Get details of an organization/organizations/:id
 - [x] `POST`      Add an organization/organizations
 - [x] `PUT`       Update an organization/organizations/:id
 - [x] `DELETE`    Delete an organization/organizations/:id
-- [ ] `DELETE`    Delete multiple organizations in bulk/organizations
+- [x] `DELETE`    Delete multiple organizations in bulk/organizations
 - [ ] `GET`       List files attached to an organization/organizations/:id/files
 - [ ] `GET`       List e-mail messages associated with an organization/organizations/:id/emailMessages
 - [ ] `POST`      Add a follower to an organization/organizations/:id/followers
-- [ ] `GET`       List followers of an organization/organizations/:id/followers
+- [x] `GET`       List followers of an organization/organizations/:id/followers
 - [ ] `DELETE`    Delete a follower from an organization/organizations/:id/followers/:follower_id
 - [ ] `GET`       List persons of an organization/organizations/:id/persons
 - [ ] `GET`       List deals associated with an organization/organizations/:id/deals
@@ -168,17 +168,17 @@ State: 3/6
 - [ ] `DELETE`    Delete a permission set assignment/permissionSets/:id/assignments
 
 ### Persons
-State: 6/20
+State: 8/20
 - [x] `GET`       Get all persons/persons
 - [x] `GET`       Get details of a person/persons/:id
 - [x] `POST`      Add a person/persons
 - [x] `PUT`       Update a person/persons/:id
 - [x] `DELETE`    Delete a person/persons/:id
-- [ ] `DELETE`    Delete multiple persons in bulk/persons
+- [x] `DELETE`    Delete multiple persons in bulk/persons
 - [ ] `GET`       List files attached to a person/persons/:id/files
 - [ ] `GET`       List e-mail messages associated with a person/persons/:id/emailMessages
 - [ ] `POST`      Add a follower to a person/persons/:id/followers
-- [ ] `GET`       List followers of a person/persons/:id/followers
+- [x] `GET`       List followers of a person/persons/:id/followers
 - [ ] `DELETE`    Delete a follower from a person/persons/:id/followers/:follower_id
 - [ ] `GET`       List products associated with a person/persons/:id/products
 - [ ] `GET`       List deals associated with a person/persons/:id/deals
@@ -191,13 +191,13 @@ State: 6/20
 - [ ] `POST`      Delete person picture/persons/:id/picture
 
 ### PersonFields
-State: 5/6
+State: 6/6
 - [x] `GET`       Get all person fields/personFields
 - [x] `GET`       Get one person field/personFields/:id
 - [x] `POST`      Add a new person field/personFields
 - [x] `PUT`       Update a person field/personFields/:id
 - [x] `DELETE`    Delete a person field/personFields/:id
-- [ ] `DELETE`    Delete multiple person fields in bulk/personFields
+- [x] `DELETE`    Delete multiple person fields in bulk/personFields
 
 ### Pipelines
 State: 5/8
@@ -223,13 +223,13 @@ State: 6/9
 - [x] `GET`       Find products by name/products/find
 
 ### ProductFields
-State: 5/6
+State: 6/6
 - [x] `GET`       Get all product fields/productFields
 - [x] `GET`       Get one product field/productFields/:id
 - [x] `POST`      Add a new product field/productFields
 - [x] `PUT`       Update a product field/productFields/:id
 - [x] `DELETE`    Delete a product field/productFields/:id
-- [ ] `DELETE`    Delete multiple product fields in bulk/productFields
+- [x] `DELETE`    Delete multiple product fields in bulk/productFields
 
 ### PushNotifications
 State: 4/4
@@ -262,23 +262,23 @@ State: 1/2
 - [ ] `GET`       Perform a search using a specific field value/searchResults/field
 
 ### Stages
-State: 5/7
+State: 6/7
 - [x] `GET`       Get all stages/stages
 - [x] `GET`       Get one stage/stages/:id
 - [ ] `GET`       Get deals in a stage/stages/:id/deals
 - [x] `POST`      Add a new stage/stages
 - [x] `PUT`       Update stage details/stages/:id
 - [x] `DELETE`    Delete a stage/stages/:id
-- [ ] `DELETE`    Delete multiple stages in bulk/stages
+- [x] `DELETE`    Delete multiple stages in bulk/stages
 
 ### Users
-State: 6/20
+State: 7/20
 - [x] `GET`       Get all users/users
 - [x] `GET`       Get one user/users/:id
 - [x] `POST`      Add a new user/users
 - [x] `PUT`       Update user details/users/:id
 - [ ] `GET`       List and filter activities assigned to a specific user/users/:id/activities
-- [ ] `GET`       List followers of a user/users/:id/followers
+- [x] `GET`       List followers of a user/users/:id/followers
 - [ ] `GET`       List updates about and by a user/users/:id/updates
 - [ ] `GET`       List permission set assignments/users/:id/permissionSetAssignments
 - [ ] `POST`      Add permission set assignment/users/:id/permissionSetAssignments

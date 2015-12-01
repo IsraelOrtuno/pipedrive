@@ -3,15 +3,17 @@
 namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Resources\Traits\FindsByName;
+use Devio\Pipedrive\Resources\Traits\ListsFollowers;
 
 class Users extends AbstractResource
 {
-    use FindsByName;
+    use FindsByName,
+        ListsFollowers;
 
     /**
-     * Enabled abstract methods.
+     * Disabled abstract methods.
      *
      * @var array
      */
-    protected $enabled = ['all', 'find', 'add', 'update'];
+    protected $disabled = ['delete', 'deleteBulk'];
 }

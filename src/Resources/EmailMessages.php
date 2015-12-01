@@ -9,5 +9,5 @@ class EmailMessages extends AbstractResource
      *
      * @var array
      */
-    protected $enabled = ['find', 'update', 'delete'];
+    protected $enabled = ['find', 'update', 'delete', 'deleteBulk'];
 }
