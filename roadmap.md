@@ -116,8 +116,8 @@
 - [ ] `[DELETE]`    Delete multiple organization fields in bulk/organizationFields
 
 ### Organizations
-- [ ] `[GET]`       Get all organizations/organizations
-- [ ] `[GET]`       Get details of an organization/organizations/:id
+- [x] `[GET]`       Get all organizations/organizations
+- [x] `[GET]`       Get details of an organization/organizations/:id
 - [ ] `[POST]`      Add an organization/organizations
 - [ ] `[PUT]`       Update an organization/organizations/:id
 - [ ] `[DELETE]`    Delete an organization/organizations/:id
