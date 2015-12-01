@@ -272,12 +272,12 @@ State: 6/7
 - [x] `DELETE`    Delete multiple stages in bulk/stages
 
 ### Users
-State: 8/20
+State: 11/20
 - [x] `GET`       Get all users/users
 - [x] `GET`       Get one user/users/:id
 - [x] `POST`      Add a new user/users
 - [x] `PUT`       Update user details/users/:id
-- [ ] `GET`       List and filter activities assigned to a specific user/users/:id/activities
+- [x] `GET`       List and filter activities assigned to a specific user/users/:id/activities
 - [x] `GET`       List followers of a user/users/:id/followers
 - [x] `GET`       List updates about and by a user/users/:id/updates
 - [ ] `GET`       List permission set assignments/users/:id/permissionSetAssignments
@@ -291,8 +291,8 @@ State: 8/20
 - [ ] `GET`       List permitted items/users/:id/permittedItems
 - [x] `GET`       Find users by name/users/find
 - [x] `POST`      Add a new user/users
-- [ ] `GET`       List blacklisted email addresses of a user/users/:id/blacklistedEmails
-- [ ] `POST`      Add blacklisted email address for a user/users/:id/blacklistedEmails
+- [x] `GET`       List blacklisted email addresses of a user/users/:id/blacklistedEmails
+- [x] `POST`      Add blacklisted email address for a user/users/:id/blacklistedEmails
 
 ### UserConnections
 State: 1/1

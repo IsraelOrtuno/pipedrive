@@ -3,6 +3,7 @@
 namespace Devio\Pipedrive\Resources\Basics;
 
 use Devio\Pipedrive\Resources\Traits\FindsByName;
+use Devio\Pipedrive\Resources\Traits\ListsActivities;
 use Devio\Pipedrive\Resources\Traits\ListsUpdates;
 use Devio\Pipedrive\Resources\Traits\ListsFollowers;
 use Devio\Pipedrive\Resources\Traits\ListsAttachedFiles;
@@ -11,24 +12,13 @@ use Devio\Pipedrive\Resources\Traits\ListsPermittedUsers;
 abstract class Entity extends Resource
 {
     use FindsByName,
+        ListsActivities,
         ListsAttachedFiles,
         ListsFollowers,
         ListsPermittedUsers,
         ListsUpdates;
 
-    /**
-     * List the resource activities.
-     *
-     * @param       $id
-     * @param array $options
-     * @return mixed
-     */
-    public function activities($id, $options = [])
-    {
-        array_set($options, 'id', $id);
 
-        return $this->request->get(':id/activities', $options);
-    }
 
     /**
      * List the resource associated emails.
