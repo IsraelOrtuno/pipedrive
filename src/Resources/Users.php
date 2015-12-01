@@ -25,6 +25,17 @@ class Users extends Resource
     protected $disabled = ['delete', 'deleteBulk'];
 
     /**
+     * Get the user permissions.
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function permissions($id)
+    {
+        return $this->request->get(':id/permissions', compact('id'));
+    }
+
+    /**
      * Get the user permitted items.
      *
      * @param      $id
