@@ -272,7 +272,7 @@ State: 6/7
 - [x] `DELETE`    Delete multiple stages in bulk/stages
 
 ### Users
-State: 11/20
+State: 12/20
 - [x] `GET`       Get all users/users
 - [x] `GET`       Get one user/users/:id
 - [x] `POST`      Add a new user/users
@@ -288,7 +288,7 @@ State: 11/20
 - [ ] `DELETE`    Delete a role assignment/users/:id/roleAssignments
 - [ ] `GET`       List user role settings/users/:id/roleSettings
 - [ ] `GET`       List user permissions/users/:id/permissions
-- [ ] `GET`       List permitted items/users/:id/permittedItems
+- [x] `GET`       List permitted items/users/:id/permittedItems
 - [x] `GET`       Find users by name/users/find
 - [x] `POST`      Add a new user/users
 - [x] `GET`       List blacklisted email addresses of a user/users/:id/blacklistedEmails

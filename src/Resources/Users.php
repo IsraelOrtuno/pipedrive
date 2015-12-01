@@ -25,6 +25,18 @@ class Users extends Resource
     protected $disabled = ['delete', 'deleteBulk'];
 
     /**
+     * Get the user permitted items.
+     *
+     * @param      $id
+     * @param null $access_level
+     * @return mixed
+     */
+    public function permittedItems($id, $access_level = null)
+    {
+        return $this->request->get(':id/permittedItems', compact('id', 'access_level'));
+    }
+    
+    /**
      * Get the user blacklisted emails.
      *
      * @param $id
