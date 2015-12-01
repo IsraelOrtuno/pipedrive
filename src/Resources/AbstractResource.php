@@ -55,6 +55,29 @@ abstract class AbstractResource
     }
 
     /**
+     * Delete an entity by ID.
+     *
+     * @param $id
+     */
+    public function delete($id)
+    {
+        return $this->request->delete(':id', compact('id'));
+    }
+
+    /**
+     * Update an entity by ID.
+     *
+     * @param       $id
+     * @param array $values
+     */
+    public function update($id, array $values)
+    {
+        array_add($values, 'id', $id);
+
+        return $this->request->put(':id', $values);
+    }
+
+    /**
      * Get the endpoint name based on the name class.
      *
      * @return string
