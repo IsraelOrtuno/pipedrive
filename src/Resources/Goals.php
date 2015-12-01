@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class Goals extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class Goals extends Resource
 {
     /**
      * Disabled abstract methods.

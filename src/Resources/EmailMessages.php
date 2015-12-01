@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class EmailMessages extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class EmailMessages extends Resource
 {
     /**
      * Enabled abstract methods.

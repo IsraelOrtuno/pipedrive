@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class Filters extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class Filters extends Resource
 {
     /**
      * Disabled abstract methods.

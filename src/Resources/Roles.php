@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class Roles extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class Roles extends Resource
 {
     /**
      * Disabled abstract methods.

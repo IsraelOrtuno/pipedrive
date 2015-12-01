@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class Pipelines extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class Pipelines extends Resource
 {
     /**
      * Disabled abstract methods.

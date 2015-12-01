@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class Stages extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class Stages extends Resource
 {
 }

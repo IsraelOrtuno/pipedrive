@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class OrganizationFields extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class OrganizationFields extends Resource
 {
 
 }

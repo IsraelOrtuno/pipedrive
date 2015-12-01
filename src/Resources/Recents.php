@@ -2,9 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-use Devio\Pipedrive\Resources\Traits\DisablesFind;
+use Devio\Pipedrive\Resources\Basics\Resource;
 
-class Recents extends AbstractResource
+class Recents extends Resource
 {
     /**
      * Enabled abstract methods.

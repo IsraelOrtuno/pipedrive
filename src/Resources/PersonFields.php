@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class PersonFields extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class PersonFields extends Resource
 {
     
 }

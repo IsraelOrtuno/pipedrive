@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class PushNotifications extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class PushNotifications extends Resource
 {
     /**
      * Disabled abstract methods.

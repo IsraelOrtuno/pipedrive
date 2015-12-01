@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class OrganizationRelationships extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class OrganizationRelationships extends Resource
 {
     /**
      * Disabled abstract methods.

@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class EmailThreads extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class EmailThreads extends Resource
 {
 }

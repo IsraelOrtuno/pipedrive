@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class PermissionsSets extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class PermissionsSets extends Resource
 {
     /**
      * Enabled abstract methods.

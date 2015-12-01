@@ -2,9 +2,10 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Resources\Basics\Resource;
 use Devio\Pipedrive\Resources\Traits\DisablesFind;
 
-class UserConnections extends AbstractResource
+class UserConnections extends Resource
 {
     /**
      * Enabled abstract methods.

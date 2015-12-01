@@ -26,7 +26,7 @@ State: 1/1
 - [x] `GET`       Get all supported currencies/currencies
 
 ### Deals
-State: 9/26
+State: 10/26
 - [x] `GET`       Get all deals/deals
 - [x] `GET`       Get details of a deal/deals/:id
 - [x] `POST`      Add a deal/deals
@@ -37,7 +37,7 @@ State: 9/26
 - [ ] `PUT`       Merge two deals/deals/:id/merge
 - [x] `POST`      Add a follower to a deal/deals/:id/followers
 - [x] `GET`       List followers of a deal/deals/:id/followers
-- [ ] `DELETE`    Delete a follower from a deal/deals/:id/followers/:follower_id
+- [x] `DELETE`    Delete a follower from a deal/deals/:id/followers/:follower_id
 - [ ] `GET`       List products attached to a deal/deals/:id/products
 - [ ] `POST`      Add a product to the deal, eventually creating a new item called a deal-product./deals/:id/products
 - [ ] `PUT`       Update product attachment details of the deal-product (a product already attached to a deal)/deals/:id/products/:deal_product_id
@@ -130,7 +130,7 @@ State: 6/6
 - [x] `DELETE`    Delete multiple organization fields in bulk/organizationFields
 
 ### Organizations
-State: 9/19
+State: 10/19
 - [x] `GET`       Get all organizations/organizations
 - [x] `GET`       Get details of an organization/organizations/:id
 - [x] `POST`      Add an organization/organizations
@@ -141,7 +141,7 @@ State: 9/19
 - [ ] `GET`       List e-mail messages associated with an organization/organizations/:id/emailMessages
 - [x] `POST`      Add a follower to an organization/organizations/:id/followers
 - [x] `GET`       List followers of an organization/organizations/:id/followers
-- [ ] `DELETE`    Delete a follower from an organization/organizations/:id/followers/:follower_id
+- [x] `DELETE`    Delete a follower from an organization/organizations/:id/followers/:follower_id
 - [ ] `GET`       List persons of an organization/organizations/:id/persons
 - [ ] `GET`       List deals associated with an organization/organizations/:id/deals
 - [ ] `GET`       List activities associated with an organization/organizations/:id/activities
@@ -168,7 +168,7 @@ State: 3/6
 - [ ] `DELETE`    Delete a permission set assignment/permissionSets/:id/assignments
 
 ### Persons
-State: 9/20
+State: 10/20
 - [x] `GET`       Get all persons/persons
 - [x] `GET`       Get details of a person/persons/:id
 - [x] `POST`      Add a person/persons
@@ -179,7 +179,7 @@ State: 9/20
 - [ ] `GET`       List e-mail messages associated with a person/persons/:id/emailMessages
 - [x] `POST`      Add a follower to a person/persons/:id/followers
 - [x] `GET`       List followers of a person/persons/:id/followers
-- [ ] `DELETE`    Delete a follower from a person/persons/:id/followers/:follower_id
+- [x] `DELETE`    Delete a follower from a person/persons/:id/followers/:follower_id
 - [ ] `GET`       List products associated with a person/persons/:id/products
 - [ ] `GET`       List deals associated with a person/persons/:id/deals
 - [ ] `GET`       List updates about a person/persons/:id/updates

@@ -2,7 +2,8 @@
 
 namespace Devio\Pipedrive\Resources;
 
-class ProductFields extends AbstractResource
+use Devio\Pipedrive\Resources\Basics\Resource;
+
+class ProductFields extends Resource
 {
-    
 }
