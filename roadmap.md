@@ -1,17 +1,17 @@
 ## Roadmap
 
 ### Activities
-State: 0/6
-- [ ] `GET`       Get all activities assigned to a particular user/activities
-- [ ] `GET`       Get details of an activity/activities/:id
+State: 2/6
+- [x] `GET`       Get all activities assigned to a particular user/activities
+- [x] `GET`       Get details of an activity/activities/:id
 - [ ] `POST`      Add an activity/activities
 - [ ] `PUT`       Edit an activity/activities/:id
 - [ ] `DELETE`    Delete an activity/activities/:id
 - [ ] `DELETE`    Delete multiple activities in bulk/activities
 
 ### ActivityTypes
-State: 0/5
-- [ ] `GET`       Get all activity types/activityTypes
+State: 1/5
+- [x] `GET`       Get all activity types/activityTypes
 - [ ] `POST`      Add new activity type/activityTypes
 - [ ] `PUT`       Edit activity type/activityTypes/:id
 - [ ] `DELETE`    Delete an activity type/activityTypes/:id
@@ -23,12 +23,12 @@ State: 0/1
 
 ### Currencies
 State: 0/1
-- [ ] `GET`       Get all supported currencies/currencies
+- [x] `GET`       Get all supported currencies/currencies
 
 ### Deals
-State: 0/26
-- [ ] `GET`       Get all deals/deals
-- [ ] `GET`       Get details of a deal/deals/:id
+State: 3/26
+- [x] `GET`       Get all deals/deals
+- [x] `GET`       Get details of a deal/deals/:id
 - [ ] `POST`      Add a deal/deals
 - [ ] `PUT`       Update a deal/deals/:id
 - [ ] `DELETE`    Delete a deal/deals/:id
@@ -50,13 +50,13 @@ State: 0/26
 - [ ] `GET`       List files attached to a deal/deals/:id/files
 - [ ] `GET`       List permitted users/deals/:id/permittedUsers
 - [ ] `GET`       List e-mail messages associated with a deal/deals/:id/emailMessages
-- [ ] `GET`       Find deals by name/deals/find
+- [x] `GET`       Find deals by name/deals/find
 - [ ] `GET`       Get deals timeline/deals/timeline
 
 ### DealFields
-State: 0/6
-- [ ] `GET`       Get all deal fields/dealFields
-- [ ] `GET`       Get one deal field/dealFields/:id
+State: 2/6
+- [x] `GET`       Get all deal fields/dealFields
+- [x] `GET`       Get one deal field/dealFields/:id
 - [ ] `POST`      Add a new deal field/dealFields
 - [ ] `PUT`       Update a deal field/dealFields/:id
 - [ ] `DELETE`    Delete a deal field/dealFields/:id
@@ -70,18 +70,18 @@ State: 0/4
 - [ ] `DELETE`    Delete multiple e-mail messages in bulk/emailMessages
 
 ### EmailThreads
-State: 0/6
-- [ ] `GET`       Get all e-mail message threads/emailThreads
-- [ ] `GET`       Get one e-mail message thread/emailThreads/:id
+State: 2/6
+- [x] `GET`       Get all e-mail message threads/emailThreads
+- [x] `GET`       Get one e-mail message thread/emailThreads/:id
 - [ ] `PUT`       Update e-mail message thread details/emailThreads/:id
 - [ ] `DELETE`    Delete an e-mail message thread/emailThreads/:id
 - [ ] `DELETE`    Delete multiple e-mail message threads in bulk/emailThreads
 - [ ] `GET`       List e-mail messages inside a thread/emailThreads/:id/messages
 
 ### Files
-State: 0/8
-- [ ] `GET`       Get all files/files
-- [ ] `GET`       Get one file/files/:id
+State: 2/8
+- [x] `GET`       Get all files/files
+- [x] `GET`       Get one file/files/:id
 - [ ] `GET`       Download one file/files/:id/download
 - [ ] `POST`      Add file(s)/files
 - [ ] `POST`      Create a remote file and link it to an item/files/remote
@@ -90,40 +90,40 @@ State: 0/8
 - [ ] `DELETE`    Delete a file/files/:id
 
 ### Filters
-State: 0/6
-- [ ] `GET`       Get all filters/filters
-- [ ] `GET`       Get one filter/filters/:id
+State: 2/6
+- [x] `GET`       Get all filters/filters
+- [x] `GET`       Get one filter/filters/:id
 - [ ] `POST`      Add a new filter/filters
 - [ ] `PUT`       Update filter/filters/:id
 - [ ] `DELETE`    Delete a filter/filters/:id
 - [ ] `DELETE`    Delete multiple filters in bulk/filters
 
 ### GlobalMessages
-State: 0/2
-- [ ] `GET`       Get global messages/globalMessages
+State: 1/2
+- [x] `GET`       Get global messages/globalMessages
 - [ ] `DELETE`    Dismiss a global message/globalMessages/:id
 
 ### Goals
-State: 0/6
-- [ ] `GET`       Get all goals/goals
-- [ ] `GET`       Get details of a goal/goals/:id
+State: 2/6
+- [x] `GET`       Get all goals/goals
+- [x] `GET`       Get details of a goal/goals/:id
 - [ ] `POST`      Add a new goal/goals
 - [ ] `PUT`       Update goal details/goals/:id
 - [ ] `DELETE`    Delete existing goal/goals/:id
 - [ ] `GET`       Get results of one goal/goals/:id/results
 
 ### Notes
-State: 0/5
-- [ ] `GET`       Get all notes/notes
-- [ ] `GET`       Get one note/notes/:id
+State: 2/5
+- [x] `GET`       Get all notes/notes
+- [x] `GET`       Get one note/notes/:id
 - [ ] `POST`      Add a note/notes
 - [ ] `PUT`       Update a note/notes/:id
 - [ ] `DELETE`    Delete a note/notes/:id
 
 ### OrganizationFields
 State: 0/6
-- [ ] `GET`       Get all organization fields/organizationFields
-- [ ] `GET`       Get one organization field/organizationFields/:id
+- [x] `GET`       Get all organization fields/organizationFields
+- [x] `GET`       Get one organization field/organizationFields/:id
 - [ ] `POST`      Add a new organization field/organizationFields
 - [ ] `PUT`       Update an organization field/organizationFields/:id
 - [ ] `DELETE`    Delete an organization field/organizationFields/:id
@@ -151,26 +151,26 @@ State: 3/19
 - [x] `GET`       Find organizations by name/organizations/find
 
 ### Organization Relationships
-State: 0/5
-- [ ] `GET`       Get all relationships for organization/organizationRelationships
-- [ ] `GET`       Get one organization relationship/organizationRelationships/:id
+State: 2/5
+- [x] `GET`       Get all relationships for organization/organizationRelationships
+- [x] `GET`       Get one organization relationship/organizationRelationships/:id
 - [ ] `POST`      Create an organization relationship/organizationRelationships
 - [ ] `PUT`       Update an organization relationship/organizationRelationships/:id
 - [ ] `DELETE`    Delete an organization relationship/organizationRelationships/:id
 
 ### PermissionSets
-State: 0/6
-- [ ] `GET`       Get all permission sets/permissionSets
-- [ ] `GET`       Get one permission set/permissionSets/:id
+State: 2/6
+- [x] `GET`       Get all permission sets/permissionSets
+- [x] `GET`       Get one permission set/permissionSets/:id
 - [ ] `PUT`       Update permission set details/permissionSets/:id
 - [ ] `GET`       List permission set assignments/permissionSets/:id/assignments
 - [ ] `POST`      Add permission set assignment/permissionSets/:id/assignments
 - [ ] `DELETE`    Delete a permission set assignment/permissionSets/:id/assignments
 
 ### Persons
-State: 0/20
-- [ ] `GET`       Get all persons/persons
-- [ ] `GET`       Get details of a person/persons/:id
+State: 3/20
+- [x] `GET`       Get all persons/persons
+- [x] `GET`       Get details of a person/persons/:id
 - [ ] `POST`      Add a person/persons
 - [ ] `PUT`       Update a person/persons/:id
 - [ ] `DELETE`    Delete a person/persons/:id
@@ -186,23 +186,23 @@ State: 0/20
 - [ ] `GET`       List activities associated with a person/persons/:id/activities
 - [ ] `GET`       List permitted users/persons/:id/permittedUsers
 - [ ] `PUT`       Merge two persons/persons/:id/merge
-- [ ] `GET`       Find persons by name/persons/find
+- [x] `GET`       Find persons by name/persons/find
 - [ ] `POST`      Add person picture/persons/:id/picture
 - [ ] `POST`      Delete person picture/persons/:id/picture
 
 ### PersonFields
-State: 0/6
-- [ ] `GET`       Get all person fields/personFields
-- [ ] `GET`       Get one person field/personFields/:id
+State: 2/6
+- [x] `GET`       Get all person fields/personFields
+- [x] `GET`       Get one person field/personFields/:id
 - [ ] `POST`      Add a new person field/personFields
 - [ ] `PUT`       Update a person field/personFields/:id
 - [ ] `DELETE`    Delete a person field/personFields/:id
 - [ ] `DELETE`    Delete multiple person fields in bulk/personFields
 
 ### Pipelines
-State: 0/8
-- [ ] `GET`       Get all pipelines/pipelines
-- [ ] `GET`       Get one pipeline/pipelines/:id
+State: 2/8
+- [x] `GET`       Get all pipelines/pipelines
+- [x] `GET`       Get one pipeline/pipelines/:id
 - [ ] `POST`      Add a new pipeline/pipelines
 - [ ] `PUT`       Edit a pipeline/pipelines/:id
 - [ ] `GET`       Get deals in a pipeline/pipelines/:id/deals
@@ -211,9 +211,9 @@ State: 0/8
 - [ ] `GET`       Get deals movements in pipeline/pipelines/:id/movement_statistics
 
 ### Products
-State: 0/9
-- [ ] `GET`       Get all products/products
-- [ ] `GET`       Get one product/products/:id
+State: 2/9
+- [x] `GET`       Get all products/products
+- [x] `GET`       Get one product/products/:id
 - [ ] `GET`       Get deals where a product is attached to/products/:id/deals
 - [ ] `POST`      Add a product/products
 - [ ] `PUT`       Update a product/products/:id
@@ -223,29 +223,29 @@ State: 0/9
 - [ ] `GET`       Find products by name/products/find
 
 ### ProductFields
-State: 0/6
-- [ ] `GET`       Get all product fields/productFields
-- [ ] `GET`       Get one product field/productFields/:id
+State: 2/6
+- [x] `GET`       Get all product fields/productFields
+- [x] `GET`       Get one product field/productFields/:id
 - [ ] `POST`      Add a new product field/productFields
 - [ ] `PUT`       Update a product field/productFields/:id
 - [ ] `DELETE`    Delete a product field/productFields/:id
 - [ ] `DELETE`    Delete multiple product fields in bulk/productFields
 
 ### PushNotifications
-State: 0/4
-- [ ] `GET`       Get all subscriptions/pushNotifications
-- [ ] `GET`       Get details of a subscription/pushNotifications/:id
+State: 2/4
+- [x] `GET`       Get all subscriptions/pushNotifications
+- [x] `GET`       Get details of a subscription/pushNotifications/:id
 - [ ] `POST`      Create new subscription/pushNotifications
 - [ ] `DELETE`    Delete existing subscription/pushNotifications/:id
 
 ### Recents
-State: 0/1
-- [ ] `GET`       Get recents/recents
+State: 1/1
+- [x] `GET`       Get recents/recents
 
 ### Roles
-State: 0/11
-- [ ] `GET`       Get all roles/roles
-- [ ] `GET`       Get one role/roles/:id
+State: 2/11
+- [x] `GET`       Get all roles/roles
+- [x] `GET`       Get one role/roles/:id
 - [ ] `POST`      Add a role/roles
 - [ ] `PUT`       Update role details/roles/:id
 - [ ] `DELETE`    Delete a role/roles/:id
@@ -257,14 +257,14 @@ State: 0/11
 - [ ] `POST`      Add or update role setting/roles/:id/settings
 
 ### SearchResults
-State: 0/2
-- [ ] `GET`       Perform a search/searchResults
+State: 1/2
+- [x] `GET`       Perform a search/searchResults
 - [ ] `GET`       Perform a search using a specific field value/searchResults/field
 
 ### Stages
-State: 0/7
-- [ ] `GET`       Get all stages/stages
-- [ ] `GET`       Get one stage/stages/:id
+State: 2/7
+- [x] `GET`       Get all stages/stages
+- [x] `GET`       Get one stage/stages/:id
 - [ ] `GET`       Get deals in a stage/stages/:id/deals
 - [ ] `POST`      Add a new stage/stages
 - [ ] `PUT`       Update stage details/stages/:id
@@ -272,9 +272,9 @@ State: 0/7
 - [ ] `DELETE`    Delete multiple stages in bulk/stages
 
 ### Users
-State: 0/20
-- [ ] `GET`       Get all users/users
-- [ ] `GET`       Get one user/users/:id
+State: 2/20
+- [x] `GET`       Get all users/users
+- [x] `GET`       Get one user/users/:id
 - [ ] `POST`      Add a new user/users
 - [ ] `PUT`       Update user details/users/:id
 - [ ] `GET`       List and filter activities assigned to a specific user/users/:id/activities
@@ -289,15 +289,15 @@ State: 0/20
 - [ ] `GET`       List user role settings/users/:id/roleSettings
 - [ ] `GET`       List user permissions/users/:id/permissions
 - [ ] `GET`       List permitted items/users/:id/permittedItems
-- [ ] `GET`       Find users by name/users/find
+- [x] `GET`       Find users by name/users/find
 - [ ] `POST`      Add a new user/users
 - [ ] `GET`       List blacklisted email addresses of a user/users/:id/blacklistedEmails
 - [ ] `POST`      Add blacklisted email address for a user/users/:id/blacklistedEmails
 
 ### UserConnections
-State: 0/1
-- [ ] `GET`       Get all user connections/userConnections
+State: 1/1
+- [x] `GET`       Get all user connections/userConnections
 
 ### UserSettings
-State: 0/1
-- [ ] `GET`       List settings of authorized user/userSettings
+State: 1/1
+- [x] `GET`       List settings of authorized user/userSettings
