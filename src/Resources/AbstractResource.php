@@ -55,16 +55,6 @@ abstract class AbstractResource
     }
 
     /**
-     * Delete an entity by ID.
-     *
-     * @param $id
-     */
-    public function delete($id)
-    {
-        return $this->request->delete(':id', compact('id'));
-    }
-
-    /**
      * Update an entity by ID.
      *
      * @param       $id
@@ -75,6 +65,16 @@ abstract class AbstractResource
         array_add($values, 'id', $id);
 
         return $this->request->put(':id', $values);
+    }
+
+    /**
+     * Delete an entity by ID.
+     *
+     * @param $id
+     */
+    public function delete($id)
+    {
+        return $this->request->delete(':id', compact('id'));
     }
 
     /**
