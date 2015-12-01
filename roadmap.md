@@ -26,7 +26,7 @@ State: 1/1
 - [x] `GET`       Get all supported currencies `/currencies`
 
 ### Deals
-State: 21/25
+State: 25/25
 - [x] `GET`       Get all deals `/deals`
 - [x] `GET`       Get details of a deal `/deals/:id`
 - [x] `POST`      Add a deal `/deals`
@@ -44,14 +44,14 @@ State: 21/25
 - [x] `DELETE`    Delete an attached product from a deal `/deals/:id/products`
 - [x] `GET`       List activities associated with a deal `/deals/:id/activities`
 - [x] `GET`       List updates about a deal `/deals/:id/updates`
-- [ ] `POST`      Add a participant to a deal `/deals/:id/participants`
-- [ ] `GET`       List participants of a deal `/deals/:id/participants`
-- [ ] `DELETE`    Delete a participant from a deal `/deals/:id/participants/:deal_participant_id`
+- [x] `POST`      Add a participant to a deal `/deals/:id/participants`
+- [x] `GET`       List participants of a deal `/deals/:id/participants`
+- [x] `DELETE`    Delete a participant from a deal `/deals/:id/participants/:deal_participant_id`
 - [x] `GET`       List files attached to a deal `/deals/:id/files`
 - [x] `GET`       List permitted users `/deals/:id/permittedUsers`
 - [x] `GET`       List e-mail messages associated with a deal `/deals/:id/emailMessages`
 - [x] `GET`       Find deals by name `/deals/find`
-- [ ] `GET`       Get deals timeline `/deals/timeline`
+- [x] `GET`       Get deals timeline `/deals/timeline`
 
 ### DealFields
 State: 6/6
@@ -90,7 +90,7 @@ State: 8/8
 - [x] `DELETE`    Delete a file `/files/:id`
 
 ### Filters
-State: 5/6
+State: 6/6
 - [x] `GET`       Get all filters `/filters`
 - [x] `GET`       Get one filter `/filters/:id`
 - [x] `POST`      Add a new filter `/filters`

@@ -10,6 +10,63 @@ class Deals extends Entity
     use ListsProducts;
 
     /**
+     * Get the deals timeline.
+     *
+     * @param       $start_date
+     * @param       $interval
+     * @param       $amount
+     * @param       $field_key
+     * @param array $options
+     * @return mixed
+     */
+    public function timeline($start_date, $interval, $amount, $field_key, $options = [])
+    {
+        $options = array_merge(
+            compact('start_date', 'interval', 'amount', 'field_key'), $options
+        );
+
+        return $this->request->get('timeline', $options);
+    }
+
+    /**
+     * Add a participant to a deal.
+     *
+     * @param $id
+     * @param $person_id
+     * @return mixed
+     */
+    public function addParticipant($id, $person_id)
+    {
+        return $this->request->post(':id/participants', compact('id', 'person_id'));
+    }
+
+    /**
+     * Get the participants of a deal.
+     *
+     * @param       $id
+     * @param array $options
+     * @return mixed
+     */
+    public function participants($id, $options = [])
+    {
+        array_set($options, 'id', $id);
+
+        return $this->request->get(':id/participants', $options);
+    }
+
+    /**
+     * Delete a participant from a deal.
+     *
+     * @param $id
+     * @param $deal_participant_id
+     * @return mixed
+     */
+    public function deleteParticipant($id, $deal_participant_id)
+    {
+        return $this->request->delete(':id/participants', compact('id', 'deal_participant_id'));
+    }
+    
+    /**
      * Add a product to the deal.
      *
      * @param       $id
