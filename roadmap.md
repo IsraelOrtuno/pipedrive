@@ -10,7 +10,7 @@ State: 6/6
 - [x] `DELETE`    Delete multiple activities in bulk `/activities`
 
 ### ActivityTypes
-State: 4/5
+State: 5/5
 - [x] `GET`       Get all activity types `/activityTypes`
 - [x] `POST`      Add new activity type `/activityTypes`
 - [x] `PUT`       Edit activity type `/activityTypes/:id`
