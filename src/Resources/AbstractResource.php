@@ -122,8 +122,12 @@ abstract class AbstractResource
      *
      * @param array $enabled
      */
-    public function setEnabled(array $enabled)
+    public function setEnabled($enabled)
     {
+        if (! is_array($enabled)) {
+            $enabled = func_get_args();
+        }
+
         $this->enabled = $enabled;
     }
 
@@ -140,7 +144,7 @@ abstract class AbstractResource
         // As there are only a few resources that do not have the most common
         // methods described in this function, we can disable some methods
         // in the `disabled` property of the class throwing an exception.
-        if ($this->isEnabled($method)) {
+        if (! $this->isEnabled($method)) {
             throw new PipedriveException("The method {$method}() is not available for the resource {$this->getName()}");
         }
 
