@@ -13,12 +13,26 @@ abstract class Entity extends Resource
         ListsAttachedFiles,
         ListsFollowers,
         ListsPermittedUsers;
-    
+
+    /**
+     * List the resource activities.
+     *
+     * @param       $id
+     * @param array $options
+     * @return mixed
+     */
+    public function activities($id, $options = [])
+    {
+        array_set($options, 'id', $id);
+
+        return $this->request->get(':id/activities', $options);
+    }
+
     /**
      * List the resource associated emails.
      *
-     * @param       $id      The resource id
-     * @param array $options Extra parameters
+     * @param       $id
+     * @param array $options
      * @return mixed
      */
     public function emails($id, $options = [])
@@ -31,8 +45,8 @@ abstract class Entity extends Resource
     /**
      * Add a follower to a resource.
      *
-     * @param $id      The resource id
-     * @param $user_id The follower id
+     * @param $id
+     * @param $user_id
      * @return mixed
      */
     public function addFollower($id, $user_id)
@@ -43,8 +57,8 @@ abstract class Entity extends Resource
     /**
      * Delete a follower from a resource.
      *
-     * @param $id          The resource id
-     * @param $follower_id The follower id
+     * @param $id
+     * @param $follower_id
      * @return mixed
      */
     public function deleteFollower($id, $follower_id)
@@ -55,8 +69,8 @@ abstract class Entity extends Resource
     /**
      * Merge a resource with another.
      *
-     * @param $id            The resource id
-     * @param $merge_with_id The id of the resource to merge with
+     * @param $id
+     * @param $merge_with_id
      * @return mixed
      */
     public function merge($id, $merge_with_id)
