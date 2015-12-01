@@ -25,7 +25,7 @@ class Pipedrive
      *
      * @param $token
      */
-    public function __construct($token)
+    public function __construct($token = '')
     {
         $this->token = $token;
     }
@@ -51,7 +51,7 @@ class Pipedrive
      */
     protected function resolveClassPath($resource)
     {
-        return 'Devio\\Pipedrive\\Resource\\' . studly_case($resource);
+        return 'Devio\\Pipedrive\\Resources\\' . studly_case($resource);
     }
 
     /**
@@ -92,5 +92,26 @@ class Pipedrive
     public function setBaseURI($baseURI)
     {
         $this->baseURI = $baseURI;
+    }
+
+    /**
+     * Set the token.
+     *
+     * @param string $token
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
+
+    /**
+     * Any reading will return a resource.
+     *
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        return $this->make($name);
     }
 }
