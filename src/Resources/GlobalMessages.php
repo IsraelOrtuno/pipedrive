@@ -11,5 +11,5 @@ class GlobalMessages extends AbstractResource
      *
      * @var array
      */
-    protected $enabled = ['all'];
+    protected $enabled = ['all', 'delete'];
 }

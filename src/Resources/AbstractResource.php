@@ -55,6 +55,17 @@ abstract class AbstractResource
     }
 
     /**
+     * Add a new entity.
+     *
+     * @param array $values
+     * @return mixed
+     */
+    public function add(array $values)
+    {
+        return $this->request->post('', $values);
+    }
+
+    /**
      * Update an entity by ID.
      *
      * @param       $id
