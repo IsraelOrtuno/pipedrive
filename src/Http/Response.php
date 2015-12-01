@@ -5,12 +5,16 @@ namespace Devio\Pipedrive\Http;
 class Response
 {
     /**
-     * @var
+     * The response code.
+     *
+     * @var integer
      */
     protected $statusCode;
 
     /**
-     * @var
+     * The response data.
+     *
+     * @var mixed
      */
     protected $content;
 
@@ -27,7 +31,9 @@ class Response
     }
 
     /**
-     * @return int
+     * Get the status code.
+     *
+     * @return integer
      */
     public function getStatusCode()
     {
@@ -35,6 +41,8 @@ class Response
     }
 
     /**
+     * Get the content.
+     *
      * @return mixed
      */
     public function getContent()

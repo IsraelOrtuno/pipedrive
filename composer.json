@@ -11,6 +11,7 @@
     "require": {
         "guzzlehttp/guzzle": "^6.1",
         "illuminate/support": "^5.1",
+        "illuminate/container": "^5.1",
         "phpspec/phpspec": "^2.4"
     },
     "require-dev": {

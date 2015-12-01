@@ -146,7 +146,7 @@ abstract class Resource
      * @param $method
      * @return bool
      */
-    public function isDisabeld($method)
+    public function isDisabled($method)
     {
         return in_array($method, $this->disabled);
     }
@@ -176,6 +176,20 @@ abstract class Resource
     }
 
     /**
+     * Set disabled methods.
+     *
+     * @param array $disabled
+     */
+    public function setDisabled($disabled)
+    {
+        if (! is_array($disabled)) {
+            $disabled = func_get_args();
+        }
+
+        $this->disabled = $disabled;
+    }
+
+    /**
      * Magic method call.
      *
      * @param       $method
@@ -191,7 +205,5 @@ abstract class Resource
         if (! $this->isEnabled($method)) {
             throw new PipedriveException("The method {$method}() is not available for the resource {$this->getName()}");
         }
-
-        return call_user_func_array(array($this, $method), $args);
     }
 }

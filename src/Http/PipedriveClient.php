@@ -3,10 +3,10 @@
 namespace Devio\Pipedrive\Http;
 
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\BadResponseException;
 
-class GuzzleClient implements Client
+class PipedriveClient implements Client
 {
     /**
      * The Guzzle client instance.
@@ -18,11 +18,17 @@ class GuzzleClient implements Client
     /**
      * GuzzleClient constructor.
      *
-     * @param HttpClient $client
+     * @param $url
+     * @param $token
      */
-    public function __construct(HttpClient $client)
+    public function __construct($url, $token)
     {
-        $this->client = $client;
+        $this->client = new GuzzleClient([
+            'base_uri' => $url,
+            'query' => [
+                'token' => $token
+            ]
+        ]);
     }
 
     /**
@@ -35,7 +41,7 @@ class GuzzleClient implements Client
     public function get($url, $parameters = [])
     {
         $options = $this->getClient()
-                       ->getConfig();
+                        ->getConfig();
         array_set(
             $options, 'query', array_merge($parameters, $options['query'])
         );
@@ -105,7 +111,7 @@ class GuzzleClient implements Client
             // As there are a few responses that are supposed to perform the
             // download of a file, we will filter them. If found, we will
             // set the file download URL as the response content data.
-            $body = $response->getHeader('location') ? : json_decode($response->getBody(), true);
+            $body = $response->getHeader('location') ?: json_decode($response->getBody(), true);
 
             return new Response(
                 $response->getStatusCode(), $body
