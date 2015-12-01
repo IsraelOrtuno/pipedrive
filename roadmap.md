@@ -211,7 +211,7 @@ State: 2/8
 - [ ] `GET`       Get deals movements in pipeline/pipelines/:id/movement_statistics
 
 ### Products
-State: 2/9
+State: 3/9
 - [x] `GET`       Get all products/products
 - [x] `GET`       Get one product/products/:id
 - [ ] `GET`       Get deals where a product is attached to/products/:id/deals
@@ -220,7 +220,7 @@ State: 2/9
 - [ ] `DELETE`    Delete a product/products/:id
 - [ ] `GET`       List files attached to a product/products/:id/files
 - [ ] `GET`       List permitted users/products/:id/permittedUsers
-- [ ] `GET`       Find products by name/products/find
+- [x] `GET`       Find products by name/products/find
 
 ### ProductFields
 State: 2/6
