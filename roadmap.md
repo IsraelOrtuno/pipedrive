@@ -79,10 +79,10 @@ State: 6/6
 - [x] `GET`       List e-mail messages inside a thread `/emailThreads/:id/messages`
 
 ### Files
-State: 7/8
+State: 8/8
 - [x] `GET`       Get all files `/files`
 - [x] `GET`       Get one file `/files/:id`
-- [ ] `GET`       Download one file `/files/:id/download`
+- [x] `GET`       Download one file `/files/:id/download`
 - [x] `POST`      Add file(s) `/files`
 - [x] `POST`      Create a remote file and link it to an item `/files/remote`
 - [x] `POST`      Link a remote file to an item `/files/remoteLink`
