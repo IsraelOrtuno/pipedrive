@@ -108,6 +108,26 @@ abstract class AbstractResource
     }
 
     /**
+     * Get enabled methods.
+     *
+     * @return array
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set enabled methods.
+     *
+     * @param array $enabled
+     */
+    public function setEnabled(array $enabled)
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
      * Magic method call.
      *
      * @param       $method
