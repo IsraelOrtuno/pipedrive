@@ -93,27 +93,7 @@ class Builder
             $result = $this->getResource() . '/' . $result;
         }
 
-//        $result = $this->buildFullURL($result);
-
         return $result;
-    }
-
-    /**
-     * Generate the full URL with the base and token.
-     *
-     * @param $endpoint
-     * @return mixed
-     * @throws TokenNotSetException
-     */
-    protected function buildFullURL($endpoint)
-    {
-        if (! empty($this->token)) {
-            $endpoint .= "?api_token={$this->token}";
-        } else {
-            throw new TokenNotSetException('Pipedrive token must be set.');
-        }
-
-        return str_replace('{endpoint}', $endpoint, $this->getBase());
     }
 
     /**
