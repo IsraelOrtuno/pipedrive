@@ -257,9 +257,9 @@ State: 5/11
 - [ ] `POST`      Add or update role setting `/roles/:id/settings`
 
 ### SearchResults
-State: 1/2
+State: 2/2
 - [x] `GET`       Perform a search `/searchResults`
-- [ ] `GET`       Perform a search using a specific field value `/searchResults/field`
+- [x] `GET`       Perform a search using a specific field value `/searchResults/field`
 
 ### Stages
 State: 6/7
