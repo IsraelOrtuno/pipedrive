@@ -130,7 +130,7 @@ State: 6/6
 - [x] `DELETE`    Delete multiple organization fields in bulk/organizationFields
 
 ### Organizations
-State: 11/19
+State: 12/19
 - [x] `GET`       Get all organizations/organizations
 - [x] `GET`       Get details of an organization/organizations/:id
 - [x] `POST`      Add an organization/organizations
@@ -142,7 +142,7 @@ State: 11/19
 - [x] `POST`      Add a follower to an organization/organizations/:id/followers
 - [x] `GET`       List followers of an organization/organizations/:id/followers
 - [x] `DELETE`    Delete a follower from an organization/organizations/:id/followers/:follower_id
-- [ ] `GET`       List persons of an organization/organizations/:id/persons
+- [x] `GET`       List persons of an organization/organizations/:id/persons
 - [x] `GET`       List deals associated with an organization/organizations/:id/deals
 - [ ] `GET`       List activities associated with an organization/organizations/:id/activities
 - [ ] `GET`       List updates about an organization/organizations/:id/updates
