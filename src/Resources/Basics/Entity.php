@@ -3,6 +3,7 @@
 namespace Devio\Pipedrive\Resources\Basics;
 
 use Devio\Pipedrive\Resources\Traits\FindsByName;
+use Devio\Pipedrive\Resources\Traits\ListsUpdates;
 use Devio\Pipedrive\Resources\Traits\ListsFollowers;
 use Devio\Pipedrive\Resources\Traits\ListsAttachedFiles;
 use Devio\Pipedrive\Resources\Traits\ListsPermittedUsers;
@@ -12,7 +13,8 @@ abstract class Entity extends Resource
     use FindsByName,
         ListsAttachedFiles,
         ListsFollowers,
-        ListsPermittedUsers;
+        ListsPermittedUsers,
+        ListsUpdates;
 
     /**
      * List the resource activities.

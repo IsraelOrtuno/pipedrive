@@ -26,7 +26,7 @@ State: 1/1
 - [x] `GET`       Get all supported currencies/currencies
 
 ### Deals
-State: 16/26
+State: 18/26
 - [x] `GET`       Get all deals/deals
 - [x] `GET`       Get details of a deal/deals/:id
 - [x] `POST`      Add a deal/deals
@@ -43,13 +43,13 @@ State: 16/26
 - [ ] `PUT`       Update product attachment details of the deal-product (a product already attached to a deal)/deals/:id/products/:deal_product_id
 - [ ] `DELETE`    Delete an attached product from a deal/deals/:id/products
 - [x] `GET`       List activities associated with a deal/deals/:id/activities
-- [ ] `GET`       List updates about a deal/deals/:id/updates
+- [x] `GET`       List updates about a deal/deals/:id/updates
 - [ ] `POST`      Add a participant to a deal/deals/:id/participants
 - [ ] `GET`       List participants of a deal/deals/:id/participants
 - [ ] `DELETE`    Delete a participant from a deal/deals/:id/participants/:deal_participant_id
 - [x] `GET`       List files attached to a deal/deals/:id/files
 - [x] `GET`       List permitted users/deals/:id/permittedUsers
-- [ ] `GET`       List e-mail messages associated with a deal/deals/:id/emailMessages
+- [x] `GET`       List e-mail messages associated with a deal/deals/:id/emailMessages
 - [x] `GET`       Find deals by name/deals/find
 - [ ] `GET`       Get deals timeline/deals/timeline
 
@@ -130,7 +130,7 @@ State: 6/6
 - [x] `DELETE`    Delete multiple organization fields in bulk/organizationFields
 
 ### Organizations
-State: 16/19
+State: 18/18
 - [x] `GET`       Get all organizations/organizations
 - [x] `GET`       Get details of an organization/organizations/:id
 - [x] `POST`      Add an organization/organizations
@@ -138,14 +138,14 @@ State: 16/19
 - [x] `DELETE`    Delete an organization/organizations/:id
 - [x] `DELETE`    Delete multiple organizations in bulk/organizations
 - [x] `GET`       List files attached to an organization/organizations/:id/files
-- [ ] `GET`       List e-mail messages associated with an organization/organizations/:id/emailMessages
+- [x] `GET`       List e-mail messages associated with an organization/organizations/:id/emailMessages
 - [x] `POST`      Add a follower to an organization/organizations/:id/followers
 - [x] `GET`       List followers of an organization/organizations/:id/followers
 - [x] `DELETE`    Delete a follower from an organization/organizations/:id/followers/:follower_id
 - [x] `GET`       List persons of an organization/organizations/:id/persons
 - [x] `GET`       List deals associated with an organization/organizations/:id/deals
 - [x] `GET`       List activities associated with an organization/organizations/:id/activities
-- [ ] `GET`       List updates about an organization/organizations/:id/updates
+- [x] `GET`       List updates about an organization/organizations/:id/updates
 - [x] `GET`       List permitted users/organizations/:id/permittedUsers
 - [x] `PUT`       Merge two organizations/organizations/:id/merge
 - [x] `GET`       Find organizations by name/organizations/find
@@ -168,7 +168,7 @@ State: 3/6
 - [ ] `DELETE`    Delete a permission set assignment/permissionSets/:id/assignments
 
 ### Persons
-State: 16/20
+State: 18/20
 - [x] `GET`       Get all persons/persons
 - [x] `GET`       Get details of a person/persons/:id
 - [x] `POST`      Add a person/persons
@@ -176,13 +176,13 @@ State: 16/20
 - [x] `DELETE`    Delete a person/persons/:id
 - [x] `DELETE`    Delete multiple persons in bulk/persons
 - [x] `GET`       List files attached to a person/persons/:id/files
-- [ ] `GET`       List e-mail messages associated with a person/persons/:id/emailMessages
+- [x] `GET`       List e-mail messages associated with a person/persons/:id/emailMessages
 - [x] `POST`      Add a follower to a person/persons/:id/followers
 - [x] `GET`       List followers of a person/persons/:id/followers
 - [x] `DELETE`    Delete a follower from a person/persons/:id/followers/:follower_id
 - [x] `GET`       List products associated with a person/persons/:id/products
 - [x] `GET`       List deals associated with a person/persons/:id/deals
-- [ ] `GET`       List updates about a person/persons/:id/updates
+- [x] `GET`       List updates about a person/persons/:id/updates
 - [x] `GET`       List activities associated with a person/persons/:id/activities
 - [x] `GET`       List permitted users/persons/:id/permittedUsers
 - [x] `PUT`       Merge two persons/persons/:id/merge
@@ -272,14 +272,14 @@ State: 6/7
 - [x] `DELETE`    Delete multiple stages in bulk/stages
 
 ### Users
-State: 7/20
+State: 8/20
 - [x] `GET`       Get all users/users
 - [x] `GET`       Get one user/users/:id
 - [x] `POST`      Add a new user/users
 - [x] `PUT`       Update user details/users/:id
 - [ ] `GET`       List and filter activities assigned to a specific user/users/:id/activities
 - [x] `GET`       List followers of a user/users/:id/followers
-- [ ] `GET`       List updates about and by a user/users/:id/updates
+- [x] `GET`       List updates about and by a user/users/:id/updates
 - [ ] `GET`       List permission set assignments/users/:id/permissionSetAssignments
 - [ ] `POST`      Add permission set assignment/users/:id/permissionSetAssignments
 - [ ] `DELETE`    Delete a permission set assignment/users/:id/permissionSetAssignments
