@@ -1,6 +1,7 @@
 {
     "name": "devio/pipedrive",
     "description": "Pipedrive API SDK for PHP",
+    "license": "MIT",
     "authors": [
         {
             "name": "Israel Ortuño",
