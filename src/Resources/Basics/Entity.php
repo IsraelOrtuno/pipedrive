@@ -18,8 +18,6 @@ abstract class Entity extends Resource
         ListsPermittedUsers,
         ListsUpdates;
 
-
-
     /**
      * List the resource associated emails.
      *

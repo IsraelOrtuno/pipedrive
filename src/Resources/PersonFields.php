@@ -6,5 +6,4 @@ use Devio\Pipedrive\Resources\Basics\Resource;
 
 class PersonFields extends Resource
 {
-    
 }

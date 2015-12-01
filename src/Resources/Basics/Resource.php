@@ -44,7 +44,7 @@ abstract class Resource
     /**
      * Get all the entities.
      *
-     * @param array      $options   Endpoint accepted options
+     * @param array $options Endpoint accepted options
      */
     public function all($options = [])
     {

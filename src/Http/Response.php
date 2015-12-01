@@ -49,5 +49,4 @@ class Response
     {
         return $this->content;
     }
-
 }

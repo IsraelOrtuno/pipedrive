@@ -2,6 +2,9 @@
 
 namespace Devio\Pipedrive\Http;
 
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\BadResponseException;
@@ -25,8 +28,8 @@ class PipedriveClient implements Client
     {
         $this->client = new GuzzleClient([
             'base_uri' => $url,
-            'query' => [
-                'token' => $token
+            'query'    => [
+                'api_token' => $token
             ]
         ]);
     }
@@ -56,10 +59,10 @@ class PipedriveClient implements Client
      * Perform a POST request.
      *
      * @param       $url
-     * @param array $options
+     * @param array $parameters
      * @return Response
      */
-    public function post($url, $options = [])
+    public function post($url, $parameters = [])
     {
         // TODO: to implement
     }
@@ -68,10 +71,10 @@ class PipedriveClient implements Client
      * Perform a PUT request.
      *
      * @param       $url
-     * @param array $options
+     * @param array $parameters
      * @return Response
      */
-    public function put($url, $options = [])
+    public function put($url, $parameters = [])
     {
         // TODO: to implement
     }
@@ -80,10 +83,10 @@ class PipedriveClient implements Client
      * Perform a DELETE request.
      *
      * @param       $url
-     * @param array $options
+     * @param array $parameters
      * @return Response
      */
-    public function delete($url, $options = [])
+    public function delete($url, $parameters = [])
     {
         // TODO: to implement
     }
@@ -107,16 +110,15 @@ class PipedriveClient implements Client
             $response = $client->send($request, $options);
         } catch (BadResponseException $e) {
             $response = $e->getResponse();
-        } finally {
-            // As there are a few responses that are supposed to perform the
-            // download of a file, we will filter them. If found, we will
-            // set the file download URL as the response content data.
-            $body = $response->getHeader('location') ?: json_decode($response->getBody(), true);
-
-            return new Response(
-                $response->getStatusCode(), $body
-            );
         }
+        // As there are a few responses that are supposed to perform the
+        // download of a file, we will filter them. If found, we will
+        // set the file download URL as the response content data.
+        $body = $response->getHeader('location') ?: json_decode($response->getBody());
+
+        return new Response(
+            $response->getStatusCode(), $body
+        );
     }
 
     /**
