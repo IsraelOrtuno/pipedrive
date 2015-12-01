@@ -43,7 +43,7 @@ class GuzzleClient implements Client
         // For this particular case we have to include the parameters into the
         // URL query. Merging the request default query configuration to the
         // request parameters will make the query key contain everything.
-        $this->execute(new Request('GET', $url), $options);
+        return $this->execute(new Request('GET', $url), $options);
     }
 
     /**
@@ -103,7 +103,7 @@ class GuzzleClient implements Client
             $response = $e->getResponse();
         } finally {
             return new Response(
-                $response->getStatusCode(), $response->getBody()->getContents()
+                $response->getStatusCode(), json_decode($response->getBody(), true)
             );
         }
     }
