@@ -26,7 +26,7 @@ State: 1/1
 - [x] `GET`       Get all supported currencies `/currencies`
 
 ### Deals
-State: 18/26
+State: 21/25
 - [x] `GET`       Get all deals `/deals`
 - [x] `GET`       Get details of a deal `/deals/:id`
 - [x] `POST`      Add a deal `/deals`
@@ -39,9 +39,9 @@ State: 18/26
 - [x] `GET`       List followers of a deal `/deals/:id/followers`
 - [x] `DELETE`    Delete a follower from a deal `/deals/:id/followers/:follower_id`
 - [x] `GET`       List products attached to a deal `/deals/:id/products`
-- [ ] `POST`      Add a product to the deal, eventually creating a new item called a deal-product. `/deals/:id/products`
-- [ ] `PUT`       Update product attachment details of the deal-product (a product already attached to a deal) `/deals/:id/products/:deal_product_id`
-- [ ] `DELETE`    Delete an attached product from a deal `/deals/:id/products`
+- [x] `POST`      Add a product to the deal, eventually creating a new item called a deal-product. `/deals/:id/products`
+- [x] `PUT`       Update product attachment details of the deal-product (a product already attached to a deal) `/deals/:id/products/:deal_product_id`
+- [x] `DELETE`    Delete an attached product from a deal `/deals/:id/products`
 - [x] `GET`       List activities associated with a deal `/deals/:id/activities`
 - [x] `GET`       List updates about a deal `/deals/:id/updates`
 - [ ] `POST`      Add a participant to a deal `/deals/:id/participants`
