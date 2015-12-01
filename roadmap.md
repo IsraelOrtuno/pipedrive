@@ -63,14 +63,14 @@ State: 6/6
 - [x] `DELETE`    Delete multiple deal fields in bulk `/dealFields`
 
 ### EmailMessages
-State: 3/4
+State: 4/4
 - [x] `GET`       Get one e-mail message `/emailMessages/:id`
 - [x] `PUT`       Update e-mail message details `/emailMessages/:id`
 - [x] `DELETE`    Delete an e-mail message `/emailMessages/:id`
 - [x] `DELETE`    Delete multiple e-mail messages in bulk `/emailMessages`
 
 ### EmailThreads
-State: 4/6
+State: 6/6
 - [x] `GET`       Get all e-mail message threads `/emailThreads`
 - [x] `GET`       Get one e-mail message thread `/emailThreads/:id`
 - [x] `PUT`       Update e-mail message thread details `/emailThreads/:id`
