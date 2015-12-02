@@ -114,4 +114,18 @@ class Pipedrive
     {
         return $this->make($name);
     }
+
+    /**
+     * Methods will also return a resource.
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        if (! in_array($name, get_class_methods(get_class()))) {
+            return $this->{$name};
+        }
+    }
 }

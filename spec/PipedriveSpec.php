@@ -22,9 +22,11 @@ class PipedriveSpec extends ObjectBehavior
         $this->make('email_messages')->shouldBeAnInstanceOf(EmailMessages::class);
     }
 
-    public function it_can_resolve_a_resource_object_from_magic_get_method()
+    public function it_can_resolve_a_resource_object_from_magic_method()
     {
         $this->organizations->shouldBeAnInstanceOf(Organizations::class);
+        $this->organizations()->shouldBeAnInstanceOf(Organizations::class);
         $this->emailMessages->shouldBeAnInstanceOf(EmailMessages::class);
+        $this->emailMessages()->shouldBeAnInstanceOf(EmailMessages::class);
     }
 }
