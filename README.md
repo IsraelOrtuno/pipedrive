@@ -30,8 +30,9 @@ Or simply add it to your composer.json dependences and run `composer update`:
 
 ### Available resources
 
-:white_check_mark: : Completed
-:warning: Methods missing
+:white_check_mark: : Completed / :warning: Pipedrive API errors
+
+Any Pipedrive API error has been reported and waiting fix / response for implementing the missing methods.
 
 | Resource                  | State                 | Notes         |
 |:--------------------------|:----------------------|:--------------|
@@ -52,17 +53,17 @@ Or simply add it to your composer.json dependences and run `composer update`:
 | Organizations             | :white_check_mark:    | |
 | PermissionsSets           | :white_check_mark:    | |
 | PersonFields              | :white_check_mark:    | |
-| Persons                   | :warning:             | `add` and `delete` person picture unavailable due to API bugs. |
+| Persons                   | :warning:             | `add` and `delete` get required fields error. |
 | Pipelines                 | :white_check_mark:    | |
 | ProductFields             | :white_check_mark:    | |
 | Products                  | :white_check_mark:    | |
 | PushNotifications         | :white_check_mark:    | |
 | Recents                   | :white_check_mark:    | |
-| Roles                     | :white_check_mark:    | |
+| Roles                     | :warning:             | Getting unathorized access |
 | SearchResults             | :white_check_mark:    | |
 | Stages                    | :white_check_mark:    | |
 | UserConnections           | :white_check_mark:    | |
-| Users                     | :white_check_mark:    | |
+| Users                     | :warning:             | Getting unathorized access when playing with roles and permissions |
 | UserSettings              | :white_check_mark:    | |
 
 ## Configure and use in Laravel
