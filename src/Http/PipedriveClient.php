@@ -2,9 +2,6 @@
 
 namespace Devio\Pipedrive\Http;
 
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\BadResponseException;
@@ -64,7 +61,9 @@ class PipedriveClient implements Client
      */
     public function post($url, $parameters = [])
     {
-        // TODO: to implement
+        $request = new Request('POST', $url);
+
+        return $this->execute($request, ['form_params' => $parameters]);
     }
 
     /**
@@ -76,7 +75,9 @@ class PipedriveClient implements Client
      */
     public function put($url, $parameters = [])
     {
-        // TODO: to implement
+        $request = new Request('PUT', $url);
+
+        return $this->execute($request, ['form_params' => $parameters]);
     }
 
     /**
@@ -88,7 +89,9 @@ class PipedriveClient implements Client
      */
     public function delete($url, $parameters = [])
     {
-        // TODO: to implement
+        $request = new Request('DELETE', $url);
+
+        return $this->execute($request, ['form_params' => $parameters]);
     }
 
     /**

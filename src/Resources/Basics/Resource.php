@@ -80,7 +80,7 @@ abstract class Resource
      */
     public function update($id, array $values)
     {
-        array_add($values, 'id', $id);
+        array_set($values, 'id', $id);
 
         return $this->request->put(':id', $values);
     }
