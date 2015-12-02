@@ -26,10 +26,6 @@ class RequestSpec extends ObjectBehavior
         $response->getContent()
                  ->shouldBeCalled()
                  ->willReturn((object) $content);
-        $response->getStatusCode()
-                 ->shouldBeCalled()
-                 ->willReturn(200);
-
         $client->get('foo/1', [])
                ->shouldBeCalled()
                ->willReturn($response);
