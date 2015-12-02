@@ -200,12 +200,12 @@ State: 6/6
 - [x] `DELETE`    Delete multiple person fields in bulk `/personFields`
 
 ### Pipelines
-State: 5/8
+State: 6/8
 - [x] `GET`       Get all pipelines `/pipelines`
 - [x] `GET`       Get one pipeline `/pipelines/:id`
 - [x] `POST`      Add a new pipeline `/pipelines`
 - [x] `PUT`       Edit a pipeline `/pipelines/:id`
-- [ ] `GET`       Get deals in a pipeline `/pipelines/:id/deals`
+- [x] `GET`       Get deals in a pipeline `/pipelines/:id/deals`
 - [x] `DELETE`    Delete a pipeline `/pipelines/:id`
 - [ ] `GET`       Get deals conversion rates in pipeline `/pipelines/:id/conversion_statistics`
 - [ ] `GET`       Get deals movements in pipeline `/pipelines/:id/movement_statistics`
