@@ -30,41 +30,41 @@ Or simply add it to your composer.json dependences and run `composer update`:
 
 ### Available resources
 
-:white_check_mark: : Completed / :warning: Pipedrive API errors
+:white_check_mark: Completed / :warning: Pipedrive API errors
 
 Any Pipedrive API error has been reported and waiting fix / response for implementing the missing methods.
 
-| Resource                  | State                 | Notes         |
-|:--------------------------|:----------------------|:--------------|
-| Activities                | :white_check_mark:    | |
-| ActivityTypes             | :white_check_mark:    | |
-| Currencies                | :white_check_mark:    | |
-| DealFields                | :white_check_mark:    | |
-| Deals                     | :white_check_mark:    | |
-| EmailMessages             | :white_check_mark:    | |
-| EmailThreads              | :white_check_mark:    | |
-| Files                     | :white_check_mark:    | |
-| Filters                   | :white_check_mark:    | |
-| GlobalMessages            | :white_check_mark:    | |
-| Goals                     | :white_check_mark:    | |
-| Notes                     | :white_check_mark:    | |
-| OrganizationFields        | :white_check_mark:    | |
-| OrganizationRelationships | :white_check_mark:    | |
-| Organizations             | :white_check_mark:    | |
-| PermissionsSets           | :white_check_mark:    | |
-| PersonFields              | :white_check_mark:    | |
-| Persons                   | :warning:             | `add` and `delete` get required fields error. |
-| Pipelines                 | :white_check_mark:    | |
-| ProductFields             | :white_check_mark:    | |
-| Products                  | :white_check_mark:    | |
-| PushNotifications         | :white_check_mark:    | |
-| Recents                   | :white_check_mark:    | |
-| Roles                     | :warning:             | Getting unathorized access |
-| SearchResults             | :white_check_mark:    | |
-| Stages                    | :white_check_mark:    | |
-| UserConnections           | :white_check_mark:    | |
-| Users                     | :warning:             | Getting unathorized access when playing with roles and permissions |
-| UserSettings              | :white_check_mark:    | |
+| Resource                  | Methods implemented       | Notes         |
+|:--------------------------|:--------------------------|:--------------|
+| Activities                | :white_check_mark: 6/6    | |
+| ActivityTypes             | :white_check_mark: 5/5    | |
+| Currencies                | :white_check_mark: 1/1    | |
+| DealFields                | :white_check_mark: 25/25  | |
+| Deals                     | :white_check_mark: 6/6    | |
+| EmailMessages             | :white_check_mark: 4/4    | |
+| EmailThreads              | :white_check_mark: 6/6    | |
+| Files                     | :white_check_mark: 8/8    | |
+| Filters                   | :white_check_mark: 6/6    | |
+| GlobalMessages            | :white_check_mark: 2/2    | |
+| Goals                     | :warning: 5/6             | Missing goal results method |
+| Notes                     | :white_check_mark: 5/5    | |
+| OrganizationFields        | :white_check_mark: 6/6    | |
+| OrganizationRelationships | :white_check_mark: 5/5    | |
+| Organizations             | :white_check_mark: 18/18  | |
+| PermissionsSets           | :white_check_mark: 6/6    | |
+| PersonFields              | :white_check_mark: 18/20  | |
+| Persons                   | :warning: 18/20           | Missing `add` and `delete` pictures as getting required fields error. |
+| Pipelines                 | :warning: 6/8             | Missing deals conversion rates and deals movements |
+| ProductFields             | :white_check_mark: 6/6    | |
+| Products                  | :white_check_mark: 9/9    | |
+| PushNotifications         | :white_check_mark: 4/4    | |
+| Recents                   | :white_check_mark: 1/1    | |
+| Roles                     | :warning: 0/11            | Getting unathorized access |
+| SearchResults             | :white_check_mark: 2/2    | |
+| Stages                    | :white_check_mark: 7/7    | |
+| UserConnections           | :white_check_mark: 1/1    | |
+| Users                     | :warning: 13/20           | Getting unathorized access when playing with roles and permissions |
+| UserSettings              | :white_check_mark: 1/1    | |
 
 ## Configure and use in Laravel
 
