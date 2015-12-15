@@ -14,7 +14,7 @@ class PipedriveServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('pipedrive', function ($app) {
+        $this->app->singleton(Pipedrive::class, function ($app) {
             $token = $app['config']->get('services.pipedrive.token');
 
             if (! $token) {
@@ -23,6 +23,8 @@ class PipedriveServiceProvider extends ServiceProvider
 
             return new Pipedrive($token);
         });
+
+        $this->app->alias(Pipedrive::class, 'pipedrive');
     }
 
     /**
