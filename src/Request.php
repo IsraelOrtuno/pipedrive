@@ -78,7 +78,7 @@ class Request
         // If the request did not succeed, we will notify the user via Exception
         // and include the server error if found. If it is OK and also server
         // inludes the success variable, we will return the response data.
-        if (! isset($content) || ! $content->isSuccess()) {
+        if (! isset($content) || ! $response->isSuccess()) {
             if ($response->getStatusCode() == 404) {
                 throw new ItemNotFoundException($content->error);
             }
