@@ -13,7 +13,7 @@ class RequestSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Devio\Pipedrive\Request');
     }
-    
+
     public function let(Client $client)
     {
         $this->beConstructedWith($client);
@@ -23,18 +23,21 @@ class RequestSpec extends ObjectBehavior
     public function it_makes_a_request(Client $client, Response $response)
     {
         $content = ['success' => true, 'data' => []];
+        $response->isSuccess()
+            ->shouldBeCalled()
+            ->willReturn(true);
         $response->getContent()
-                 ->shouldBeCalled()
-                 ->willReturn((object) $content);
+            ->shouldBeCalled()
+            ->willReturn((object)$content);
         $client->get('foo/1', [])
-               ->shouldBeCalled()
-               ->willReturn($response);
+            ->shouldBeCalled()
+            ->willReturn($response);
         $client->put('foo/1', ['name' => 'bar'])
-               ->shouldBeCalled()
-               ->willReturn($response);
+            ->shouldBeCalled()
+            ->willReturn($response);
         $client->post('foo', [])
-               ->shouldBeCalled()
-               ->willReturn($response);
+            ->shouldBeCalled()
+            ->willReturn($response);
 
         $this->get('foo/:id', ['id' => 1]);
         $this->put('foo/:id', ['id' => 1, 'name' => 'bar']);
