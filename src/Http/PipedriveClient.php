@@ -120,7 +120,7 @@ class PipedriveClient implements Client
         $body = $response->getHeader('location') ?: json_decode($response->getBody());
 
         return new Response(
-            $response->getStatusCode(), $body
+            $response->getStatusCode(), $body, $response->getHeaders()
         );
     }
 

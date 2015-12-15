@@ -88,7 +88,7 @@ class Request
             );
         }
 
-        return $content;
+        return $response;
     }
 
     /**

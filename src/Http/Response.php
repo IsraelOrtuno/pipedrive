@@ -19,15 +19,66 @@ class Response
     protected $content;
 
     /**
+     * The response headers.
+     *
+     * @var array
+     */
+    private $headers;
+
+    /**
      * Response constructor.
      *
      * @param $statusCode
      * @param $content
+     * @param array $headers
      */
-    public function __construct($statusCode, $content)
+    public function __construct($statusCode, $content, $headers = [])
     {
         $this->statusCode = $statusCode;
         $this->content = $content;
+        $this->headers = $headers;
+    }
+
+    /**
+     * Check if the request was successful.
+     *
+     * @return bool
+     */
+    public function isSuccess()
+    {
+        if (!$this->getContent()) {
+            return false;
+        }
+
+        return $this->getContent()->success;
+    }
+
+    /**
+     * Get the request data.
+     *
+     * @return null
+     */
+    public function getData()
+    {
+        if ($this->isSuccess() && isset($this->getContent()->data)) {
+            return $this->getContent->data;
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the additional data array if any.
+     *
+     * @return null
+     */
+    public function getAdditionalData()
+    {
+        if ($this->isSuccess() && isset($this->getContent()->additional_data)) {
+            return $this->getContent()->additional_data;
+        }
+
+        return null;
     }
 
     /**
@@ -48,5 +99,15 @@ class Response
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Get the headers array.
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
     }
 }
