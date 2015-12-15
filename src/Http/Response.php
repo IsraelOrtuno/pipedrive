@@ -61,7 +61,7 @@ class Response
     public function getData()
     {
         if ($this->isSuccess() && isset($this->getContent()->data)) {
-            return $this->getContent->data;
+            return $this->getContent()->data;
         }
 
         return null;
