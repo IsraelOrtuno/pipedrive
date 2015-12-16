@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive;
 
+use Illuminate\Support\Str;
 use Devio\Pipedrive\Http\PipedriveClient;
 
 class Pipedrive
@@ -51,7 +52,7 @@ class Pipedrive
      */
     protected function resolveClassPath($resource)
     {
-        return 'Devio\\Pipedrive\\Resources\\' . studly_case($resource);
+        return 'Devio\\Pipedrive\\Resources\\' . Str::studly($resource);
     }
 
     /**
