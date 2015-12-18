@@ -8,25 +8,21 @@ This package provides a complete **framework agnostic** Pipedrive CRM API client
 
 - [Installation](#introduction)
 - [Usage](#usage)
-    - [Create the Pipedrive instance](#pipedrive-instance)
-    - 
-    - 
-- [Command I/O](#command-io)
-    - [Defining Input Expectations](#defining-input-expectations)
-    - [Retrieving Input](#retrieving-input)
-    - [Prompting For Input](#prompting-for-input)
-    - [Writing Output](#writing-output)
-- [Registering Commands](#registering-commands)
-- [Calling Commands Via Code](#calling-commands-via-code)
+    - [Create the Pipedrive instance](#create-the-pipedrive-instance)
+    - [Resolve a Pipedrive API Resource](#resolve-a-pipedrive-api-resource)
+- [Performing a resource call](#performing-a-resource-call)
+    - [Available methods](#available-methods)
+    - [Performing the Request](#performing-the-request)
+    - [Handling the response](#handling-the-response)
+    - [Response methods](#response-methods)
+- [Available resources](#available-resources)
+- [Configure and use in Laravel](#configure-and-use-in-laravel)
+    - [Service Provider and Facade](#service-provider-and-facade)
+    - [The service configuration](#the-service-configuration)
+    - [Using it](#using-it)
+- [Contribute](#contribute)
 
 
-- Installation
-- Usage
-    - Create a Pipedrive instance
-    - Available resources
-- Configure and use with Laravel
-
-<a name="installation"></a>
 # Installation
 
 You can install the package via `composer require` command:
@@ -104,7 +100,7 @@ All resources have various methods for performing the different API requests. Pl
 
 Every resource extends from `Devio\Pipedrive\Resources\Basics\Resource` where the most common methods are defined. Some of them are disabled for the resources that do not inlcude them. Do not forget to check out the Traits included and some resources use, they define some other common calls to avoid code duplication.
 
-### Perform the Request
+### Performing the Request
 
 After resolved the resource we want to use, we are able to perform an API request. At this point, we only have to execute the endpoint we would like to access:
 
@@ -254,3 +250,6 @@ $pipedrive = app()->make('pipedrive');
 
 Or even inject it wherever you may need using the `Devio\Pipedrive\Pipedrive` signature.
 
+# Contribute
+
+Feel free to contribute via PR.
