@@ -150,11 +150,6 @@ Get the response status code.
 
 Get the response headers.
 
-
-```php
-$organizations = $pipedrive->organizations->all();
-```
-
 ## Available resources
 
 Every Resource logic is located at the `src/Resources` directory. However we'll mention every included resource here:
@@ -232,7 +227,7 @@ Of course, as many other config parameters, you could store the token at your `.
 ]
 ```
 
-## Use it
+## Using it
 
 You could use it using the Laravel facade `PipedriveFacade` that we have previously loaded:
 
