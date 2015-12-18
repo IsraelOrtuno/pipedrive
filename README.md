@@ -6,7 +6,7 @@ This package provides a complete **framework agnostic** Pipedrive CRM API client
 
 > NOTE: This package is still under development. It is in a pretty stable stage now. I am currently working on docs.
 
-- [Installation](#introduction)
+- [Installation](#installation)
 - [Usage](#usage)
     - [Create the Pipedrive instance](#create-the-pipedrive-instance)
     - [Resolve a Pipedrive API Resource](#resolve-a-pipedrive-api-resource)
