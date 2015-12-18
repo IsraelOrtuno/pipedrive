@@ -106,12 +106,14 @@ Any of these methods will perform syncronous request to the Pipedrive API.
 Every Pipedrive API endpoint gives a response and this response is converted to a `Devio\Pipedrive\Http\Response` object to handle it:
 
 ```php
-$request = $pipedrive->organizations->all();
+$response = $pipedrive->organizations->all();
 
-$organizations = $request->getData();
+$organizations = $response->getData();
 ```
 
 #### Response methods
+
+The `Response` class has many methods available for accessing the response data:
 
 ##### isSuccess()
 
