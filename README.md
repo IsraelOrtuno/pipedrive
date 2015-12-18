@@ -80,7 +80,7 @@ Only if using Laravel Framework you should include the `PipedriveServiceProvider
 ],
 'alias' => [
     ...
-    'Pipedrive' => 'Devio\Pipedrive\PipedriveFacade::class'
+    'Pipedrive' => Devio\Pipedrive\PipedriveFacade::class,
     ...
 ]
 ```
@@ -99,7 +99,7 @@ Of course, as many other config parameters, you could store the token at your `.
 
 ```php
 'pipedrive' => [
-    'token' => dotenv('PIPEDRIVE_TOKEN')
+    'token' => env('PIPEDRIVE_TOKEN')
 ]
 ```
 
