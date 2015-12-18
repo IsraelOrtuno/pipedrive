@@ -6,12 +6,27 @@ This package provides a complete **framework agnostic** Pipedrive CRM API client
 
 > NOTE: This package is still under development. It is in a pretty stable stage now. I am currently working on docs.
 
+- [Installation](#introduction)
+- [Usage](#usage)
+    - [Create the Pipedrive instance](#pipedrive-instance)
+    - 
+    - 
+- [Command I/O](#command-io)
+    - [Defining Input Expectations](#defining-input-expectations)
+    - [Retrieving Input](#retrieving-input)
+    - [Prompting For Input](#prompting-for-input)
+    - [Writing Output](#writing-output)
+- [Registering Commands](#registering-commands)
+- [Calling Commands Via Code](#calling-commands-via-code)
+
+
 - Installation
 - Usage
     - Create a Pipedrive instance
     - Available resources
 - Configure and use with Laravel
 
+<a name="installation"></a>
 # Installation
 
 You can install the package via `composer require` command:
