@@ -2,8 +2,8 @@
 
 namespace Devio\Pipedrive\Http;
 
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use GuzzleHttp\Exception\BadResponseException;
 
 class PipedriveClient implements Client
@@ -23,12 +23,14 @@ class PipedriveClient implements Client
      */
     public function __construct($url, $token)
     {
-        $this->client = new GuzzleClient([
-            'base_uri' => $url,
-            'query'    => [
-                'api_token' => $token
+        $this->client = new GuzzleClient(
+            [
+                'base_uri' => $url,
+                'query' => [
+                    'api_token' => $token
+                ]
             ]
-        ]);
+        );
     }
 
     /**
@@ -41,15 +43,17 @@ class PipedriveClient implements Client
     public function get($url, $parameters = [])
     {
         $options = $this->getClient()
-                        ->getConfig();
+            ->getConfig();
         array_set(
-            $options, 'query', array_merge($parameters, $options['query'])
+            $options,
+            'query',
+            array_merge($parameters, $options['query'])
         );
 
         // For this particular case we have to include the parameters into the
         // URL query. Merging the request default query configuration to the
         // request parameters will make the query key contain everything.
-        return $this->execute(new Request('GET', $url), $options);
+        return $this->execute(new GuzzleRequest('GET', $url), $options);
     }
 
     /**
@@ -61,7 +65,7 @@ class PipedriveClient implements Client
      */
     public function post($url, $parameters = [])
     {
-        $request = new Request('POST', $url);
+        $request = new GuzzleRequest('POST', $url);
 
         return $this->execute($request, ['form_params' => $parameters]);
     }
@@ -75,7 +79,7 @@ class PipedriveClient implements Client
      */
     public function put($url, $parameters = [])
     {
-        $request = new Request('PUT', $url);
+        $request = new GuzzleRequest('PUT', $url);
 
         return $this->execute($request, ['form_params' => $parameters]);
     }
@@ -89,7 +93,7 @@ class PipedriveClient implements Client
      */
     public function delete($url, $parameters = [])
     {
-        $request = new Request('DELETE', $url);
+        $request = new GuzzleRequest('DELETE', $url);
 
         return $this->execute($request, ['form_params' => $parameters]);
     }
@@ -97,12 +101,12 @@ class PipedriveClient implements Client
     /**
      * Execute the request and returns the Response object.
      *
-     * @param Request $request
-     * @param array   $options
-     * @param null    $client
+     * @param GuzzleRequest $request
+     * @param array         $options
+     * @param null          $client
      * @return Response
      */
-    protected function execute(Request $request, array $options = [], $client = null)
+    protected function execute(GuzzleRequest $request, array $options = [], $client = null)
     {
         $client = $client ?: $this->getClient();
 

@@ -3,7 +3,7 @@
 namespace spec\Devio\Pipedrive\Resources\Basics;
 
 use Devio\Pipedrive\Exceptions\PipedriveException;
-use Devio\Pipedrive\Request;
+use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Resources\Basics\Resource;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

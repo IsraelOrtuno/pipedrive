@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Devio\Pipedrive;
+namespace spec\Devio\Pipedrive\Http;
 
 use Devio\Pipedrive\Http\Client;
 use Devio\Pipedrive\Http\Response;
@@ -11,7 +11,7 @@ class RequestSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Devio\Pipedrive\Request');
+        $this->shouldHaveType('Devio\Pipedrive\Http\Request');
     }
 
     public function let(Client $client)

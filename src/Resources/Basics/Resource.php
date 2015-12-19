@@ -3,7 +3,7 @@
 namespace Devio\Pipedrive\Resources\Basics;
 
 use ReflectionClass;
-use Devio\Pipedrive\Request;
+use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Exceptions\PipedriveException;
 
 abstract class Resource

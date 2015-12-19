@@ -52,7 +52,8 @@ class Roles extends Resource
     public function setSetting($id, $setting_key, $value)
     {
         return $this->request->post(
-            ':id/settings', compact('id', 'setting_key', 'value')
+            ':id/settings',
+            compact('id', 'setting_key', 'value')
         );
     }
 }

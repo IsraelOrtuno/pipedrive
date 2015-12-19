@@ -28,8 +28,8 @@ class Response
     /**
      * Response constructor.
      *
-     * @param $statusCode
-     * @param $content
+     * @param       $statusCode
+     * @param       $content
      * @param array $headers
      */
     public function __construct($statusCode, $content, $headers = [])
@@ -46,7 +46,7 @@ class Response
      */
     public function isSuccess()
     {
-        if (!$this->getContent()) {
+        if (! $this->getContent()) {
             return false;
         }
 

@@ -22,7 +22,8 @@ class Deals extends Entity
     public function timeline($start_date, $interval, $amount, $field_key, $options = [])
     {
         $options = array_merge(
-            compact('start_date', 'interval', 'amount', 'field_key'), $options
+            compact('start_date', 'interval', 'amount', 'field_key'),
+            $options
         );
 
         return $this->request->get('timeline', $options);
@@ -65,7 +66,7 @@ class Deals extends Entity
     {
         return $this->request->delete(':id/participants', compact('id', 'deal_participant_id'));
     }
-    
+
     /**
      * Add a product to the deal.
      *
@@ -79,7 +80,8 @@ class Deals extends Entity
     public function addProduct($id, $product_id, $item_price, $quantity, $options = [])
     {
         $options = array_merge(
-            compact('id', 'product_id', 'item_price', 'quantity'), $options
+            compact('id', 'product_id', 'item_price', 'quantity'),
+            $options
         );
 
         return $this->request->post(':id/products', $options);
@@ -98,7 +100,8 @@ class Deals extends Entity
     public function updateProduct($id, $deal_product_id, $item_price, $quantity, $options = [])
     {
         $options = array_merge(
-            compact('id', 'deal_product_id', 'item_price', 'quantity'), $options
+            compact('id', 'deal_product_id', 'item_price', 'quantity'),
+            $options
         );
 
         return $this->request->put(':id/products/:deal_product_id', $options);
@@ -114,7 +117,8 @@ class Deals extends Entity
     public function deleteProduct($id, $product_attachment_id)
     {
         return $this->request->delete(
-            ':id/products', compact('id', 'product_attachment_id')
+            ':id/products',
+            compact('id', 'product_attachment_id')
         );
     }
 

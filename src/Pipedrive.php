@@ -3,6 +3,7 @@
 namespace Devio\Pipedrive;
 
 use Illuminate\Support\Str;
+use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Http\PipedriveClient;
 
 class Pipedrive

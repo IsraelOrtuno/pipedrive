@@ -28,10 +28,10 @@ abstract class Entity extends Resource
     public function emails($id, $options = [])
     {
         array_set($options, 'id', $id);
-        
+
         return $this->request->get(':id/emailMessages', $options);
     }
-    
+
     /**
      * Add a follower to a resource.
      *

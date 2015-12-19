@@ -1,9 +1,8 @@
 <?php
 
-namespace Devio\Pipedrive;
+namespace Devio\Pipedrive\Http;
 
-use Devio\Pipedrive\Http\Client;
-use Devio\Pipedrive\Http\Response;
+use Devio\Pipedrive\Builder;
 use Devio\Pipedrive\Exceptions\PipedriveException;
 use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 

@@ -26,7 +26,8 @@ class Files extends Resource
     public function createRemote($file_type, $title, $item_type, $item_id, $remote_location)
     {
         return $this->request->post(
-            'remote', compact('file_type', 'title', 'item_type', 'item_id', 'remote_location')
+            'remote',
+            compact('file_type', 'title', 'item_type', 'item_id', 'remote_location')
         );
     }
 
@@ -42,7 +43,8 @@ class Files extends Resource
     public function linkRemote($item_type, $item_id, $remote_id, $remote_location)
     {
         return $this->request->post(
-            'remoteLink', compact('item_type', 'item_id', 'remote_id', 'remote_location')
+            'remoteLink',
+            compact('item_type', 'item_id', 'remote_id', 'remote_location')
         );
     }
 }

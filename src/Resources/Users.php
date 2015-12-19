@@ -46,7 +46,7 @@ class Users extends Resource
     {
         return $this->request->get(':id/permittedItems', compact('id', 'access_level'));
     }
-    
+
     /**
      * Get the user blacklisted emails.
      *
