@@ -44,11 +44,7 @@ class PipedriveClient implements Client
     {
         $options = $this->getClient()
             ->getConfig();
-        array_set(
-            $options,
-            'query',
-            array_merge($parameters, $options['query'])
-        );
+        array_set($options, 'query', array_merge($parameters, $options['query']));
 
         // For this particular case we have to include the parameters into the
         // URL query. Merging the request default query configuration to the
@@ -59,15 +55,50 @@ class PipedriveClient implements Client
     /**
      * Perform a POST request.
      *
-     * @param       $url
+     * @param $url
      * @param array $parameters
      * @return Response
      */
     public function post($url, $parameters = [])
     {
         $request = new GuzzleRequest('POST', $url);
+        $form = 'form_params';
 
-        return $this->execute($request, ['form_params' => $parameters]);
+        // If any file key is found, we will assume we have to convert the data
+        // into the multipart array structure. Otherwise, we will perform the
+        // request as usual using the form_params with the given parameters.
+        if (isset($parameters['file'])) {
+            $form = 'multipart';
+            $parameters = $this->multipart($parameters);
+        }
+
+        return $this->execute($request, [$form => $parameters]);
+    }
+
+    /**
+     * Convert the parameters into a multipart structure.
+     *
+     * @param array $parameters
+     * @return array
+     */
+    protected function multipart(array $parameters)
+    {
+        if (! ($file = $parameters['file']) instanceof \SplFileInfo) {
+            throw new \InvalidArgumentException('File must be an instance of \SplFileInfo.');
+        }
+
+        $result = [];
+        $content = file_get_contents($file->getPathname());
+
+        foreach (array_except($parameters, 'file') as $key => $value) {
+            $result[] = ['name' => $key, 'contents' => (string) $value];
+        }
+        // Will convert every element of the array into a format accepted by the
+        // multipart encoding standards. It will also add a special item which
+        // includes the file key name, the content of the file and its name.
+        $result[] = ['name' => 'file', 'contents' => $content, 'filename' => $file->getFilename()];
+
+        return $result;
     }
 
     /**
@@ -102,8 +133,8 @@ class PipedriveClient implements Client
      * Execute the request and returns the Response object.
      *
      * @param GuzzleRequest $request
-     * @param array         $options
-     * @param null          $client
+     * @param array $options
+     * @param null $client
      * @return Response
      */
     protected function execute(GuzzleRequest $request, array $options = [], $client = null)
