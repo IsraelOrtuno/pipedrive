@@ -34,7 +34,7 @@ Or simply add it to your composer.json dependences and run `composer update`:
 
 ```json
 "require": {
-    "devio/pipedrive": "^0.2.0"
+    "devio/pipedrive": "^0.3.0"
 }
 ```
 
