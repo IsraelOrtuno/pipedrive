@@ -233,7 +233,7 @@ You could use it using the Laravel facade `PipedriveFacade` that we have previou
 ```php 
 $organizations = Pipedrive::organizations()->all();
 //
-Pipedrive::persons()->add(['name' => 'Jon Doe']);
+Pipedrive::persons()->add(['name' => 'John Doe']);
 ```
 
 Also, resolve it out of the service container:
