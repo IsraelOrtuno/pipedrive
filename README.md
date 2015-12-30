@@ -15,6 +15,7 @@ This package provides a complete **framework agnostic** Pipedrive CRM API client
     - [Handling the response](#handling-the-response)
     - [Response methods](#response-methods)
 - [Available resources](#available-resources)
+    - [The File Resource](#the-file-resource)
 - [Configure and use in Laravel](#configure-and-use-in-laravel)
     - [Service Provider and Facade](#service-provider-and-facade)
     - [The service configuration](#the-service-configuration)
@@ -186,6 +187,22 @@ Every Resource logic is located at the `src/Resources` directory. However we'll 
 | UserSettings              | :white_check_mark: 1/1    | |
 
 :white_check_mark: Completed / :warning: Pipedrive API errors
+
+### The File Resource
+
+The File resource is the only one that works a little bit different than others. While other resources may be intuitively used as most of them just require a plain array of tada, the `File` resource requires an `\SplFileInfo` instance to make it work:
+
+```php
+$file = new \SplFileInfo('composer.json');
+
+$pipedrive->files->add([
+    'file'   => $file,
+    'person_id' => 1,
+    // 'deal_id' => 1
+]);
+```
+
+Actually it is pretty simple, just pass a `\SplFileInfo` instance to the `file` key of the options array and specify at least one of the elements it goes related to (deal, person, ...).
 
 # Configure and use in Laravel
 
