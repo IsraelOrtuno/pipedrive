@@ -9,7 +9,7 @@ Feel free to drop me a message at [israel@bigcode.es](mailto:israel@bigcode.es) 
 
 ```php
 $token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';
-$pipedrive = Pipedrive::make($token);
+$pipedrive = new Pipedrive($token);
 
 // Easily access a Pipedrive resource and its values
 $organization = $pipedrive->organizations->find(1);
