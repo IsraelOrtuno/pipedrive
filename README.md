@@ -5,8 +5,24 @@ Pipedrive API library for PHP
 
 This package provides a complete **framework agnostic** Pipedrive CRM API client library for PHP. It includes all the resources listed at Pipedrive's documentation.
 
-##### Get In touch
 Feel free to drop me a message at [israel@bigcode.es](mailto:israel@bigcode.es) or tweet me at [@IsraelOrtuno](https://twitter.com/IsraelOrtuno).
+
+```php
+$token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';
+$pipedrive = Pipedrive::make($token);
+
+// Easily access a Pipedrive resource and its values
+$organization = $pipedrive->organizations->find(1);
+echo "Old name: {$organization['name']}";
+
+// Also simple to update any Pipedrive resource value
+$organization = $pipedrive->organizations->update(1, ['name' => 'Big Code']);
+echo "New name: {$organization['name']}";
+
+// Keep reading this documentation to find out more.
+```
+
+For a deeper knowledge of how to use this package, follow this index:
 
 - [Installation](#installation)
 - [Usage](#usage)
