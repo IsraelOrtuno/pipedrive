@@ -5,6 +5,9 @@ Pipedrive API library for PHP
 
 This package provides a complete **framework agnostic** Pipedrive CRM API client library for PHP. It includes all the resources listed at Pipedrive's documentation.
 
+##### Get In touch
+Feel free to drop me a message at [israel@bigcode.es](mailto:israel@bigcode.es) or tweet me at [@IsraelOrtuno](https://twitter.com/IsraelOrtuno).
+
 - [Installation](#installation)
 - [Usage](#usage)
     - [Create the Pipedrive instance](#create-the-pipedrive-instance)
@@ -21,7 +24,6 @@ This package provides a complete **framework agnostic** Pipedrive CRM API client
     - [The service configuration](#the-service-configuration)
     - [Using it](#using-it)
 - [Contribute](#contribute)
-
 
 # Installation
 
