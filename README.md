@@ -193,7 +193,7 @@ Every Resource logic is located at the `src/Resources` directory. However we'll 
 The File resource is the only one that works a little bit different than others. While other resources may be intuitively used as most of them just require a plain array of tada, the `File` resource requires an `\SplFileInfo` instance to make it work:
 
 ```php
-$file = new \SplFileInfo('composer.json');
+$file = new \SplFileInfo('document.pdf');
 
 $pipedrive->files->add([
     'file'   => $file,
