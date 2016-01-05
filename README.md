@@ -1,4 +1,4 @@
-Pipedrive API library for PHP
+Complete Pipedrive API client for PHP
 =============================
 
 [![Build Status](https://travis-ci.org/IsraelOrtuno/pipedrive.svg)](https://travis-ci.org/IsraelOrtuno/pipedrive)
