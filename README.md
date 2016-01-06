@@ -128,7 +128,7 @@ $organizations = $pipedrive->organizations->all();
 $pipedrive->persons->update(1, ['name' => 'Israel Ortuno']);
 ```
 
-Any of these methods will perform syncronous request to the Pipedrive API.
+Any of these methods will perform a synchronous request to the Pipedrive API.
 
 ### Handling the response
 
