@@ -2,9 +2,11 @@
 
 namespace Devio\Pipedrive\Resources\Basics;
 
-use ReflectionClass;
-use Devio\Pipedrive\Http\Request;
+use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 use Devio\Pipedrive\Exceptions\PipedriveException;
+use Devio\Pipedrive\Http\Request;
+use Devio\Pipedrive\Http\Response;
+use ReflectionClass;
 
 abstract class Resource
 {
@@ -20,7 +22,7 @@ abstract class Resource
      *
      * @var array
      */
-    protected $enabled = ['*'];
+    protected $enabled = [];
 
     /**
      * List of abstract methods disabled.
@@ -45,8 +47,13 @@ abstract class Resource
      * Get all the entities.
      *
      * @param array $options Endpoint accepted options
+     *
+     * @throws PipedriveException
+     * @throws ItemNotFoundException
+     *
+     * @return Response
      */
-    public function all($options = [])
+    public function all(array $options = [])
     {
         return $this->request->get('', $options);
     }
@@ -55,6 +62,10 @@ abstract class Resource
      * Get the entity details by ID.
      *
      * @param $id   Entity ID to find.
+     *
+     * @throws PipedriveException
+     *
+     * @return Response
      */
     public function find($id)
     {
@@ -65,7 +76,10 @@ abstract class Resource
      * Add a new entity.
      *
      * @param array $values
-     * @return mixed
+     *
+     * @throws PipedriveException
+     *
+     * @return Response
      */
     public function add(array $values)
     {
@@ -75,8 +89,13 @@ abstract class Resource
     /**
      * Update an entity by ID.
      *
-     * @param       $id
-     * @param array $values
+     * @param integer $id
+     * @param array   $values
+     *
+     * @throws PipedriveException
+     * @throws ItemNotFoundException
+     *
+     * @return Response
      */
     public function update($id, array $values)
     {
@@ -88,7 +107,12 @@ abstract class Resource
     /**
      * Delete an entity by ID.
      *
-     * @param $id
+     * @param integer $id
+     *
+     * @throws PipedriveException
+     * @throws ItemNotFoundException
+     *
+     * @return Response
      */
     public function delete($id)
     {
@@ -98,8 +122,9 @@ abstract class Resource
     /**
      * Bulk deleting entities.
      *
-     * @param array $ids
-     * @return mixed
+     * @param integer[] $ids
+     *
+     * @return Response
      */
     public function deleteBulk(array $ids)
     {
@@ -121,7 +146,8 @@ abstract class Resource
     /**
      * Check if the method is enabled for use.
      *
-     * @param $method
+     * @param string $method
+     *
      * @return bool
      */
     public function isEnabled($method)
@@ -130,25 +156,26 @@ abstract class Resource
             return false;
         }
 
-        // First we will make sure the method only belongs to this abtract class
-        // as this does not have to interfiere with methods described in child
+        // First we will make sure the method only belongs to this abstract class
+        // as this does not have to interfere with methods described in child
         // classes. We can now check if it is found in the enabled property.
-        if (! in_array($method, get_class_methods(get_class()))) {
+        if (!in_array($method, get_class_methods(get_class()), true)) {
             return true;
         }
 
-        return in_array($method, $this->enabled) || $this->enabled == ['*'];
+        return count($this->enabled) === 0 || in_array($method, $this->enabled, true);
     }
 
     /**
      * Check if the method is disabled for use.
      *
      * @param $method
+     *
      * @return bool
      */
     public function isDisabled($method)
     {
-        return in_array($method, $this->disabled);
+        return in_array($method, $this->disabled, true);
     }
 
     /**
@@ -168,7 +195,7 @@ abstract class Resource
      */
     public function setEnabled($enabled)
     {
-        if (! is_array($enabled)) {
+        if (!is_array($enabled)) {
             $enabled = func_get_args();
         }
 
@@ -182,7 +209,7 @@ abstract class Resource
      */
     public function setDisabled($disabled)
     {
-        if (! is_array($disabled)) {
+        if (!is_array($disabled)) {
             $disabled = func_get_args();
         }
 
@@ -194,6 +221,7 @@ abstract class Resource
      *
      * @param       $method
      * @param array $args
+     *
      * @return mixed
      * @throws PipedriveException
      */
@@ -202,7 +230,7 @@ abstract class Resource
         // As there are only a few resources that do not have the most common
         // methods described in this function, we can disable some methods
         // in the `disabled` property of the class throwing an exception.
-        if (! $this->isEnabled($method)) {
+        if (!$this->isEnabled($method)) {
             throw new PipedriveException("The method {$method}() is not available for the resource {$this->getName()}");
         }
     }
