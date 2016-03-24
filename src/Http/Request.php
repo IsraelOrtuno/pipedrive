@@ -2,10 +2,19 @@
 
 namespace Devio\Pipedrive\Http;
 
+use BadMethodCallException;
 use Devio\Pipedrive\Builder;
 use Devio\Pipedrive\Exceptions\PipedriveException;
 use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 
+/**
+ * Class Request
+ *
+ * @method Response get($url, $parameters = []);
+ * @method Response post($url, $parameters = []);
+ * @method Response put($url, $parameters = []);
+ * @method Response delete($url, $parameters = []);
+ */
 class Request
 {
     /**
@@ -14,6 +23,13 @@ class Request
      * @var Client
      */
     protected $client;
+
+    /**
+     * The request builder instance.
+     *
+     * @var Builder
+     */
+    protected $builder;
 
     /**
      * Request constructor.
@@ -29,12 +45,16 @@ class Request
     /**
      * Prepare and run the query.
      *
-     * @param       $type
-     * @param       $target
-     * @param array $options
-     * @return mixed
+     * @param string $type
+     * @param string $target
+     * @param array  $options
+     *
+     * @throws ItemNotFoundException
+     * @throws PipedriveException
+     *
+     * @return Response
      */
-    protected function performRequest($type, $target, $options = [])
+    protected function performRequest($type, $target, array $options = [])
     {
         $this->builder->setTarget($target);
 
@@ -50,12 +70,15 @@ class Request
     /**
      * Execute the query against the HTTP client.
      *
-     * @param $type
-     * @param $endpoint
-     * @param $query
-     * @return mixed
+     * @param string $type
+     * @param string $endpoint
+     * @param array  $query
+     *
+     * @throws ItemNotFoundException
+     * @throws PipedriveException
+     * @return Response
      */
-    protected function executeRequest($type, $endpoint, $query = [])
+    protected function executeRequest($type, $endpoint, array $query = [])
     {
         return $this->handleResponse(
             call_user_func_array([$this->client, $type], [$endpoint, $query])
@@ -66,9 +89,11 @@ class Request
      * Handling the server response.
      *
      * @param Response $response
-     * @return mixed
+     *
      * @throws ItemNotFoundException
      * @throws PipedriveException
+     *
+     * @return Response
      */
     protected function handleResponse(Response $response)
     {
@@ -76,14 +101,14 @@ class Request
 
         // If the request did not succeed, we will notify the user via Exception
         // and include the server error if found. If it is OK and also server
-        // inludes the success variable, we will return the response data.
-        if (! isset($content) || ! $response->isSuccess()) {
-            if ($response->getStatusCode() == 404) {
+        // includes the success variable, we will return the response data.
+        if (empty($content) || !$response->isSuccess()) {
+            if ($response->getStatusCode() === 404) {
                 throw new ItemNotFoundException($content->error);
             }
 
             throw new PipedriveException(
-                isset($content->error) ? $content->error : "Error unknown."
+                isset($content->error) ? $content->error : 'Error unknown.'
             );
         }
 
@@ -113,19 +138,24 @@ class Request
     /**
      * Pointing request operations to the request performer.
      *
-     * @param       $name
-     * @param array $args
-     * @return mixed
+     * @param string $name
+     * @param array  $args
+     *
+     * @throws ItemNotFoundException
+     * @throws PipedriveException
+     * @throws BadMethodCallException
+     * @return Response
      */
-    public function __call($name, $args = [])
+    public function __call($name, array $args = [])
     {
-        if (in_array($name, ['get', 'post', 'put', 'delete'])) {
-            $options = ! empty($args[1]) ? $args[1] : [];
+        if (in_array($name, ['get', 'post', 'put', 'delete'], true)) {
+            $options = !empty($args[1]) ? $args[1] : [];
 
             // Will pass the function name as the request type. The second argument
             // is the URI passed to the method. The third parameter will include
             // the request option values array which are stored in the index 1.
             return $this->performRequest($name, $args[0], $options);
         }
+        throw new BadMethodCallException();
     }
 }
