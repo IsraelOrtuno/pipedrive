@@ -3,11 +3,13 @@
 namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Resources\Basics\Entity;
+use Devio\Pipedrive\Resources\Traits\FieldsMapping;
 use Devio\Pipedrive\Resources\Traits\ListsProducts;
 
 class Deals extends Entity
 {
     use ListsProducts;
+    use FieldsMapping;
 
     /**
      * Get the deals timeline.
