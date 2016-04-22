@@ -69,9 +69,13 @@ class Builder
         // character with the values matching the keys of the options array. If
         // any of these parameters is not set we'll notify with an exception.
         foreach ($options as $key => $value) {
+            if (is_array($value)) {
+                continue;
+            }
+
             $endpoint = preg_replace("/:{$key}/", $value, $endpoint);
         }
-        
+
         if (count($this->getParameters($endpoint))) {
             throw new \InvalidArgumentException('The URI contains unassigned params.');
         }
