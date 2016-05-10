@@ -13,7 +13,7 @@ class Pipedrive
      *
      * @var string
      */
-    protected $baseURI = 'https://api.pipedrive.com/v1/';
+    protected $baseURI;
 
     /**
      * The API token.
@@ -27,9 +27,10 @@ class Pipedrive
      *
      * @param $token
      */
-    public function __construct($token = '')
+    public function __construct($token = '', $uri = 'https://api.pipedrive.com/v1/')
     {
         $this->token = $token;
+        $this->baseURI = $uri;
     }
 
     /**
