@@ -3,17 +3,23 @@
 namespace Devio\Pipedrive\Http;
 
 use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Psr7\Request as GuzzleRequest;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Post\PostFile;
+// use GuzzleHttp\Psr7\Request as GuzzleRequest;
+use GuzzleHttp\Message\Request as GuzzleRequest;
 use GuzzleHttp\Exception\BadResponseException;
+use Psr\Http\Message\RequestInterface;
 
-class PipedriveClient implements Client
+class PipedriveClient4 implements Client
 {
     /**
      * The Guzzle client instance.
      *
-     * @var Client
+     * @var GuzzleClient
      */
     protected $client;
+
+    protected $queryDefaults = [];
 
     /**
      * GuzzleClient constructor.
@@ -25,9 +31,9 @@ class PipedriveClient implements Client
     {
         $this->client = new GuzzleClient(
             [
-                'base_uri' => $url,
-                'query' => [
-                    'api_token' => $token
+                'base_url' => $url,
+                'defaults' => [
+                    'query'   => ['api_token' => $token],
                 ]
             ]
         );
@@ -42,14 +48,9 @@ class PipedriveClient implements Client
      */
     public function get($url, $parameters = [])
     {
-        $options = $this->getClient()
-            ->getConfig();
-        array_set($options, 'query', array_merge($parameters, $options['query']));
+        $request = $this->getClient()->createRequest('GET', $url, ['query' => $parameters]);
 
-        // For this particular case we have to include the parameters into the
-        // URL query. Merging the request default query configuration to the
-        // request parameters will make the query key contain everything.
-        return $this->execute(new GuzzleRequest('GET', $url), $options);
+        return $this->execute($request);
     }
 
     /**
@@ -61,18 +62,17 @@ class PipedriveClient implements Client
      */
     public function post($url, $parameters = [])
     {
-        $request = new GuzzleRequest('POST', $url);
-        $form = 'form_params';
-
+        return;
         // If any file key is found, we will assume we have to convert the data
         // into the multipart array structure. Otherwise, we will perform the
         // request as usual using the form_params with the given parameters.
         if (isset($parameters['file'])) {
-            $form = 'multipart';
             $parameters = $this->multipart($parameters);
         }
 
-        return $this->execute($request, [$form => $parameters]);
+        $request = $this->getClient()->createRequest('POST', $url, ['body' => $parameters]);
+
+        return $this->execute($request);
     }
 
     /**
@@ -87,18 +87,9 @@ class PipedriveClient implements Client
             throw new \InvalidArgumentException('File must be an instance of \SplFileInfo.');
         }
 
-        $result = [];
-        $content = file_get_contents($file->getPathname());
+        $parameters['file'] = new PostFile('file', file_get_contents($file->getPathname()), $file->getFilename());
 
-        foreach (array_except($parameters, 'file') as $key => $value) {
-            $result[] = ['name' => $key, 'contents' => (string) $value];
-        }
-        // Will convert every element of the array into a format accepted by the
-        // multipart encoding standards. It will also add a special item which
-        // includes the file key name, the content of the file and its name.
-        $result[] = ['name' => 'file', 'contents' => $content, 'filename' => $file->getFilename()];
-
-        return $result;
+        return $parameters;
     }
 
     /**
@@ -110,9 +101,10 @@ class PipedriveClient implements Client
      */
     public function put($url, $parameters = [])
     {
-        $request = new GuzzleRequest('PUT', $url);
+        return;
+        $request = $this->getClient()->createRequest('PUT', $url, ['body' => $parameters]);
 
-        return $this->execute($request, ['form_params' => $parameters]);
+        return $this->execute($request);
     }
 
     /**
@@ -124,20 +116,20 @@ class PipedriveClient implements Client
      */
     public function delete($url, $parameters = [])
     {
-        $request = new GuzzleRequest('DELETE', $url);
+        return;
+        $request = $this->getClient()->createRequest('DELETE', $url, ['body' => $parameters]);
 
-        return $this->execute($request, ['form_params' => $parameters]);
+        return $this->execute($request);
     }
 
     /**
      * Execute the request and returns the Response object.
      *
      * @param GuzzleRequest $request
-     * @param array $options
      * @param null $client
      * @return Response
      */
-    protected function execute(GuzzleRequest $request, array $options = [], $client = null)
+    protected function execute(GuzzleRequest $request, $client = null)
     {
         $client = $client ?: $this->getClient();
 
@@ -145,7 +137,7 @@ class PipedriveClient implements Client
         // and with the passed options wich may contain the query, body vars, or
         // any other info. Both OK and fail will generate a response object.
         try {
-            $response = $client->send($request, $options);
+            $response = $client->send($request);
         } catch (BadResponseException $e) {
             $response = $e->getResponse();
         }
@@ -162,7 +154,7 @@ class PipedriveClient implements Client
     /**
      * Return the client.
      *
-     * @return Client
+     * @return GuzzleClient
      */
     public function getClient()
     {
