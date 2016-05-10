@@ -62,7 +62,6 @@ class PipedriveClient4 implements Client
      */
     public function post($url, $parameters = [])
     {
-        return;
         // If any file key is found, we will assume we have to convert the data
         // into the multipart array structure. Otherwise, we will perform the
         // request as usual using the form_params with the given parameters.
@@ -101,7 +100,6 @@ class PipedriveClient4 implements Client
      */
     public function put($url, $parameters = [])
     {
-        return;
         $request = $this->getClient()->createRequest('PUT', $url, ['body' => $parameters]);
 
         return $this->execute($request);
@@ -116,7 +114,6 @@ class PipedriveClient4 implements Client
      */
     public function delete($url, $parameters = [])
     {
-        return;
         $request = $this->getClient()->createRequest('DELETE', $url, ['body' => $parameters]);
 
         return $this->execute($request);
