@@ -74,7 +74,7 @@ class Pipedrive
      */
     protected function getClient()
     {
-        return new PipedriveClient($this->getBaseURI(), $this->token);
+        return new PipedriveClient($this->token, $this->getBaseURI());
     }
 
     /**
