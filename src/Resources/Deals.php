@@ -132,4 +132,15 @@ class Deals extends Entity
     {
         return $this->request->get(':id/duplicate', compact('id'));
     }
+    
+    /**
+     * Get the email messages for a deal.
+     * 
+     * @param $id The deal id
+     * @return mixed
+     */
+    public function emailMessages($id)
+    {
+        return $this->request->get(':id/emailMessages', compact('id'));
+    }
 }
