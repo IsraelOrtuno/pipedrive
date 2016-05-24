@@ -3,11 +3,13 @@
 namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Resources\Basics\Entity;
+use Devio\Pipedrive\Resources\Traits\FieldsMapping;
 use Devio\Pipedrive\Resources\Traits\ListsDeals;
 
 class Organizations extends Entity
 {
     use ListsDeals;
+    use FieldsMapping;
 
     /**
      * List the persons of a resource.

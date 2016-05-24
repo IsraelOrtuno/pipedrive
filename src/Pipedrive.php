@@ -2,9 +2,11 @@
 
 namespace Devio\Pipedrive;
 
-use Illuminate\Support\Str;
-use Devio\Pipedrive\Http\Request;
+use BadMethodCallException;
+use Devio\Pipedrive\Http\Client;
 use Devio\Pipedrive\Http\PipedriveClient;
+use Devio\Pipedrive\Http\Request;
+use Illuminate\Support\Str;
 
 class Pipedrive
 {
@@ -23,20 +25,42 @@ class Pipedrive
     protected $token;
 
     /**
+     * Api fields mapping.
+     *
+     * @var array[]
+     */
+    protected $mapping
+        = [
+            'activities'    => [],
+            'deals'         => [],
+            'notes'         => [],
+            'organizations' => [],
+            'persons'       => [],
+            'products'      => [],
+        ];
+
+    /**
      * Pipedrive constructor.
      *
-     * @param $token
+     * @param string  $token
+     * @param array[] $mapping
      */
-    public function __construct($token = '')
+    public function __construct($token = '', array $mapping = [])
     {
         $this->token = $token;
+        foreach ($mapping as $entity => $map) {
+            if (array_key_exists($entity, $this->mapping) && is_array($map)) {
+                $this->mapping[$entity] = $map;
+            }
+        }
     }
 
     /**
      * Get the resource instance.
      *
-     * @param $resource
-     * @return mixed
+     * @param string $resource
+     *
+     * @return Resource
      */
     public function make($resource)
     {
@@ -48,12 +72,13 @@ class Pipedrive
     /**
      * Get the resource path.
      *
-     * @param $resource
+     * @param string $resource
+     *
      * @return string
      */
     protected function resolveClassPath($resource)
     {
-        return 'Devio\\Pipedrive\\Resources\\' . Str::studly($resource);
+        return 'Devio\\Pipedrive\\Resources\\'.Str::studly($resource);
     }
 
     /**
@@ -109,8 +134,9 @@ class Pipedrive
     /**
      * Any reading will return a resource.
      *
-     * @param $name
-     * @return mixed
+     * @param string $name
+     *
+     * @return Resource
      */
     public function __get($name)
     {
@@ -120,14 +146,17 @@ class Pipedrive
     /**
      * Methods will also return a resource.
      *
-     * @param $name
-     * @param $arguments
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @throws  BadMethodCallException
      * @return mixed
      */
-    public function __call($name, $arguments)
+    public function __call($name, array $arguments)
     {
-        if (! in_array($name, get_class_methods(get_class()))) {
+        if (!in_array($name, get_class_methods(get_class()), true)) {
             return $this->{$name};
         }
+        throw new \BadMethodCallException;
     }
 }
