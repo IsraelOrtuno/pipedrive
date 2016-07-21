@@ -14,14 +14,21 @@ class PipedriveServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->booting( function () {
+            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+            $loader->alias( 'Pipedrive', 'Devio\Pipedrive\PipedriveFacade' );
+        } );
+
         $this->app->singleton(Pipedrive::class, function ($app) {
             $token = $app['config']->get('services.pipedrive.token');
+            $uri = $app['config']->get('services.pipedrive.uri') ?: 'https://api.pipedrive.com/v1/';
+            $guzzleVersion = $app['config']->get('services.pipedrive.guzzle_version') ?: 6;
 
             if (! $token) {
                 throw new PipedriveException('Pipedrive was not configured in services.php configuration file.');
             }
 
-            return new Pipedrive($token);
+            return new Pipedrive($token, $uri, $guzzleVersion);
         });
 
         $this->app->alias(Pipedrive::class, 'pipedrive');

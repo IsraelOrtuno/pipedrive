@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive;
 
+use Devio\Pipedrive\Http\PipedriveClient4;
 use Illuminate\Support\Str;
 use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Http\PipedriveClient;
@@ -13,7 +14,7 @@ class Pipedrive
      *
      * @var string
      */
-    protected $baseURI = 'https://api.pipedrive.com/v1/';
+    protected $baseURI;
 
     /**
      * The API token.
@@ -23,13 +24,22 @@ class Pipedrive
     protected $token;
 
     /**
+     * The guzzle version
+     *
+     * @var int
+     */
+    protected $guzzleVersion;
+
+    /**
      * Pipedrive constructor.
      *
      * @param $token
      */
-    public function __construct($token = '')
+    public function __construct($token = '', $uri = 'https://api.pipedrive.com/v1/', $guzzleVersion = 6)
     {
         $this->token = $token;
+        $this->baseURI = $uri;
+        $this->guzzleVersion = $guzzleVersion;
     }
 
     /**
@@ -73,7 +83,11 @@ class Pipedrive
      */
     protected function getClient()
     {
-        return new PipedriveClient($this->getBaseURI(), $this->token);
+        if ($this->guzzleVersion >= 6) {
+            return new PipedriveClient($this->getBaseURI(), $this->token);
+        } else {
+            return new PipedriveClient4($this->getBaseURI(), $this->token);
+        }
     }
 
     /**
