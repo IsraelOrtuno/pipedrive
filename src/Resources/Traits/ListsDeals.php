@@ -15,6 +15,6 @@ trait ListsDeals
     {
         array_set($options, 'id', $id);
 
-        return $this->get(':id/deals', $options);
+        return $this->request->get(':id/deals', $options);
     }
 }
