@@ -15,6 +15,6 @@ trait ListsProducts
     {
         array_set($options, 'id', $id);
 
-        return $this->get(':id/products', $options);
+        return $this->request->get(':id/products', $options);
     }
 }
