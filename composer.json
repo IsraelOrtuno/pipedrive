@@ -1,7 +1,7 @@
 {
     "name": "devio/pipedrive",
-    "description": "Complete Pipedrive API client for PHP",
-    "keywords": ["pipedrive", "api", "client"],
+    "description": "Complete Pipedrive API client for PHP and/or Laravel",
+    "keywords": ["pipedrive", "api", "client", "laravel"],
     "license": "MIT",
     "authors": [
         {
