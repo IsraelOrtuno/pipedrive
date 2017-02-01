@@ -13,11 +13,11 @@ $pipedrive = new Pipedrive($token);
 
 // Easily access a Pipedrive resource and its values
 $organization = $pipedrive->organizations->find(1);
-echo "Name: {$organization['name']}";
+var_dump($organization->getData());
 
 // Also simple to update any Pipedrive resource value
 $organization = $pipedrive->organizations->update(1, ['name' => 'Big Code']);
-echo "New name: {$organization['name']}";
+var_dump($organization->getData());
 
 // Keep reading this documentation to find out more.
 ```
