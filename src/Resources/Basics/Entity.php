@@ -41,7 +41,7 @@ abstract class Entity extends Resource
      */
     public function addFollower($id, $user_id)
     {
-        return $this->post(':id/followers', compact('id', 'user_id'));
+        return $this->request->post(':id/followers', compact('id', 'user_id'));
     }
 
     /**
@@ -53,7 +53,7 @@ abstract class Entity extends Resource
      */
     public function deleteFollower($id, $follower_id)
     {
-        return $this->delete(':id/followers/:follower_id', compact('id', 'follower_id'));
+        return $this->request->delete(':id/followers/:follower_id', compact('id', 'follower_id'));
     }
 
     /**
@@ -65,6 +65,6 @@ abstract class Entity extends Resource
      */
     public function merge($id, $merge_with_id)
     {
-        return $this->put(':id/merge', compact('id', 'merge_with_id'));
+        return $this->request->put(':id/merge', compact('id', 'merge_with_id'));
     }
 }
