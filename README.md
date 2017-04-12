@@ -3,6 +3,12 @@ Complete Pipedrive API client for PHP
 
 [![Build Status](https://travis-ci.org/IsraelOrtuno/pipedrive.svg)](https://travis-ci.org/IsraelOrtuno/pipedrive)
 
+### Consider donating
+
+Do you like this package? Did you find it useful? Donate and support its development.
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/IsraelOrtuno)
+
 This package provides a complete **framework agnostic** Pipedrive CRM API client library for PHP. It includes all the resources listed at Pipedrive's documentation.
 
 Feel free to drop me a message at [israel@devio.es](mailto:israel@bigcode.es) or tweet me at [@IsraelOrtuno](https://twitter.com/IsraelOrtuno).
