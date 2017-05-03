@@ -11,7 +11,7 @@ Do you like this package? Did you find it useful? Donate and support its develop
 
 This package provides a complete **framework agnostic** Pipedrive CRM API client library for PHP. It includes all the resources listed at Pipedrive's documentation.
 
-Feel free to drop me a message at [israel@devio.es](mailto:israel@bigcode.es) or tweet me at [@IsraelOrtuno](https://twitter.com/IsraelOrtuno).
+Feel free to drop me a message at [israel@devio.es](mailto:israel@devio.es) or tweet me at [@IsraelOrtuno](https://twitter.com/IsraelOrtuno).
 
 ```php
 $token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';
