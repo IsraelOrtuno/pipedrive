@@ -4,10 +4,11 @@ namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Resources\Basics\Entity;
 use Devio\Pipedrive\Resources\Traits\ListsProducts;
+use Devio\Pipedrive\Resources\Traits\ListsAttachedFiles;
 
 class Deals extends Entity
 {
-    use ListsProducts;
+    use ListsProducts, ListsAttachedFiles;
 
     /**
      * Get the deals timeline.

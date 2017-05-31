@@ -47,4 +47,14 @@ class Files extends Resource
             compact('item_type', 'item_id', 'remote_id', 'remote_location')
         );
     }
+
+    /**
+     * Initializes a file download.
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function download($id) {
+        return $this->request->get(':id/download', compact('id'));
+    }
 }

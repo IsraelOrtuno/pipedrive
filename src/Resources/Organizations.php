@@ -4,10 +4,11 @@ namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Resources\Basics\Entity;
 use Devio\Pipedrive\Resources\Traits\ListsDeals;
+use Devio\Pipedrive\Resources\Traits\ListsAttachedFiles;
 
 class Organizations extends Entity
 {
-    use ListsDeals;
+    use ListsDeals, ListsAttachedFiles;
 
     /**
      * List the persons of a resource.
