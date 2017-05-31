@@ -26,6 +26,7 @@ class PipedriveClient implements Client
         $this->client = new GuzzleClient(
             [
                 'base_uri' => $url,
+                'allow_redirects' => false,
                 'query' => [
                     'api_token' => $token
                 ]
