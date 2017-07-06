@@ -23,4 +23,11 @@ class Organizations extends Entity
 
         return $this->request->get(':id/persons', $options);
     }
+    
+    public function deals($id, $options = [])
+    {
+        array_set($options, 'id', $id);
+
+        return $this->request->get(':id/deals', $options);
+    }
 }
