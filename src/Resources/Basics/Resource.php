@@ -62,6 +62,16 @@ abstract class Resource
     }
 
     /**
+     * Get the entity details by email.
+     *
+     * @param $email   Entity email to find.
+     */
+    public function find_by_email($email)
+    {
+        return $this->request->get('find',array('term'=>$email,'search_by_email'=>true));
+    }
+
+    /**
      * Add a new entity.
      *
      * @param array $values
