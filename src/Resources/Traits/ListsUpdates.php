@@ -15,6 +15,6 @@ trait ListsUpdates
     {
         array_set($options, 'id', $id);
 
-        return $this->request->get(':id/updates', $options);
+        return $this->request->get(':id/flow', $options);
     }
 }
