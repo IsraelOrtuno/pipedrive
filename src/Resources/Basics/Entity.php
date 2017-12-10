@@ -29,7 +29,7 @@ abstract class Entity extends Resource
     {
         array_set($options, 'id', $id);
 
-        return $this->request->get(':id/emailMessages', $options);
+        return $this->request->get(':id/mailMessages', $options);
     }
 
     /**
