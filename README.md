@@ -13,6 +13,8 @@ Or use my referral code or link to get up to 45 days completely free of charge:
 
 [af-devio](https://www.pipedrive.com/register?promocode=af-devio)
 
+---
+
 This package provides a complete **framework agnostic** Pipedrive CRM API client library for PHP. It includes all the resources listed at Pipedrive's documentation.
 
 Feel free to drop me a message at [israel@devio.es](mailto:israel@devio.es) or tweet me at [@IsraelOrtuno](https://twitter.com/IsraelOrtuno).
