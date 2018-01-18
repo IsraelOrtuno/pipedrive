@@ -131,7 +131,7 @@ class Deals extends Entity
      */
     public function duplicate($id)
     {
-        return $this->request->get(':id/duplicate', compact('id'));
+        return $this->request->post(':id/duplicate', compact('id'));
     }
     
     /**
