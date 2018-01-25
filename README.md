@@ -3,17 +3,17 @@ Complete Pipedrive API client for PHP
 
 [![Build Status](https://travis-ci.org/IsraelOrtuno/pipedrive.svg)](https://travis-ci.org/IsraelOrtuno/pipedrive)
 
-### Consider donating
+## Contribute by referral code / link
+
+This won't take much time. You could use my referral code or link to get up to 45 days completely free of charge. Just sign up using this link or add the code to the billing section:
+
+[af-devio](https://www.pipedrive.com/register?promocode=af-devio)
+
+## Consider donating
 
 Do you like this package? Did you find it useful? Donate and support its development.
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/IsraelOrtuno)
-
-### Contribute by referral code / link
-
-You could use my referral code or link to get up to 45 days completely free of charge. Just sign up using this link or add the code to the billing section:
-
-[af-devio](https://www.pipedrive.com/register?promocode=af-devio)
 
 ---
 
