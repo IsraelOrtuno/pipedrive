@@ -42,7 +42,7 @@ class Pipedrive
      *
      * @param $token
      */
-    public function __construct($token = '', $useOAuth = true, $uri = 'https://api.pipedrive.com/v1/', $guzzleVersion = 6)
+    public function __construct($token = '', $useOAuth = true, $uri = 'https://api-proxy.pipedrive.com/', $guzzleVersion = 6)
     {
         $this->token = $token;
         $this->useOAuth = $useOAuth;
