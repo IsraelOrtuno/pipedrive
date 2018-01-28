@@ -29,11 +29,25 @@ class PipedriveClient4 implements Client
      */
     public function __construct($url, $token)
     {
+        // Use oAuth headers if necessary
+        if ($useOAuth) {
+          $headers = [
+            'Authorization' => sprintf('Bearer %s', $token),
+          ];
+          $query = [];
+        } else {
+          $headers = [];
+          $query = [
+            'api_token' => $token,
+          ];
+        }
+        
         $this->client = new GuzzleClient(
             [
                 'base_url' => $url,
                 'defaults' => [
-                    'query'   => ['api_token' => $token],
+                    'query'   => $query,
+                    'headers' => $headers
                 ]
             ]
         );
