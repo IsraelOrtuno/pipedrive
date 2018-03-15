@@ -23,7 +23,7 @@ class Request
     public function __construct(Client $client)
     {
         $this->client = $client;
-        $this->builder = $this->client->isOauth() ? new Builder() : Builder::OAuth();
+        $this->builder = $this->client->isOauth() ? Builder::OAuth() : new Builder();
     }
 
     /**
