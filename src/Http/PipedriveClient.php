@@ -57,6 +57,11 @@ class PipedriveClient implements Client
         $storage = new $storageClass();
 
         $token = $storage::getToken();
+
+        if (!$token || !$token->valid()) {
+            $pipedrive->OAuthRedirect();
+        }
+
         $token->refresh_if_needed($pipedrive);
 
         return new self($url, $token);

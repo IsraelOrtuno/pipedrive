@@ -33,13 +33,15 @@ class PipedriveToken
         return $this->refresh_token;
     }
 
+    public function valid()
+    {
+        return !empty($this->access_token);
+    }
+
     public function refresh_if_needed($pipedrive)
     {
         if ($this->needs_refresh()) {
             $client = new GuzzleClient([
-                'headers' => [
-
-                ],
                 'auth' => [
                     $pipedrive->getClientId(),
                     $pipedrive->getClientSecret()

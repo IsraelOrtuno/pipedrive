@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Http\PipedriveClient;
 
+use GuzzleHttp\Client as GuzzleClient;
+
 class Pipedrive
 {
     /**
@@ -85,10 +87,54 @@ class Pipedrive
         return $this->clientSecret;
     }
 
+    public function getRedirectUrl()
+    {
+        return $this->redirectUrl;
+    }
+
     public function getStorage()
     {
         $storage = $this->storageClass;
         return new $storage();
+    }
+
+    public function OAuthRedirect()
+    {
+        $params = [
+            'client_id' => $this->clientId,
+            'state' => '',
+            'redirect_uri' => $this->redirectUrl,
+        ];
+        $query = http_build_query($params);
+        $url = 'https://oauth.pipedrive.com/oauth/authorize?' . $query;
+        header('Location: ' . $url);
+        exit;
+    }
+
+    public function authorize($code)
+    {
+        $client = new GuzzleClient([
+            'auth' => [
+                $this->getClientId(),
+                $this->getClientSecret()
+            ]
+        ]);
+        $response = $client->request('POST', 'https://oauth.pipedrive.com/oauth/token', [
+            'form_params' => [
+                'grant_type' => 'authorization_code',
+                'code' => $code,
+                'redirect_uri' => $this->redirectUrl,
+            ]
+        ]);
+        $resBody = json_decode($response->getBody());
+
+        $token = new PipedriveToken([
+            'access_token' => $resBody->access_token,
+            'expires_at' => time() + $resBody->expires_in,
+            'refresh_token' => $resBody->refresh_token,
+        ]);
+
+        $this->getStorage()::setToken($token);
     }
 
     /**
