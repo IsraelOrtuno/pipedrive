@@ -34,6 +34,23 @@ class Builder
      */
     protected $token;
 
+    protected $isOauth = false;
+
+    public function isOauth()
+    {
+        return $this->isOauth;
+    }
+
+    public static function OAuth()
+    {
+        $new = new self();
+
+        $new->base = 'https://api-proxy.pipedrive.com/{endpoint}';
+        $new->isOauth = true;
+
+        return $new;
+    }
+
     /**
      * Get the name of the URI parameters.
      *
@@ -93,7 +110,7 @@ class Builder
     {
         $result = $this->getTarget();
 
-        if (! empty($this->getResource())) {
+        if (!empty($this->getResource())) {
             $result = $this->getResource() . '/' . $result;
         }
 
