@@ -1,7 +1,7 @@
 Complete Pipedrive API client for PHP
 =============================
 
-[![Build Status](https://travis-ci.org/IsraelOrtuno/pipedrive.svg)](https://travis-ci.org/IsraelOrtuno/pipedrive)
+[![Latest Stable Version](https://poser.pugx.org/devio/pipedrive/v/stable)](https://packagist.org/packages/devio/pipedrive) [![Build Status](https://travis-ci.org/IsraelOrtuno/pipedrive.svg)](https://travis-ci.org/IsraelOrtuno/pipedrive) [![Total Downloads](https://poser.pugx.org/devio/pipedrive/downloads)](https://packagist.org/packages/devio/pipedrive) 
 
 ## Contribute by referral code / link
 
