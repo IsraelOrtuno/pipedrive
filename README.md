@@ -201,6 +201,7 @@ Every Resource logic is located at the `src/Resources` directory. However we'll 
 | GlobalMessages            | :white_check_mark: 2/2    | |
 | Goals                     | :warning: 5/6             | Missing goal results method |
 | Notes                     | :white_check_mark: 5/5    | |
+| NoteFields                | :white_check_mark: 1/1    | |
 | OrganizationFields        | :white_check_mark: 6/6    | |
 | OrganizationRelationships | :white_check_mark: 5/5    | |
 | Organizations             | :white_check_mark: 18/18  | |
