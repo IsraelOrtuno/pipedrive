@@ -189,6 +189,7 @@ Every Resource logic is located at the `src/Resources` directory. However we'll 
 | Resource                  | Methods implemented       | Notes         |
 |:--------------------------|:--------------------------|:--------------|
 | Activities                | :white_check_mark: 6/6    | |
+| ActivityFields            | :white_check_mark: 1/1    | |
 | ActivityTypes             | :white_check_mark: 5/5    | |
 | Currencies                | :white_check_mark: 1/1    | |
 | DealFields                | :white_check_mark: 25/25  | |
