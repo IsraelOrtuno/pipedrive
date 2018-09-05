@@ -17,11 +17,18 @@ class Pipedrive
     protected $baseURI;
 
     /**
-     * The API token.
+     * The API token or oAuth token.
      *
      * @var string
      */
     protected $token;
+
+    /**
+     * The oAuth flag.
+     *
+     * @var bool
+     */
+    protected $useOAuth;
 
     /**
      * The guzzle version
@@ -35,9 +42,10 @@ class Pipedrive
      *
      * @param $token
      */
-    public function __construct($token = '', $uri = 'https://api.pipedrive.com/v1/', $guzzleVersion = 6)
+    public function __construct($token = '', $useOAuth = true, $uri = 'https://api-proxy.pipedrive.com/', $guzzleVersion = 6)
     {
         $this->token = $token;
+        $this->useOAuth = $useOAuth;
         $this->baseURI = $uri;
         $this->guzzleVersion = $guzzleVersion;
     }
@@ -84,9 +92,9 @@ class Pipedrive
     protected function getClient()
     {
         if ($this->guzzleVersion >= 6) {
-            return new PipedriveClient($this->getBaseURI(), $this->token);
+            return new PipedriveClient($this->getBaseURI(), $this->token, $this->useOAuth);
         } else {
-            return new PipedriveClient4($this->getBaseURI(), $this->token);
+            return new PipedriveClient4($this->getBaseURI(), $this->token, $this->useOAuth);
         }
     }
 

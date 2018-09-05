@@ -11,7 +11,7 @@ class Builder
      *
      * @var string
      */
-    protected $base = 'https://api.pipedrive.com/v1/{endpoint}';
+    protected $base = 'https://api-proxy.pipedrive.com/{endpoint}';
 
     /**
      * Resource name.
