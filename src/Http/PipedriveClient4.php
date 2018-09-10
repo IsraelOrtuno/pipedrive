@@ -21,6 +21,13 @@ class PipedriveClient4 implements Client
 
     protected $queryDefaults = [];
 
+    protected $isOauth = false;
+
+    public function isOauth()
+    {
+        return $this->isOauth;
+    }
+
     /**
      * GuzzleClient constructor.
      *

@@ -15,23 +15,54 @@ class PipedriveClient implements Client
      */
     protected $client;
 
+    protected $isOauth = false;
+
+    public function isOauth()
+    {
+        return $this->isOauth;
+    }
+
     /**
      * GuzzleClient constructor.
      *
      * @param $url
      * @param $token
      */
-    public function __construct($url, $token)
+    public function __construct($url, $credentials)
     {
+        if (gettype($credentials) == 'object') {
+            $this->isOauth = true;
+            $headers = [
+                'Authorization' => 'Bearer ' . $credentials->access_token(),
+            ];
+            $query = [];
+        } else {
+            $headers = [];
+            $query = [
+                'api_token' => $credentials,
+            ];
+        }
         $this->client = new GuzzleClient(
             [
                 'base_uri' => $url,
                 'allow_redirects' => false,
-                'query' => [
-                    'api_token' => $token
-                ]
+                'headers' => $headers,
+                'query' => $query
             ]
         );
+    }
+
+    public static function OAuth($url, $storage, $pipedrive)
+    {
+        $token = $storage->getToken();
+
+        if (!$token || !$token->valid()) {
+            $pipedrive->OAuthRedirect();
+        }
+
+        $token->refresh_if_needed($pipedrive);
+
+        return new self($url, $token);
     }
 
     /**
@@ -84,7 +115,7 @@ class PipedriveClient implements Client
      */
     protected function multipart(array $parameters)
     {
-        if (! ($file = $parameters['file']) instanceof \SplFileInfo) {
+        if (!($file = $parameters['file']) instanceof \SplFileInfo) {
             throw new \InvalidArgumentException('File must be an instance of \SplFileInfo.');
         }
 
@@ -92,7 +123,7 @@ class PipedriveClient implements Client
         $content = file_get_contents($file->getPathname());
 
         foreach (array_except($parameters, 'file') as $key => $value) {
-            $result[] = ['name' => $key, 'contents' => (string) $value];
+            $result[] = ['name' => $key, 'contents' => (string)$value];
         }
         // Will convert every element of the array into a format accepted by the
         // multipart encoding standards. It will also add a special item which

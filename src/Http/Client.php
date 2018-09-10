@@ -39,4 +39,6 @@ interface Client
      * @return Response
      */
     public function delete($url, $parameters = []);
+
+    public function isOauth();
 }
