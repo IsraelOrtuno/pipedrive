@@ -34,10 +34,32 @@ class Pipedrive
 
     protected $isOauth;
 
+    /**
+     * The OAuth client id.
+     *
+     * @var string
+     */
     protected $clientId;
+
+    /**
+     * The client secret string.
+     *
+     * @var string
+     */
     protected $clientSecret;
+
+    /**
+     * The redirect URL.
+     *
+     * @var string
+     */
     protected $redirectUrl;
 
+    /**
+     * The OAuth storage.
+     *
+     * @var mixed
+     */
     protected $storage;
 
     public function isOauth()
@@ -59,6 +81,12 @@ class Pipedrive
         $this->isOauth = false;
     }
 
+    /**
+     * Prepare for OAuth.
+     *
+     * @param $config
+     * @return Pipedrive
+     */
     public static function OAuth($config)
     {
         $guzzleVersion = isset($config['guzzleVersion']) ? $config['guzzleVersion'] : 6;
@@ -76,32 +104,54 @@ class Pipedrive
         return $new;
     }
 
+    /**
+     * Get the client ID.
+     *
+     * @return string
+     */
     public function getClientId()
     {
         return $this->clientId;
     }
 
-
+    /**
+     * Get the client secret.
+     *
+     * @return string
+     */
     public function getClientSecret()
     {
         return $this->clientSecret;
     }
 
+    /**
+     * Get the redirect URL.
+     *
+     * @return string
+     */
     public function getRedirectUrl()
     {
         return $this->redirectUrl;
     }
 
+    /**
+     * Get the storage instance.
+     *
+     * @return mixed
+     */
     public function getStorage()
     {
         return $this->storage;
     }
 
+    /**
+     * Redirect to OAuth.
+     */
     public function OAuthRedirect()
     {
         $params = [
-            'client_id' => $this->clientId,
-            'state' => '',
+            'client_id'    => $this->clientId,
+            'state'        => '',
             'redirect_uri' => $this->redirectUrl,
         ];
         $query = http_build_query($params);
@@ -110,6 +160,11 @@ class Pipedrive
         exit;
     }
 
+    /**
+     * OAuth authorization.
+     *
+     * @param $code
+     */
     public function authorize($code)
     {
         $client = new GuzzleClient([
@@ -120,17 +175,17 @@ class Pipedrive
         ]);
         $response = $client->request('POST', 'https://oauth.pipedrive.com/oauth/token', [
             'form_params' => [
-                'grant_type' => 'authorization_code',
-                'code' => $code,
+                'grant_type'   => 'authorization_code',
+                'code'         => $code,
                 'redirect_uri' => $this->redirectUrl,
             ]
         ]);
         $resBody = json_decode($response->getBody());
 
         $token = new PipedriveToken([
-            'access_token' => $resBody->access_token,
-            'expires_at' => time() + $resBody->expires_in,
-            'refresh_token' => $resBody->refresh_token,
+            'accessToken'  => $resBody->access_token,
+            'expiresAt'    => time() + $resBody->expires_in,
+            'refreshToken' => $resBody->refresh_token,
         ]);
 
         $this->storage->setToken($token);
@@ -178,7 +233,9 @@ class Pipedrive
     protected function getClient()
     {
         if ($this->guzzleVersion >= 6) {
-            return $this->isOauth() ? PipedriveClient::OAuth($this->getBaseURI(), $this->storage, $this) : new PipedriveClient($this->getBaseURI(), $this->token);
+            return $this->isOauth()
+                ? PipedriveClient::OAuth($this->getBaseURI(), $this->storage, $this)
+                : new PipedriveClient($this->getBaseURI(), $this->token);
         } else {
             return new PipedriveClient4($this->getBaseURI(), $this->token);
         }
@@ -234,7 +291,7 @@ class Pipedrive
      */
     public function __call($name, $arguments)
     {
-        if (!in_array($name, get_class_methods(get_class()))) {
+        if (! in_array($name, get_class_methods(get_class()))) {
             return $this->{$name};
         }
     }
