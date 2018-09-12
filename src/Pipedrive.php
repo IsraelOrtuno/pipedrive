@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Http\PipedriveClient;
 
+use GuzzleHttp\Client as GuzzleClient;
+
 class Pipedrive
 {
     /**
@@ -30,6 +32,41 @@ class Pipedrive
      */
     protected $guzzleVersion;
 
+    protected $isOauth;
+
+    /**
+     * The OAuth client id.
+     *
+     * @var string
+     */
+    protected $clientId;
+
+    /**
+     * The client secret string.
+     *
+     * @var string
+     */
+    protected $clientSecret;
+
+    /**
+     * The redirect URL.
+     *
+     * @var string
+     */
+    protected $redirectUrl;
+
+    /**
+     * The OAuth storage.
+     *
+     * @var mixed
+     */
+    protected $storage;
+
+    public function isOauth()
+    {
+        return $this->isOauth;
+    }
+
     /**
      * Pipedrive constructor.
      *
@@ -40,6 +77,118 @@ class Pipedrive
         $this->token = $token;
         $this->baseURI = $uri;
         $this->guzzleVersion = $guzzleVersion;
+
+        $this->isOauth = false;
+    }
+
+    /**
+     * Prepare for OAuth.
+     *
+     * @param $config
+     * @return Pipedrive
+     */
+    public static function OAuth($config)
+    {
+        $guzzleVersion = isset($config['guzzleVersion']) ? $config['guzzleVersion'] : 6;
+
+        $new = new self('oauth', 'https://api-proxy.pipedrive.com/', $guzzleVersion);
+
+        $new->isOauth = true;
+
+        $new->clientId = $config['clientId'];
+        $new->clientSecret = $config['clientSecret'];
+        $new->redirectUrl = $config['redirectUrl'];
+
+        $new->storage = $config['storage'];
+
+        return $new;
+    }
+
+    /**
+     * Get the client ID.
+     *
+     * @return string
+     */
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * Get the client secret.
+     *
+     * @return string
+     */
+    public function getClientSecret()
+    {
+        return $this->clientSecret;
+    }
+
+    /**
+     * Get the redirect URL.
+     *
+     * @return string
+     */
+    public function getRedirectUrl()
+    {
+        return $this->redirectUrl;
+    }
+
+    /**
+     * Get the storage instance.
+     *
+     * @return mixed
+     */
+    public function getStorage()
+    {
+        return $this->storage;
+    }
+
+    /**
+     * Redirect to OAuth.
+     */
+    public function OAuthRedirect()
+    {
+        $params = [
+            'client_id'    => $this->clientId,
+            'state'        => '',
+            'redirect_uri' => $this->redirectUrl,
+        ];
+        $query = http_build_query($params);
+        $url = 'https://oauth.pipedrive.com/oauth/authorize?' . $query;
+        header('Location: ' . $url);
+        exit;
+    }
+
+    /**
+     * OAuth authorization.
+     *
+     * @param $code
+     */
+    public function authorize($code)
+    {
+        $client = new GuzzleClient([
+            'auth' => [
+                $this->getClientId(),
+                $this->getClientSecret()
+            ]
+        ]);
+        $response = $client->request('POST', 'https://oauth.pipedrive.com/oauth/token', [
+            'form_params' => [
+                'grant_type'   => 'authorization_code',
+                'code'         => $code,
+                'redirect_uri' => $this->redirectUrl,
+            ]
+        ]);
+        $resBody = json_decode($response->getBody());
+
+        $token = new PipedriveToken([
+            'accessToken'  => $resBody->access_token,
+            'expiresAt'    => time() + $resBody->expires_in,
+            'refreshToken' => $resBody->refresh_token,
+        ]);
+
+        $this->storage->setToken($token);
     }
 
     /**
@@ -84,7 +233,9 @@ class Pipedrive
     protected function getClient()
     {
         if ($this->guzzleVersion >= 6) {
-            return new PipedriveClient($this->getBaseURI(), $this->token);
+            return $this->isOauth()
+                ? PipedriveClient::OAuth($this->getBaseURI(), $this->storage, $this)
+                : new PipedriveClient($this->getBaseURI(), $this->token);
         } else {
             return new PipedriveClient4($this->getBaseURI(), $this->token);
         }
