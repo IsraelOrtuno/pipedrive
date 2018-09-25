@@ -46,7 +46,7 @@ class PipedriveToken
      *
      * @return string
      */
-    public function accessToken()
+    public function getAccessToken()
     {
         return $this->accessToken;
     }
@@ -66,7 +66,7 @@ class PipedriveToken
      *
      * @return string
      */
-    public function refreshToken()
+    public function getRefreshToken()
     {
         return $this->refreshToken;
     }
