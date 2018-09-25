@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources\Basics;
 
+use Devio\Pipedrive\Http\Response;
 use ReflectionClass;
 use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Exceptions\PipedriveException;
@@ -45,6 +46,7 @@ abstract class Resource
      * Get all the entities.
      *
      * @param array $options Endpoint accepted options
+	 * @return Response
      */
     public function all($options = [])
     {
@@ -55,6 +57,7 @@ abstract class Resource
      * Get the entity details by ID.
      *
      * @param $id   Entity ID to find.
+	 * @return Response
      */
     public function find($id)
     {
@@ -65,7 +68,7 @@ abstract class Resource
      * Add a new entity.
      *
      * @param array $values
-     * @return mixed
+     * @return Response
      */
     public function add(array $values)
     {
@@ -77,6 +80,7 @@ abstract class Resource
      *
      * @param       $id
      * @param array $values
+	 * @return Response
      */
     public function update($id, array $values)
     {
@@ -89,6 +93,7 @@ abstract class Resource
      * Delete an entity by ID.
      *
      * @param $id
+	 * @return Response
      */
     public function delete($id)
     {
@@ -99,7 +104,7 @@ abstract class Resource
      * Bulk deleting entities.
      *
      * @param array $ids
-     * @return mixed
+     * @return Response
      */
     public function deleteBulk(array $ids)
     {
