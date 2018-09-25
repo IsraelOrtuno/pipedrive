@@ -56,7 +56,7 @@ class Response
     /**
      * Get the request data.
      *
-     * @return mixed[]
+     * @return mixed[]|\stdClass
      */
     public function getData()
     {
@@ -70,7 +70,7 @@ class Response
     /**
      * Get the additional data array if any.
      *
-     * @return mixed[]
+     * @return mixed[]|\stdClass
      */
     public function getAdditionalData()
     {
