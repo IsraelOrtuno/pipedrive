@@ -66,7 +66,7 @@ class Request
      * Handling the server response.
      *
      * @param Response $response
-     * @return mixed
+     * @return Response
      * @throws ItemNotFoundException
      * @throws PipedriveException
      */
@@ -115,7 +115,7 @@ class Request
      *
      * @param       $name
      * @param array $args
-     * @return mixed
+     * @return Response
      */
     public function __call($name, $args = [])
     {
