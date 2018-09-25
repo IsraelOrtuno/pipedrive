@@ -161,6 +161,14 @@ class Pipedrive
     }
 
     /**
+     * Get current OAuth access token object (which includes refreshToken and expiresAt)
+     */
+    public function getAccessToken()
+    {
+        return $this->storage->getToken();
+    }
+
+    /**
      * OAuth authorization.
      *
      * @param $code
