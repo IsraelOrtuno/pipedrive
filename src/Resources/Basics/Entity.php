@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources\Basics;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Traits\FindsByName;
 use Devio\Pipedrive\Resources\Traits\ListsActivities;
 use Devio\Pipedrive\Resources\Traits\ListsUpdates;
@@ -23,7 +24,7 @@ abstract class Entity extends Resource
      *
      * @param       $id
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function emails($id, $options = [])
     {
@@ -37,7 +38,7 @@ abstract class Entity extends Resource
      *
      * @param $id
      * @param $user_id
-     * @return mixed
+     * @return Response
      */
     public function addFollower($id, $user_id)
     {
@@ -49,7 +50,7 @@ abstract class Entity extends Resource
      *
      * @param $id
      * @param $follower_id
-     * @return mixed
+     * @return Response
      */
     public function deleteFollower($id, $follower_id)
     {
@@ -61,7 +62,7 @@ abstract class Entity extends Resource
      *
      * @param $id
      * @param $merge_with_id
-     * @return mixed
+     * @return Response
      */
     public function merge($id, $merge_with_id)
     {

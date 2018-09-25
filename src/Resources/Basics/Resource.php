@@ -199,7 +199,7 @@ abstract class Resource
      *
      * @param       $method
      * @param array $args
-     * @return mixed
+     * @return void
      * @throws PipedriveException
      */
     public function __call($method, $args = [])
