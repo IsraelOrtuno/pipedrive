@@ -6,6 +6,12 @@ use Devio\Pipedrive\Builder;
 use Devio\Pipedrive\Exceptions\PipedriveException;
 use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 
+/**
+ * @method Response get($type, $target, $options = [])
+ * @method Response post($type, $target, $options = [])
+ * @method Response put($type, $target, $options = [])
+ * @method Response delete($type, $target, $options = [])
+ */
 class Request
 {
     /**
