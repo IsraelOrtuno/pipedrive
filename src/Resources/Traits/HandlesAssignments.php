@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Resources\Traits;
 
+use Devio\Pipedrive\Http\Response;
+
 trait HandlesAssignments
 {
     /**
@@ -9,7 +11,7 @@ trait HandlesAssignments
      *
      * @param       $id
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function assignments($id, $options = [])
     {
@@ -23,7 +25,7 @@ trait HandlesAssignments
      *
      * @param $id
      * @param $user_id
-     * @return mixed
+     * @return Response
      */
     public function addAssignment($id, $user_id)
     {
@@ -35,7 +37,7 @@ trait HandlesAssignments
      *
      * @param $id
      * @param $user_id
-     * @return mixed
+     * @return Response
      */
     public function deleteAssignment($id, $user_id)
     {

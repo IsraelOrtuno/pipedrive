@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
 
 class Files extends Resource
@@ -21,7 +22,7 @@ class Files extends Resource
      * @param $item_type
      * @param $item_id
      * @param $remote_location
-     * @return mixed
+     * @return Response
      */
     public function createRemote($file_type, $title, $item_type, $item_id, $remote_location)
     {
@@ -38,7 +39,7 @@ class Files extends Resource
      * @param $item_id
      * @param $remote_id
      * @param $remote_location
-     * @return mixed
+     * @return Response
      */
     public function linkRemote($item_type, $item_id, $remote_id, $remote_location)
     {
@@ -52,7 +53,7 @@ class Files extends Resource
      * Initializes a file download.
      *
      * @param $id
-     * @return mixed
+     * @return Response
      */
     public function download($id) {
         return $this->request->get(':id/download', compact('id'));
