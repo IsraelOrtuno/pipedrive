@@ -92,8 +92,11 @@ $pipedrive = new Pipedrive($token);
 > NOTE: Consider storing this object into a global variable.
 
 ### Using OAuth
+
+To understand how the OAuth flow works, please read the documentation first.<br>You can find it here: https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+
 You will first need to create an app and retrieve client_id and client_secret.
-Please, read the official documentation to learn how to do that. You can find all you need here: https://pipedrive.readme.io/docs/marketplace-creating-a-proper-app
+Please, read the official documentation to learn how to do that.<br>You can find all you need here: https://pipedrive.readme.io/docs/marketplace-creating-a-proper-app
 
 Once you have your client_id, client_secret, and redirect_url, you can instantiate the class like this:
 ```php
@@ -114,13 +117,11 @@ Here's an example of how it can be implemented:
 ```php
 class PipedriveTokenIO implements \Devio\Pipedrive\PipedriveTokenStorage
 {
-    public function setToken(\Devio\Pipedrive\PipedriveToken $token)
-    {
+    public function setToken(\Devio\Pipedrive\PipedriveToken $token) {
         $_SESSION['token'] = serialize($token); // or encrypt and store in the db, or anything else...
     }
 
-    public function getToken() // Returns a PipedriveToken instance
-    {
+    public function getToken() // Returns a PipedriveToken instance {
         return isset($_SESSION['token']) ? unserialize($_SESSION['token']) : null;
     }
 }
@@ -130,8 +131,7 @@ In this simple example, the PipedriveToken is simply stored and retrieved from t
 You might want to store this object inside the database. Storing the whole object serialized could be the fastest way to do that, but you can also retrieve access token, refresh token, and the expiration time individually using the methods `getAccessToken`, `getRefreshToken`, and `expiresAt`. Like this:
 
 ```php
-public function setToken(\Devio\Pipedrive\PipedriveToken $token)
-{
+public function setToken(\Devio\Pipedrive\PipedriveToken $token) {
     $token->getAccessTokan(); // save it individually
     $token->getRefreshTokan(); // save it individually
     $token->expiresAt(); // save it individually
@@ -145,7 +145,14 @@ $token = new \Devio\Pipedrive\PipedriveToken([
     'expiresAt' => 'xxxxx', // read it individually from the db
 ]);
 ```
-
+#### Handling the callback
+In the callback (the url you specified as `redirectUrl`), you should call the `authorize` method on the `$pipedrive` object, like so:
+```php
+if(!empty($_GET['code'])) {
+    $pipedrive->authorize($_GET['code']);
+}
+```
+This will exchange the authorization code for the first access token, and store it using the `setToken` method you provided.
 ## Resolve a Pipedrive API Resource
 
 Once we have our Pipedrive instance, we are able to resolve any Pipedrive API Resource in many ways.
