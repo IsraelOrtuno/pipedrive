@@ -121,7 +121,7 @@ class PipedriveTokenIO implements \Devio\Pipedrive\PipedriveTokenStorage
         $_SESSION['token'] = serialize($token); // or encrypt and store in the db, or anything else...
     }
 
-    public function getToken() // Returns a PipedriveToken instance {
+    public function getToken() { // Returns a PipedriveToken instance 
         return isset($_SESSION['token']) ? unserialize($_SESSION['token']) : null;
     }
 }
