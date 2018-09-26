@@ -35,6 +35,11 @@ class Builder
     protected $token;
 
     /**
+     * OAuth enabled or disabled.
+     */
+    protected $isOauth = false;
+
+    /**
      * Get the name of the URI parameters.
      *
      * @param string $target
@@ -84,6 +89,27 @@ class Builder
     }
 
     /**
+     * Check if OAuth is enabled.
+     */
+    public function isOauth()
+    {
+        return $this->isOauth;
+    }
+
+    /**
+     * Get a builder instance prepared for OAuth.
+     */
+    public static function OAuth()
+    {
+        $instance = new self();
+
+        $instance->base = 'https://api-proxy.pipedrive.com/{endpoint}';
+        $instance->isOauth = true;
+
+        return $instance;
+    }
+
+    /**
      * Get the full URI with the endpoint if any.
      *
      * @return string
@@ -93,7 +119,7 @@ class Builder
     {
         $result = $this->getTarget();
 
-        if (! empty($this->getResource())) {
+        if (!empty($this->getResource())) {
             $result = $this->getResource() . '/' . $result;
         }
 

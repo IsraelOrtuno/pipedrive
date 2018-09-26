@@ -16,22 +16,58 @@ class PipedriveClient implements Client
     protected $client;
 
     /**
+     * Oauth flag
+     *
+     * @var bool.
+     */
+    protected $isOauth = false;
+
+    /**
      * GuzzleClient constructor.
      *
      * @param $url
      * @param $token
      */
-    public function __construct($url, $token)
+    public function __construct($url, $credentials)
     {
+        list($headers, $query) = [[], []];
+
+        if (gettype($credentials) == 'object') {
+            $this->isOauth = true;
+            $headers['Authorization'] = 'Bearer ' . $credentials->getAccessToken();
+        } else {
+            $query['api_token'] = $credentials;
+        }
+
         $this->client = new GuzzleClient(
             [
-                'base_uri' => $url,
+                'base_uri'        => $url,
                 'allow_redirects' => false,
-                'query' => [
-                    'api_token' => $token
-                ]
+                'headers'         => $headers,
+                'query'           => $query
             ]
         );
+    }
+
+    /**
+     * Create an OAuth client.
+     *
+     * @param $url
+     * @param $storage
+     * @param $pipedrive
+     * @return PipedriveClient
+     */
+    public static function OAuth($url, $storage, $pipedrive)
+    {
+        $token = $storage->getToken();
+
+        if (! $token || ! $token->valid()) {
+            $pipedrive->OAuthRedirect();
+        }
+
+        $token->refreshIfNeeded($pipedrive);
+
+        return new self($url, $token);
     }
 
     /**
@@ -44,7 +80,7 @@ class PipedriveClient implements Client
     public function get($url, $parameters = [])
     {
         $options = $this->getClient()
-            ->getConfig();
+                        ->getConfig();
         array_set($options, 'query', array_merge($parameters, $options['query']));
 
         // For this particular case we have to include the parameters into the
@@ -158,6 +194,14 @@ class PipedriveClient implements Client
         return new Response(
             $response->getStatusCode(), $body, $response->getHeaders()
         );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isOauth()
+    {
+        return $this->isOauth;
     }
 
     /**
