@@ -1,7 +1,7 @@
 Complete Pipedrive API client for PHP
 =============================
 
-[![Build Status](https://travis-ci.org/IsraelOrtuno/pipedrive.svg)](https://travis-ci.org/IsraelOrtuno/pipedrive)
+[![Latest Stable Version](https://poser.pugx.org/devio/pipedrive/v/stable)](https://packagist.org/packages/devio/pipedrive) [![Build Status](https://travis-ci.org/IsraelOrtuno/pipedrive.svg)](https://travis-ci.org/IsraelOrtuno/pipedrive) [![Total Downloads](https://poser.pugx.org/devio/pipedrive/downloads)](https://packagist.org/packages/devio/pipedrive) 
 
 ## Contribute by referral code / link
 
@@ -257,6 +257,7 @@ Every Resource logic is located at the `src/Resources` directory. However we'll 
 | Resource                  | Methods implemented       | Notes         |
 |:--------------------------|:--------------------------|:--------------|
 | Activities                | :white_check_mark: 6/6    | |
+| ActivityFields            | :white_check_mark: 1/1    | |
 | ActivityTypes             | :white_check_mark: 5/5    | |
 | Currencies                | :white_check_mark: 1/1    | |
 | DealFields                | :white_check_mark: 25/25  | |
@@ -268,6 +269,7 @@ Every Resource logic is located at the `src/Resources` directory. However we'll 
 | GlobalMessages            | :white_check_mark: 2/2    | |
 | Goals                     | :warning: 5/6             | Missing goal results method |
 | Notes                     | :white_check_mark: 5/5    | |
+| NoteFields                | :white_check_mark: 1/1    | |
 | OrganizationFields        | :white_check_mark: 6/6    | |
 | OrganizationRelationships | :white_check_mark: 5/5    | |
 | Organizations             | :white_check_mark: 18/18  | |

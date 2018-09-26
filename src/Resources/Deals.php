@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Entity;
 use Devio\Pipedrive\Resources\Traits\ListsProducts;
 use Devio\Pipedrive\Resources\Traits\ListsAttachedFiles;
@@ -18,7 +19,7 @@ class Deals extends Entity
      * @param       $amount
      * @param       $field_key
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function timeline($start_date, $interval, $amount, $field_key, $options = [])
     {
@@ -35,7 +36,7 @@ class Deals extends Entity
      *
      * @param $id
      * @param $person_id
-     * @return mixed
+     * @return Response
      */
     public function addParticipant($id, $person_id)
     {
@@ -47,7 +48,7 @@ class Deals extends Entity
      *
      * @param       $id
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function participants($id, $options = [])
     {
@@ -61,7 +62,7 @@ class Deals extends Entity
      *
      * @param $id
      * @param $deal_participant_id
-     * @return mixed
+     * @return Response
      */
     public function deleteParticipant($id, $deal_participant_id)
     {
@@ -76,7 +77,7 @@ class Deals extends Entity
      * @param       $item_price
      * @param       $quantity
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function addProduct($id, $product_id, $item_price, $quantity, $options = [])
     {
@@ -96,7 +97,7 @@ class Deals extends Entity
      * @param       $item_price
      * @param       $quantity
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function updateProduct($id, $deal_product_id, $item_price, $quantity, $options = [])
     {
@@ -113,7 +114,7 @@ class Deals extends Entity
      *
      * @param $id
      * @param $product_attachment_id
-     * @return mixed
+     * @return Response
      */
     public function deleteProduct($id, $product_attachment_id)
     {
@@ -127,7 +128,7 @@ class Deals extends Entity
      * Duplicate a deal.
      *
      * @param $id The deal id
-     * @return mixed
+     * @return Response
      */
     public function duplicate($id)
     {
@@ -138,7 +139,7 @@ class Deals extends Entity
      * Get the email messages for a deal.
      * 
      * @param $id The deal id
-     * @return mixed
+     * @return Response
      */
     public function emailMessages($id)
     {

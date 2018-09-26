@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Entity;
 use Devio\Pipedrive\Resources\Traits\ListsDeals;
 use Devio\Pipedrive\Resources\Traits\ListsAttachedFiles;
@@ -15,7 +16,7 @@ class Organizations extends Entity
      *
      * @param       $id      The resource id
      * @param array $options Extra parameters
-     * @return mixed
+     * @return Response
      */
     public function persons($id, $options = [])
     {

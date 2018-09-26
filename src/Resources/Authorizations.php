@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
 
 class Authorizations extends Resource 
@@ -18,7 +19,7 @@ class Authorizations extends Resource
      * 
      * @param  string $email    Email for the user
      * @param  string $password Password for the user
-     * @return [type]           [description]
+     * @return Response
      */
     public function authorize($email, $password) {
         return $this->request->post('/', compact('email', 'password'));

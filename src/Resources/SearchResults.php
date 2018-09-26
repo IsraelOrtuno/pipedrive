@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
 use Devio\Pipedrive\Resources\Traits\DisablesFind;
 
@@ -19,7 +20,7 @@ class SearchResults extends Resource
      *
      * @param       $term
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function search($term, $options = [])
     {
@@ -35,7 +36,7 @@ class SearchResults extends Resource
      * @param       $field_type
      * @param       $field_key
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function searchFromField($term, $field_type, $field_key, $options = [])
     {
