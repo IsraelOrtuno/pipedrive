@@ -132,8 +132,8 @@ You might want to store this object inside the database. Storing the whole objec
 
 ```php
 public function setToken(\Devio\Pipedrive\PipedriveToken $token) {
-    $token->getAccessTokan(); // save it individually
-    $token->getRefreshTokan(); // save it individually
+    $token->getAccessToken(); // save it individually
+    $token->getRefreshToken(); // save it individually
     $token->expiresAt(); // save it individually
 }
 ```
