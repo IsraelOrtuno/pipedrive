@@ -22,6 +22,13 @@ class PipedriveClient4 implements Client
     protected $queryDefaults = [];
 
     /**
+     * Oauth flag
+     *
+     * @var bool.
+     */
+    protected $isOauth = false;
+
+    /**
      * GuzzleClient constructor.
      *
      * @param $url
@@ -33,7 +40,7 @@ class PipedriveClient4 implements Client
             [
                 'base_url' => $url,
                 'defaults' => [
-                    'query'   => ['api_token' => $token],
+                    'query' => ['api_token' => $token],
                 ]
             ]
         );
@@ -146,6 +153,14 @@ class PipedriveClient4 implements Client
         return new Response(
             $response->getStatusCode(), $body, $response->getHeaders()
         );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isOauth()
+    {
+        return $this->isOauth;
     }
 
     /**

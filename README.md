@@ -17,10 +17,11 @@ Do you like this package? Did you find it useful? Donate and support its develop
 
 ---
 
-This package provides a complete **framework agnostic** Pipedrive CRM API client library for PHP. It includes all the resources listed at Pipedrive's documentation.
+This package provides a complete **framework agnostic** Pipedrive CRM API client library for PHP. It includes all the resources listed on Pipedrive's documentation.
 
 Feel free to drop me a message at [israel@devio.es](mailto:israel@devio.es) or tweet me at [@IsraelOrtuno](https://twitter.com/IsraelOrtuno).
 
+## Quick start using API token (read below for OAuth)
 ```php
 $token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';
 $pipedrive = new Pipedrive($token);
@@ -41,6 +42,8 @@ For a deeper knowledge of how to use this package, follow this index:
 - [Installation](#installation)
 - [Usage](#usage)
     - [Create the Pipedrive instance](#create-the-pipedrive-instance)
+        - [With API token](#using-api-token)
+        - [With OAuth](#using-oauth)
     - [Resolve a Pipedrive API Resource](#resolve-a-pipedrive-api-resource)
 - [Performing a resource call](#performing-a-resource-call)
     - [Available methods](#available-methods)
@@ -75,16 +78,81 @@ Or simply add it to your composer.json dependences and run `composer update`:
 
 ## Create the Pipedrive instance
 
-`Devio\Pipedrive\Pipedrive` class acts as Manager and will be responsible of resolving the different API resources available. First of all we need to create an instance of this class with our Pipedrive API Token:
+`Devio\Pipedrive\Pipedrive` class acts as Manager and will be responsible of resolving the different API resources available.
+Pipedrive supports two different authentication methods: via **API token** (for manual integrations) and with **OAuth** (for public and private apps).
+You can read more about it on the official documentation, here: https://pipedrive.readme.io/docs/core-api-concepts-authentication 
+
+### Using API token
 
 ```php
 $token = 'PipedriveTokenHere';
-
 $pipedrive = new Pipedrive($token);
 ```
 
 > NOTE: Consider storing this object into a global variable.
 
+### Using OAuth
+
+To understand how the OAuth flow works, please read the documentation first.<br>You can find it here: https://pipedrive.readme.io/docs/marketplace-oauth-authorization
+
+You will first need to create an app and retrieve client_id and client_secret.
+Please, read the official documentation to learn how to do that.<br>You can find all you need here: https://pipedrive.readme.io/docs/marketplace-creating-a-proper-app
+
+Once you have your client_id, client_secret, and redirect_url, you can instantiate the class like this:
+```php
+$pipedrive = Pipedrive::OAuth([
+    'clientId' => '<your-client-id>',
+    'clientSecret' => '<your-client-secret>',
+    'redirectUrl' => '<your-redirect-url>',
+    'storage' => new PipedriveTokenIO() // This is your implementation of the PipedriveTokenStorage interface (example below)
+]);
+```
+**The class will automatically handle the redirect to the authentication server and refresh token requests.**
+
+The only thing you need to provide is your own implementation of the PipedriveTokenStorage interface.
+
+The purpose of this class is to read and write a `PipedriveToken` object, containing `access_token`, `refresh_token`, and `expiresAt`, giving you the ability to handle this information as you prefer (for example storing these properties in your preferred way).
+
+Here's an example of how it can be implemented:
+```php
+class PipedriveTokenIO implements \Devio\Pipedrive\PipedriveTokenStorage
+{
+    public function setToken(\Devio\Pipedrive\PipedriveToken $token) {
+        $_SESSION['token'] = serialize($token); // or encrypt and store in the db, or anything else...
+    }
+
+    public function getToken() { // Returns a PipedriveToken instance 
+        return isset($_SESSION['token']) ? unserialize($_SESSION['token']) : null;
+    }
+}
+```
+In this simple example, the PipedriveToken is simply stored and retrieved from the session. Which means that once the session expires, the user will be redirected to the authentication page.
+
+You might want to store this object inside the database. Storing the whole object serialized could be the fastest way to do that, but you can also retrieve access token, refresh token, and the expiration time individually using the methods `getAccessToken`, `getRefreshToken`, and `expiresAt`. Like this:
+
+```php
+public function setToken(\Devio\Pipedrive\PipedriveToken $token) {
+    $token->getAccessToken(); // save it individually
+    $token->getRefreshToken(); // save it individually
+    $token->expiresAt(); // save it individually
+}
+```
+Similarly, the object can be instantiated like so:
+```php
+$token = new \Devio\Pipedrive\PipedriveToken([
+    'accessToken' => 'xxxxx', // read it individually from the db
+    'refreshToken' => 'xxxxx', // read it individually from the db
+    'expiresAt' => 'xxxxx', // read it individually from the db
+]);
+```
+#### Handling the callback
+In the callback (the url you specified as `redirectUrl`), you should call the `authorize` method on the `$pipedrive` object, like so:
+```php
+if(!empty($_GET['code'])) {
+    $pipedrive->authorize($_GET['code']);
+}
+```
+This will exchange the authorization code for the first access token, and store it using the `setToken` method you provided.
 ## Resolve a Pipedrive API Resource
 
 Once we have our Pipedrive instance, we are able to resolve any Pipedrive API Resource in many ways.
@@ -95,7 +163,7 @@ First you could do it calling the `make()` method:
 // Organizations
 $organizations = $pipedrive->make('organizations');
 // Persons
-$organizations = $pipedrive->make('persons');
+$persons = $pipedrive->make('persons');
 // ...
 ````
 
@@ -103,19 +171,19 @@ It also intercepts the magic method `__get` so we could do:
 
 ```php
 // Deals
-$organizations = $pipedrive->deals;
+$deals = $pipedrive->deals;
 // Activities
-$organizations = $pipedrive->activities;
+$activities = $pipedrive->activities;
 // ...
 ```
 
-And just in case you preffer `__call`, you can use it too:
+And just in case you prefer `__call`, you can use it, too:
 
 ```php
 // EmailMessages
-$organizations = $pipedrive->emailMessages();
+$emailMessages = $pipedrive->emailMessages();
 // GlobalMessages
-$organizations = $pipedrive->globalMessages();
+$globalMessages = $pipedrive->globalMessages();
 // ...
 ```
 
@@ -130,7 +198,7 @@ They are 3 different ways of doing the same thing, pick the one you like the mos
 
 All resources have various methods for performing the different API requests. Please, navigate to the resource class you would like to work with to find out all the methods available. Every method is documented and can also be found at [Pipedrive API Docs page](https://developers.pipedrive.com/v1).
 
-Every resource extends from `Devio\Pipedrive\Resources\Basics\Resource` where the most common methods are defined. Some of them are disabled for the resources that do not inlcude them. Do not forget to check out the Traits included and some resources use, they define some other common calls to avoid code duplication.
+Every resource extends from `Devio\Pipedrive\Resources\Basics\Resource` where the most common methods are defined. Some of them are disabled for the resources that do not include them. Do not forget to check out the Traits included and some resources use, they define some other common calls to avoid code duplication.
 
 ### Performing the Request
 
@@ -236,7 +304,7 @@ $pipedrive->files->add([
 ]);
 ```
 
-Actually it is pretty simple, just pass a `\SplFileInfo` instance to the `file` key of the options array and specify at least one of the elements it goes related to (deal, person, ...).
+Actually, it is pretty simple. Just pass a `\SplFileInfo` instance to the `file` key of the options array and specify at least one of the elements it goes related to (deal, person, ...).
 
 # Configure and use in Laravel
 

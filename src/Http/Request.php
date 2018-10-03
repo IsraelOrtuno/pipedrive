@@ -6,6 +6,12 @@ use Devio\Pipedrive\Builder;
 use Devio\Pipedrive\Exceptions\PipedriveException;
 use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 
+/**
+ * @method Response get($type, $target, $options = [])
+ * @method Response post($type, $target, $options = [])
+ * @method Response put($type, $target, $options = [])
+ * @method Response delete($type, $target, $options = [])
+ */
 class Request
 {
     /**
@@ -23,7 +29,7 @@ class Request
     public function __construct(Client $client)
     {
         $this->client = $client;
-        $this->builder = new Builder();
+        $this->builder = $this->client->isOauth() ? Builder::OAuth() : new Builder();
     }
 
     /**
@@ -66,7 +72,7 @@ class Request
      * Handling the server response.
      *
      * @param Response $response
-     * @return mixed
+     * @return Response
      * @throws ItemNotFoundException
      * @throws PipedriveException
      */
@@ -77,7 +83,7 @@ class Request
         // If the request did not succeed, we will notify the user via Exception
         // and include the server error if found. If it is OK and also server
         // inludes the success variable, we will return the response data.
-        if (! isset($content) || !($response->getStatusCode() == 302 || $response->isSuccess() )) {
+        if (!isset($content) || !($response->getStatusCode() == 302 || $response->isSuccess())) {
             if ($response->getStatusCode() == 404) {
                 throw new ItemNotFoundException($content->error);
             }
@@ -115,12 +121,12 @@ class Request
      *
      * @param       $name
      * @param array $args
-     * @return mixed
+     * @return Response
      */
     public function __call($name, $args = [])
     {
         if (in_array($name, ['get', 'post', 'put', 'delete'])) {
-            $options = ! empty($args[1]) ? $args[1] : [];
+            $options = !empty($args[1]) ? $args[1] : [];
 
             // Will pass the function name as the request type. The second argument
             // is the URI passed to the method. The third parameter will include

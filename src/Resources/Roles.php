@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
 use Devio\Pipedrive\Resources\Traits\HandlesAssignments;
 
@@ -21,7 +22,7 @@ class Roles extends Resource
      *
      * @param       $id
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function subRoles($id, $options = [])
     {
@@ -34,7 +35,7 @@ class Roles extends Resource
      * List the role settings.
      *
      * @param $id
-     * @return mixed
+     * @return Response
      */
     public function settings($id)
     {
@@ -47,7 +48,7 @@ class Roles extends Resource
      * @param $id
      * @param $setting_key
      * @param $value
-     * @return mixed
+     * @return Response
      */
     public function setSetting($id, $setting_key, $value)
     {

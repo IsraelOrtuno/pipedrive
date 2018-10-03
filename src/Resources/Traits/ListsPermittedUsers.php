@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Resources\Traits;
 
+use Devio\Pipedrive\Http\Response;
+
 trait ListsPermittedUsers
 {
     /**
@@ -9,7 +11,7 @@ trait ListsPermittedUsers
      *
      * @param      $id           The resource id
      * @param null $access_level Access level value
-     * @return mixed
+     * @return Response
      */
     public function permittedUsers($id, $access_level = null)
     {
