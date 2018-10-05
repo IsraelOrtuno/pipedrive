@@ -40,5 +40,10 @@ interface Client
      */
     public function delete($url, $parameters = []);
 
+    /**
+     * Check if the client is configured for OAuth.
+     *
+     * @return bool
+     */
     public function isOauth();
 }

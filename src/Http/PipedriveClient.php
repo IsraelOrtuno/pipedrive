@@ -15,12 +15,12 @@ class PipedriveClient implements Client
      */
     protected $client;
 
+    /**
+     * Oauth flag
+     *
+     * @var bool.
+     */
     protected $isOauth = false;
-
-    public function isOauth()
-    {
-        return $this->isOauth;
-    }
 
     /**
      * GuzzleClient constructor.
@@ -30,37 +30,42 @@ class PipedriveClient implements Client
      */
     public function __construct($url, $credentials)
     {
+        list($headers, $query) = [[], []];
+
         if (gettype($credentials) == 'object') {
             $this->isOauth = true;
-            $headers = [
-                'Authorization' => 'Bearer ' . $credentials->access_token(),
-            ];
-            $query = [];
+            $headers['Authorization'] = 'Bearer ' . $credentials->getAccessToken();
         } else {
-            $headers = [];
-            $query = [
-                'api_token' => $credentials,
-            ];
+            $query['api_token'] = $credentials;
         }
+
         $this->client = new GuzzleClient(
             [
-                'base_uri' => $url,
+                'base_uri'        => $url,
                 'allow_redirects' => false,
-                'headers' => $headers,
-                'query' => $query
+                'headers'         => $headers,
+                'query'           => $query
             ]
         );
     }
 
+    /**
+     * Create an OAuth client.
+     *
+     * @param $url
+     * @param $storage
+     * @param $pipedrive
+     * @return PipedriveClient
+     */
     public static function OAuth($url, $storage, $pipedrive)
     {
         $token = $storage->getToken();
 
-        if (!$token || !$token->valid()) {
+        if (! $token || ! $token->valid()) {
             $pipedrive->OAuthRedirect();
         }
 
-        $token->refresh_if_needed($pipedrive);
+        $token->refreshIfNeeded($pipedrive);
 
         return new self($url, $token);
     }
@@ -75,7 +80,7 @@ class PipedriveClient implements Client
     public function get($url, $parameters = [])
     {
         $options = $this->getClient()
-            ->getConfig();
+                        ->getConfig();
         array_set($options, 'query', array_merge($parameters, $options['query']));
 
         // For this particular case we have to include the parameters into the
@@ -115,7 +120,7 @@ class PipedriveClient implements Client
      */
     protected function multipart(array $parameters)
     {
-        if (!($file = $parameters['file']) instanceof \SplFileInfo) {
+        if (! ($file = $parameters['file']) instanceof \SplFileInfo) {
             throw new \InvalidArgumentException('File must be an instance of \SplFileInfo.');
         }
 
@@ -123,7 +128,7 @@ class PipedriveClient implements Client
         $content = file_get_contents($file->getPathname());
 
         foreach (array_except($parameters, 'file') as $key => $value) {
-            $result[] = ['name' => $key, 'contents' => (string)$value];
+            $result[] = ['name' => $key, 'contents' => (string) $value];
         }
         // Will convert every element of the array into a format accepted by the
         // multipart encoding standards. It will also add a special item which
@@ -189,6 +194,14 @@ class PipedriveClient implements Client
         return new Response(
             $response->getStatusCode(), $body, $response->getHeaders()
         );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isOauth()
+    {
+        return $this->isOauth;
     }
 
     /**

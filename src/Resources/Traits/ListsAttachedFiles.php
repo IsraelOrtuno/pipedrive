@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Resources\Traits;
 
+use Devio\Pipedrive\Http\Response;
+
 trait ListsAttachedFiles
 {
     /**
@@ -9,7 +11,7 @@ trait ListsAttachedFiles
      *
      * @param       $id      The resource id
      * @param array $options Extra parameters
-     * @return mixed
+     * @return Response
      */
     public function attachedFiles($id, $options = [])
     {

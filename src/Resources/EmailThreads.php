@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
 
 class EmailThreads extends Resource
@@ -18,7 +19,7 @@ class EmailThreads extends Resource
      *
      * @param       $id
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function messages($id, $options = [])
     {

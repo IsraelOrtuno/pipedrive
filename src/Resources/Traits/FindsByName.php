@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Resources\Traits;
 
+use Devio\Pipedrive\Http\Response;
+
 trait FindsByName
 {
     /**
@@ -9,6 +11,7 @@ trait FindsByName
      *
      * @param       $term
      * @param array $options
+	 * @return Response
      */
     public function findByName($term, $options = [])
     {

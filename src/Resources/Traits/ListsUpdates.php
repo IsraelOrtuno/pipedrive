@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Resources\Traits;
 
+use Devio\Pipedrive\Http\Response;
+
 trait ListsUpdates
 {
     /**
@@ -9,7 +11,7 @@ trait ListsUpdates
      *
      * @param       $id
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function updates($id, $options = [])
     {

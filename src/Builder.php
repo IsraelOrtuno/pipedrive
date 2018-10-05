@@ -34,22 +34,10 @@ class Builder
      */
     protected $token;
 
+    /**
+     * OAuth enabled or disabled.
+     */
     protected $isOauth = false;
-
-    public function isOauth()
-    {
-        return $this->isOauth;
-    }
-
-    public static function OAuth()
-    {
-        $new = new self();
-
-        $new->base = 'https://api-proxy.pipedrive.com/{endpoint}';
-        $new->isOauth = true;
-
-        return $new;
-    }
 
     /**
      * Get the name of the URI parameters.
@@ -98,6 +86,27 @@ class Builder
         }
 
         return $endpoint;
+    }
+
+    /**
+     * Check if OAuth is enabled.
+     */
+    public function isOauth()
+    {
+        return $this->isOauth;
+    }
+
+    /**
+     * Get a builder instance prepared for OAuth.
+     */
+    public static function OAuth()
+    {
+        $instance = new self();
+
+        $instance->base = 'https://api-proxy.pipedrive.com/{endpoint}';
+        $instance->isOauth = true;
+
+        return $instance;
     }
 
     /**

@@ -6,6 +6,12 @@ use Devio\Pipedrive\Builder;
 use Devio\Pipedrive\Exceptions\PipedriveException;
 use Devio\Pipedrive\Exceptions\ItemNotFoundException;
 
+/**
+ * @method Response get($type, $target, $options = [])
+ * @method Response post($type, $target, $options = [])
+ * @method Response put($type, $target, $options = [])
+ * @method Response delete($type, $target, $options = [])
+ */
 class Request
 {
     /**
@@ -66,7 +72,7 @@ class Request
      * Handling the server response.
      *
      * @param Response $response
-     * @return mixed
+     * @return Response
      * @throws ItemNotFoundException
      * @throws PipedriveException
      */
@@ -115,7 +121,7 @@ class Request
      *
      * @param       $name
      * @param array $args
-     * @return mixed
+     * @return Response
      */
     public function __call($name, $args = [])
     {

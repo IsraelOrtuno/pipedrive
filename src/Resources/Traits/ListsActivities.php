@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Resources\Traits;
 
+use Devio\Pipedrive\Http\Response;
+
 trait ListsActivities
 {
     /**
@@ -9,7 +11,7 @@ trait ListsActivities
      *
      * @param       $id
      * @param array $options
-     * @return mixed
+     * @return Response
      */
     public function activities($id, $options = [])
     {

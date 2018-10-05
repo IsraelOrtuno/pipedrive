@@ -2,6 +2,7 @@
 
 namespace Devio\Pipedrive\Resources;
 
+use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
 use Devio\Pipedrive\Resources\Traits\FindsByName;
 use Devio\Pipedrive\Resources\Traits\ListsActivities;
@@ -28,7 +29,7 @@ class Users extends Resource
      * Get the user permissions.
      *
      * @param $id
-     * @return mixed
+     * @return Response
      */
     public function permissions($id)
     {
@@ -40,7 +41,7 @@ class Users extends Resource
      *
      * @param      $id
      * @param null $access_level
-     * @return mixed
+     * @return Response
      */
     public function permittedItems($id, $access_level = null)
     {
@@ -51,7 +52,7 @@ class Users extends Resource
      * Get the user blacklisted emails.
      *
      * @param $id
-     * @return mixed
+     * @return Response
      */
     public function blacklistedEmails($id)
     {
@@ -63,7 +64,7 @@ class Users extends Resource
      *
      * @param $id
      * @param $address
-     * @return mixed
+     * @return Response
      */
     public function addBlacklistedEmail($id, $address)
     {
