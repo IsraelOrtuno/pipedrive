@@ -101,16 +101,16 @@ class PipedriveToken
 
         $response = $client->request('POST', 'https://oauth.pipedrive.com/oauth/token', [
             'form_params' => [
-                'grant_type'   => 'refreshToken',
-                'refreshToken' => $this->refreshToken
+                'grant_type'   => 'refresh_token',
+                'refresh_token' => $this->refreshToken
             ]
         ]);
 
         $tokenInstance = json_decode($response->getBody());
 
-        $this->accessToken = $tokenInstance->accessToken;
+        $this->accessToken = $tokenInstance->access_token;
         $this->expiresAt = time() + $tokenInstance->expires_in;
-        $this->refreshToken = $tokenInstance->refreshToken;
+        $this->refreshToken = $tokenInstance->refresh_token;
 
         $storage = $pipedrive->getStorage();
 
