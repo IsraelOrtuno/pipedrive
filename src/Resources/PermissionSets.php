@@ -5,7 +5,7 @@ namespace Devio\Pipedrive\Resources;
 use Devio\Pipedrive\Resources\Basics\Resource;
 use Devio\Pipedrive\Resources\Traits\HandlesAssignments;
 
-class PermissionsSets extends Resource
+class PermissionSets extends Resource
 {
     use HandlesAssignments;
 
