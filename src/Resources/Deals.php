@@ -145,4 +145,15 @@ class Deals extends Entity
     {
         return $this->request->get(':id/emailMessages', compact('id'));
     }
+
+    /**
+     * Get the files for a deal.
+     *
+     * @param $id The deal id
+     * @return Response
+     */
+    public function files($id)
+    {
+        return $this->request->get(':id/files', compact('id'));
+    }
 }
