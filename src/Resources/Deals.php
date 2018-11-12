@@ -141,9 +141,9 @@ class Deals extends Entity
      * @param $id The deal id
      * @return Response
      */
-    public function emailMessages($id)
+    public function mailMessages($id)
     {
-        return $this->request->get(':id/emailMessages', compact('id'));
+        return $this->request->get(':id/mailMessages', compact('id'));
     }
 
     /**
