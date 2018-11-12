@@ -58,6 +58,10 @@ For a deeper knowledge of how to use this package, follow this index:
     - [Using it](#using-it)
 - [Contribute](#contribute)
 
+# Important
+
+Versions 1.x do not include OAuth support, update to version 2.x to use this feature.
+
 # Installation
 
 You can install the package via `composer require` command:
@@ -70,7 +74,7 @@ Or simply add it to your composer.json dependences and run `composer update`:
 
 ```json
 "require": {
-    "devio/pipedrive": "1.0.*"
+    "devio/pipedrive": "^2.0"
 }
 ```
 
