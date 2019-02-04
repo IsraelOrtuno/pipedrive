@@ -89,7 +89,13 @@ class Request
             }
 
             throw new PipedriveException(
-                isset($content->error) ? $content->error : "Error unknown."
+                isset($content->error) ? $content->error : "Error unknown.",
+                (int)$response->getStatusCode(),
+                null,
+                isset($content->error_info) ? $content->error_info : "Error info not provided",
+                isset($content->additional_data) ? $content->additional_data : "Additional data not provided",
+                isset($content->data) ? $content->data : "Data not provided",
+                isset($content->success) ? (bool)$content->success : false
             );
         }
 
