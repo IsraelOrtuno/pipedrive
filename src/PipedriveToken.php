@@ -81,11 +81,12 @@ class PipedriveToken
         return ! empty($this->accessToken);
     }
 
-    /**
-     * Refresh the token only if needed.
-     *
-     * @param $pipedrive
-     */
+	/**
+	 * Refresh the token only if needed.
+	 *
+	 * @param Pipedrive $pipedrive
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
     public function refreshIfNeeded($pipedrive)
     {
         if (! $this->needsRefresh()) {

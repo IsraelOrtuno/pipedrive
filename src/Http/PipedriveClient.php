@@ -2,6 +2,8 @@
 
 namespace Devio\Pipedrive\Http;
 
+use Devio\Pipedrive\Pipedrive;
+use Devio\Pipedrive\PipedriveTokenStorage;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
@@ -22,12 +24,12 @@ class PipedriveClient implements Client
      */
     protected $isOauth = false;
 
-    /**
-     * GuzzleClient constructor.
-     *
-     * @param $url
-     * @param $token
-     */
+	/**
+	 * GuzzleClient constructor.
+	 *
+	 * @param $url
+	 * @param $credentials
+	 */
     public function __construct($url, $credentials)
     {
         list($headers, $query) = [[], []];
@@ -49,14 +51,15 @@ class PipedriveClient implements Client
         );
     }
 
-    /**
-     * Create an OAuth client.
-     *
-     * @param $url
-     * @param $storage
-     * @param $pipedrive
-     * @return PipedriveClient
-     */
+	/**
+	 * Create an OAuth client.
+	 *
+	 * @param $url
+	 * @param PipedriveTokenStorage $storage
+	 * @param Pipedrive $pipedrive
+	 * @return PipedriveClient
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
     public static function OAuth($url, $storage, $pipedrive)
     {
         $token = $storage->getToken();

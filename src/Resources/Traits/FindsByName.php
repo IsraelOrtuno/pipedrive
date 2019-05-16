@@ -9,7 +9,7 @@ trait FindsByName
     /**
      * Find an element by name.
      *
-     * @param       $term
+     * @param string $term
      * @param array $options
 	 * @return Response
      */

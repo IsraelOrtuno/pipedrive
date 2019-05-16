@@ -132,11 +132,13 @@ class Pipedrive
         return $this->isOauth;
     }
 
-    /**
-     * Pipedrive constructor.
-     *
-     * @param $token
-     */
+	/**
+	 * Pipedrive constructor.
+	 *
+	 * @param string $token
+	 * @param string $uri
+	 * @param int $guzzleVersion
+	 */
     public function __construct($token = '', $uri = 'https://api.pipedrive.com/v1/', $guzzleVersion = 6)
     {
         $this->token = $token;
@@ -233,11 +235,12 @@ class Pipedrive
         return $this->storage->getToken();
     }
 
-    /**
-     * OAuth authorization.
-     *
-     * @param $code
-     */
+	/**
+	 * OAuth authorization.
+	 *
+	 * @param string $code
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
     public function authorize($code)
     {
         $client = new GuzzleClient([

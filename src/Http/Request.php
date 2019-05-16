@@ -53,14 +53,16 @@ class Request
         return $this->executeRequest($type, $endpoint, $query);
     }
 
-    /**
-     * Execute the query against the HTTP client.
-     *
-     * @param $type
-     * @param $endpoint
-     * @param $query
-     * @return mixed
-     */
+	/**
+	 * Execute the query against the HTTP client.
+	 *
+	 * @param $type
+	 * @param $endpoint
+	 * @param array $query
+	 * @return mixed
+	 * @throws ItemNotFoundException
+	 * @throws PipedriveException
+	 */
     protected function executeRequest($type, $endpoint, $query = [])
     {
         return $this->handleResponse(
