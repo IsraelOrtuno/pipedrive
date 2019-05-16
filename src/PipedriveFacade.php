@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Resources\OrganizationFields organizationFields()
  * @method static Resources\OrganizationRelationships organizationRelationships()
  * @method static Resources\Organizations organizations()
- * @method static Resources\PermissionsSets permissionsSets()
+ * @method static Resources\PermissionSets permissionSets()
  * @method static Resources\PersonFields personFields()
  * @method static Resources\Persons persons()
  * @method static Resources\Pipelines pipelines()

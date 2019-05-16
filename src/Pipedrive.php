@@ -21,7 +21,7 @@ use Devio\Pipedrive\Resources\Notes;
 use Devio\Pipedrive\Resources\OrganizationFields;
 use Devio\Pipedrive\Resources\OrganizationRelationships;
 use Devio\Pipedrive\Resources\Organizations;
-use Devio\Pipedrive\Resources\PermissionsSets;
+use Devio\Pipedrive\Resources\PermissionSets;
 use Devio\Pipedrive\Resources\PersonFields;
 use Devio\Pipedrive\Resources\Persons;
 use Devio\Pipedrive\Resources\Pipelines;
@@ -59,7 +59,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @method OrganizationFields organizationFields()
  * @method OrganizationRelationships organizationRelationships()
  * @method Organizations organizations()
- * @method PermissionsSets permissionsSets()
+ * @method PermissionSets permissionSets()
  * @method PersonFields personFields()
  * @method Persons persons()
  * @method Pipelines pipelines()
@@ -74,7 +74,6 @@ use GuzzleHttp\Client as GuzzleClient;
  * @method Users users()
  * @method UserSettings userSettings()
  */
-
 class Pipedrive
 {
     /**
