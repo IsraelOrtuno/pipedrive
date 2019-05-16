@@ -4,7 +4,6 @@ namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
-use Devio\Pipedrive\Resources\Traits\DisablesFind;
 
 class SearchResults extends Resource
 {

@@ -2,10 +2,10 @@
 
 namespace Devio\Pipedrive\Resources\Basics;
 
+use Devio\Pipedrive\Exceptions\PipedriveException;
+use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Http\Response;
 use ReflectionClass;
-use Devio\Pipedrive\Http\Request;
-use Devio\Pipedrive\Exceptions\PipedriveException;
 
 abstract class Resource
 {

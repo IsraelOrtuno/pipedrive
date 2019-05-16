@@ -2,7 +2,9 @@
 
 namespace Devio\Pipedrive;
 
+use Devio\Pipedrive\Http\PipedriveClient;
 use Devio\Pipedrive\Http\PipedriveClient4;
+use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Resources\Activities;
 use Devio\Pipedrive\Resources\ActivityFields;
 use Devio\Pipedrive\Resources\ActivityTypes;
@@ -35,10 +37,8 @@ use Devio\Pipedrive\Resources\Stages;
 use Devio\Pipedrive\Resources\UserConnections;
 use Devio\Pipedrive\Resources\Users;
 use Devio\Pipedrive\Resources\UserSettings;
-use Illuminate\Support\Str;
-use Devio\Pipedrive\Http\Request;
-use Devio\Pipedrive\Http\PipedriveClient;
 use GuzzleHttp\Client as GuzzleClient;
+use Illuminate\Support\Str;
 
 /**
  * @method Activities activities()

@@ -3,8 +3,8 @@
 namespace Devio\Pipedrive\Http;
 
 use Devio\Pipedrive\Builder;
-use Devio\Pipedrive\Exceptions\PipedriveException;
 use Devio\Pipedrive\Exceptions\ItemNotFoundException;
+use Devio\Pipedrive\Exceptions\PipedriveException;
 
 /**
  * @method Response get($type, $target, $options = [])

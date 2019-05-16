@@ -3,12 +3,11 @@
 namespace Devio\Pipedrive\Http;
 
 use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Post\PostFile;
-// use GuzzleHttp\Psr7\Request as GuzzleRequest;
-use GuzzleHttp\Message\Request as GuzzleRequest;
 use GuzzleHttp\Exception\BadResponseException;
-use Psr\Http\Message\RequestInterface;
+use GuzzleHttp\Message\Request as GuzzleRequest;
+use GuzzleHttp\Post\PostFile;
+
+// use GuzzleHttp\Psr7\Request as GuzzleRequest;
 
 class PipedriveClient4 implements Client
 {

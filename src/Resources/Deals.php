@@ -4,8 +4,8 @@ namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Entity;
-use Devio\Pipedrive\Resources\Traits\ListsProducts;
 use Devio\Pipedrive\Resources\Traits\ListsAttachedFiles;
+use Devio\Pipedrive\Resources\Traits\ListsProducts;
 
 class Deals extends Entity
 {

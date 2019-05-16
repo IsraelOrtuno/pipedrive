@@ -2,8 +2,6 @@
 
 namespace Devio\Pipedrive;
 
-use Devio\Pipedrive\Exceptions\TokenNotSetException;
-
 class Builder
 {
     /**
@@ -113,7 +111,6 @@ class Builder
      * Get the full URI with the endpoint if any.
      *
      * @return string
-     * @throws TokenNotSetException
      */
     protected function getEndpoint()
     {

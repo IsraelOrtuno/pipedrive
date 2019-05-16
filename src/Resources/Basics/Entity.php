@@ -5,10 +5,10 @@ namespace Devio\Pipedrive\Resources\Basics;
 use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Traits\FindsByName;
 use Devio\Pipedrive\Resources\Traits\ListsActivities;
-use Devio\Pipedrive\Resources\Traits\ListsUpdates;
-use Devio\Pipedrive\Resources\Traits\ListsFollowers;
 use Devio\Pipedrive\Resources\Traits\ListsAttachedFiles;
+use Devio\Pipedrive\Resources\Traits\ListsFollowers;
 use Devio\Pipedrive\Resources\Traits\ListsPermittedUsers;
+use Devio\Pipedrive\Resources\Traits\ListsUpdates;
 
 abstract class Entity extends Resource
 {
