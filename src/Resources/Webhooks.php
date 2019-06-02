@@ -39,7 +39,7 @@ class Webhooks extends Resource
      */
     public function find($id)
     {
-        throw new PipedriveException("The method deleteBulk() is not available for the resource {$this->getName()}");
+        throw new PipedriveException("The method find() is not available for the resource {$this->getName()}");
     }
 
     /**
@@ -52,7 +52,7 @@ class Webhooks extends Resource
      */
     public function update($id, array $values)
     {
-        throw new PipedriveException("The method deleteBulk() is not available for the resource {$this->getName()}");
+        throw new PipedriveException("The method update() is not available for the resource {$this->getName()}");
     }
 
 }
