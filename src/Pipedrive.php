@@ -35,6 +35,7 @@ use Devio\Pipedrive\Resources\Stages;
 use Devio\Pipedrive\Resources\UserConnections;
 use Devio\Pipedrive\Resources\Users;
 use Devio\Pipedrive\Resources\UserSettings;
+use Devio\Pipedrive\Resources\Webhooks;
 use Illuminate\Support\Str;
 use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Http\PipedriveClient;
@@ -73,6 +74,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @method UserConnections userConnections()
  * @method Users users()
  * @method UserSettings userSettings()
+ * @method Webhooks webhooks()
  */
 class Pipedrive
 {
