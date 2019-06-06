@@ -21,7 +21,7 @@ class Webhooks extends Resource
      *
      * @var array
      */
-    protected $enabled = ['*'];
+    protected $enabled = ['add', 'delete', 'find'];
 
     /**
      * List of abstract methods disabled.
@@ -54,5 +54,4 @@ class Webhooks extends Resource
     {
         throw new PipedriveException("The method update() is not available for the resource {$this->getName()}");
     }
-
 }
