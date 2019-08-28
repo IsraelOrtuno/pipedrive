@@ -158,7 +158,7 @@ class Pipedrive
     {
         $guzzleVersion = isset($config['guzzleVersion']) ? $config['guzzleVersion'] : 6;
 
-        $new = new self('oauth', 'https://api-proxy.pipedrive.com/', $guzzleVersion);
+        $new = new self('oauth', 'https://api.pipedrive.com/', $guzzleVersion);
 
         $new->isOauth = true;
 
