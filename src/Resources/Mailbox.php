@@ -31,4 +31,15 @@ class Mailbox extends Resource
 
         return $this->request->get('mailThreads', $options);
     }
+    
+    /**
+     * Get mail messages inside specified mail thread by ID.
+     *
+     * @param $id   Mail threads ID to find messages.
+	 * @return Response
+     */
+    public function mailMessages($id)
+    {
+        return $this->request->get('mailThreads/:id/mailMessages', compact('id'));
+    }
 }
