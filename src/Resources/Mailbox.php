@@ -19,13 +19,37 @@ class Mailbox extends Resource
     }
 
     /**
+     * Delete Mail threads by ID.
+     *
+     * @param $id   Mail threads ID to delete.
+	 * @return Response
+     */
+    public function delete($id)
+    {
+        return $this->request->delete('mailThreads/:id', compact('id'));
+    }
+
+    /**
+     * Update Mail threads by ID.
+     *
+     * @param       $id
+     * @param array $values
+	 * @return Response
+     */
+    public function update($id, array $values)
+    {
+        $values['id'] = $id;
+        return $this->request->put('mailThreads/:id', $values);
+    }
+
+    /**
      * Get list of mail threads
      *
      * @param       $folder
      * @param array $options
 	 * @return Response 
      */
-    public function mailThreads($folder, $options = [])
+    public function mailThreads($folder, array $options = [])
     {
         $options['folder'] = $folder;
 
@@ -38,8 +62,9 @@ class Mailbox extends Resource
      * @param $id   Mail threads ID to find messages.
 	 * @return Response
      */
-    public function mailMessages($id)
+    public function mailMessages($id, $params=[])
     {
-        return $this->request->get('mailThreads/:id/mailMessages', compact('id'));
+        $params['id'] = $id;
+        return $this->request->get('mailThreads/:id/mailMessages', $params);
     }
 }
