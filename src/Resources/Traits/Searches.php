@@ -4,7 +4,7 @@ namespace Devio\Pipedrive\Resources\Traits;
 
 use Devio\Pipedrive\Http\Response;
 
-trait Search
+trait Searches
 {
     /**
      * @param       $term
