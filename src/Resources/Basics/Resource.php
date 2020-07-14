@@ -56,7 +56,7 @@ abstract class Resource
     /**
      * Get the entity details by ID.
      *
-     * @param $id   Entity ID to find.
+     * @param int $id Entity ID to find.
 	 * @return Response
      */
     public function find($id)
