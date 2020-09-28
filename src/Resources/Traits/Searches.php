@@ -12,7 +12,7 @@ trait Searches
      *
      * @return Response
      */
-    public function search($term, $fields = [])
+    public function search($term, $fields = [], $options = [])
     {
         $options['term'] = $term;
         $options['fields'] = $fields;
