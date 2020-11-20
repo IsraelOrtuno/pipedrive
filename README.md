@@ -7,7 +7,7 @@ Complete Pipedrive API client for PHP
 
 This won't take much time. You could use my referral code or link to get up to 45 days completely free of charge. Just sign up using this link or add the code to the billing section:
 
-[af-devio](https://www.pipedrive.com/register?promocode=af-devio)
+[pdp-devio](https://www.pipedrive.com/register?promocode=pdp-devio)
 
 ## Consider donating
 
@@ -18,6 +18,8 @@ Do you like this package? Did you find it useful? Donate and support its develop
 ---
 
 This package provides a complete **framework agnostic** Pipedrive CRM API client library for PHP. It includes all the resources listed on Pipedrive's documentation.
+
+**IMPORTANT:** If you are using Laravel >= 5.8 make sure your version is > 2.1.0.
 
 Feel free to drop me a message at [israel@devio.es](mailto:israel@devio.es) or tweet me at [@IsraelOrtuno](https://twitter.com/IsraelOrtuno).
 
