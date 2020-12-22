@@ -14,6 +14,8 @@ class Leads extends Resource
      */
     protected $disabled = ['deleteBulk'];
 
+    protected $addPostedAsJson = true;
+
     /**
      * Get all labels.
      *
