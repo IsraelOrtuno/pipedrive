@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Resources\Filters filters()
  * @method static Resources\GlobalMessages globalMessages()
  * @method static Resources\Goals goals()
+ * @method static Resources\Leads leads()
  * @method static Resources\NoteFields noteFields()
  * @method static Resources\Notes notes()
  * @method static Resources\OrganizationFields organizationFields()
@@ -37,6 +38,40 @@ use Illuminate\Support\Facades\Facade;
  * @method static Resources\UserConnections userConnections()
  * @method static Resources\Users users()
  * @method static Resources\UserSettings userSettings()
+ * @property-read Resources\Activities $activities
+ * @property-read Resources\ActivityFields $activityFields
+ * @property-read Resources\ActivityTypes $activityTypes
+ * @property-read Resources\Authorizations $authorizations
+ * @property-read Resources\Currencies $currencies
+ * @property-read Resources\DealFields $dealFields
+ * @property-read Resources\Deals $deals
+ * @property-read Resources\EmailMessages $emailMessages
+ * @property-read Resources\EmailThreads $emailThreads
+ * @property-read Resources\Files $files
+ * @property-read Resources\Filters $filters
+ * @property-read Resources\GlobalMessages $globalMessages
+ * @property-read Resources\Goals $goals
+ * @property-read Resources\Leads $leads
+ * @property-read Resources\NoteFields $noteFields
+ * @property-read Resources\Notes $notes
+ * @property-read Resources\OrganizationFields $organizationFields
+ * @property-read Resources\OrganizationRelationships $organizationRelationships
+ * @property-read Resources\Organizations $organizations
+ * @property-read Resources\PermissionSets $permissionSets
+ * @property-read Resources\PersonFields $personFields
+ * @property-read Resources\Persons $persons
+ * @property-read Resources\Pipelines $pipelines
+ * @property-read Resources\ProductFields $productFields
+ * @property-read Resources\Products $products
+ * @property-read Resources\PushNotifications $pushNotifications
+ * @property-read Resources\Recents $recents
+ * @property-read Resources\Roles $roles
+ * @property-read Resources\SearchResults $searchResults
+ * @property-read Resources\Stages $stages
+ * @property-read Resources\UserConnections $userConnections
+ * @property-read Resources\Users $users
+ * @property-read Resources\UserSettings $userSettings
+ * @property-read Resources\Webhooks $webhooks
  */
 class PipedriveFacade extends Facade
 {
