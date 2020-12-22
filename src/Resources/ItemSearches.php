@@ -5,10 +5,7 @@ namespace Devio\Pipedrive\Resources;
 use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
 
-/**
- * @deprecated
- */
-class SearchResults extends Resource
+class ItemSearches extends Resource
 {
     /**
      * Enabled abstract methods.

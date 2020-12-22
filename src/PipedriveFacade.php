@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Resources\Filters filters()
  * @method static Resources\GlobalMessages globalMessages()
  * @method static Resources\Goals goals()
+ * @method static Resources\ItemSearches itemSearches()
  * @method static Resources\NoteFields noteFields()
  * @method static Resources\Notes notes()
  * @method static Resources\OrganizationFields organizationFields()
