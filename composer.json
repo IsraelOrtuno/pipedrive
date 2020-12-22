@@ -22,5 +22,15 @@
         "psr-4": {
             "Devio\\Pipedrive\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Devio\\Pipedrive\\PipedriveServiceProvider"
+            ],
+            "aliases": {
+                "Pipedrive": "Devio\\Pipedrive\\PipedriveFacade"
+            }
+        }
     }
 }
