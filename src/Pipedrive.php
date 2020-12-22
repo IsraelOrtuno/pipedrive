@@ -16,6 +16,7 @@ use Devio\Pipedrive\Resources\Files;
 use Devio\Pipedrive\Resources\Filters;
 use Devio\Pipedrive\Resources\GlobalMessages;
 use Devio\Pipedrive\Resources\Goals;
+use Devio\Pipedrive\Resources\Leads;
 use Devio\Pipedrive\Resources\NoteFields;
 use Devio\Pipedrive\Resources\Notes;
 use Devio\Pipedrive\Resources\OrganizationFields;
@@ -55,6 +56,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @method Filters filters()
  * @method GlobalMessages globalMessages()
  * @method Goals goals()
+ * @method Leads leads()
  * @method NoteFields noteFields()
  * @method Notes notes()
  * @method OrganizationFields organizationFields()
@@ -75,6 +77,40 @@ use GuzzleHttp\Client as GuzzleClient;
  * @method Users users()
  * @method UserSettings userSettings()
  * @method Webhooks webhooks()
+ * @property-read Activities $activities
+ * @property-read ActivityFields $activityFields
+ * @property-read ActivityTypes $activityTypes
+ * @property-read Authorizations $authorizations
+ * @property-read Currencies $currencies
+ * @property-read DealFields $dealFields
+ * @property-read Deals $deals
+ * @property-read EmailMessages $emailMessages
+ * @property-read EmailThreads $emailThreads
+ * @property-read Files $files
+ * @property-read Filters $filters
+ * @property-read GlobalMessages $globalMessages
+ * @property-read Goals $goals
+ * @property-read Leads $leads
+ * @property-read NoteFields $noteFields
+ * @property-read Notes $notes
+ * @property-read OrganizationFields $organizationFields
+ * @property-read OrganizationRelationships $organizationRelationships
+ * @property-read Organizations $organizations
+ * @property-read PermissionSets $permissionSets
+ * @property-read PersonFields $personFields
+ * @property-read Persons $persons
+ * @property-read Pipelines $pipelines
+ * @property-read ProductFields $productFields
+ * @property-read Products $products
+ * @property-read PushNotifications $pushNotifications
+ * @property-read Recents $recents
+ * @property-read Roles $roles
+ * @property-read SearchResults $searchResults
+ * @property-read Stages $stages
+ * @property-read UserConnections $userConnections
+ * @property-read Users $users
+ * @property-read UserSettings $userSettings
+ * @property-read Webhooks $webhooks
  */
 class Pipedrive
 {
