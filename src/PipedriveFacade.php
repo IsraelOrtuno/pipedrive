@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Resources\Filters filters()
  * @method static Resources\GlobalMessages globalMessages()
  * @method static Resources\Goals goals()
+ * @method static Resources\ItemSearches itemSearches()
  * @method static Resources\Leads leads()
  * @method static Resources\NoteFields noteFields()
  * @method static Resources\Notes notes()
@@ -51,6 +52,7 @@ use Illuminate\Support\Facades\Facade;
  * @property-read Resources\Filters $filters
  * @property-read Resources\GlobalMessages $globalMessages
  * @property-read Resources\Goals $goals
+ * @property-read Resources\ItemSearches $itemSearches
  * @property-read Resources\Leads $leads
  * @property-read Resources\NoteFields $noteFields
  * @property-read Resources\Notes $notes

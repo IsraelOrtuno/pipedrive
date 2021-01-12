@@ -16,6 +16,7 @@ use Devio\Pipedrive\Resources\Files;
 use Devio\Pipedrive\Resources\Filters;
 use Devio\Pipedrive\Resources\GlobalMessages;
 use Devio\Pipedrive\Resources\Goals;
+use Devio\Pipedrive\Resources\ItemSearches;
 use Devio\Pipedrive\Resources\Leads;
 use Devio\Pipedrive\Resources\NoteFields;
 use Devio\Pipedrive\Resources\Notes;
@@ -56,6 +57,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @method Filters filters()
  * @method GlobalMessages globalMessages()
  * @method Goals goals()
+ * @method ItemSearches itemSearches()
  * @method Leads leads()
  * @method NoteFields noteFields()
  * @method Notes notes()
@@ -90,6 +92,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @property-read Filters $filters
  * @property-read GlobalMessages $globalMessages
  * @property-read Goals $goals
+ * @property-read ItemSearches $itemSearches
  * @property-read Leads $leads
  * @property-read NoteFields $noteFields
  * @property-read Notes $notes
