@@ -5,7 +5,7 @@ namespace Devio\Pipedrive\Resources;
 use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
 
-class ItemSearches extends Resource
+class ItemSearch extends Resource
 {
     /**
      * Enabled abstract methods.
