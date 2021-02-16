@@ -4,7 +4,6 @@ namespace Devio\Pipedrive\Resources;
 
 use Devio\Pipedrive\Http\Response;
 use Devio\Pipedrive\Resources\Basics\Resource;
-use Devio\Pipedrive\Resources\Traits\FindsByName;
 use Devio\Pipedrive\Resources\Traits\ListsActivities;
 use Devio\Pipedrive\Resources\Traits\ListsUpdates;
 use Devio\Pipedrive\Resources\Traits\ListsFollowers;
@@ -12,8 +11,7 @@ use Devio\Pipedrive\Resources\Traits\ListsPermittedUsers;
 
 class Users extends Resource
 {
-    use FindsByName,
-        ListsActivities,
+    use ListsActivities,
         ListsFollowers,
         ListsPermittedUsers,
         ListsUpdates;
@@ -69,5 +67,19 @@ class Users extends Resource
     public function addBlacklistedEmail($id, $address)
     {
         return $this->request->post(':id/blacklistedEmails', compact('id', 'address'));
+    }
+
+    /**
+     * Find an element by name.
+     *
+     * @param       $term
+     * @param array $options
+	 * @return Response
+     */
+    public function findByName($term, $options = [])
+    {
+        $options['term'] = $term;
+
+        return $this->request->get('find', $options);
     }
 }
