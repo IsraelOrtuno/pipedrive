@@ -89,7 +89,7 @@ class Request
             }
 
             throw new PipedriveException(
-                isset($content->error) ? $content->error : "Error unknown."
+                isset($content->error) ? $content->error->message : "Error unknown."
             );
         }
 
