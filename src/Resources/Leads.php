@@ -23,12 +23,9 @@ class Leads extends Resource
      */
     public function labels()
     {
-        $this->request->setResource('/');
-        $result = $this->request->get('leadLabels');
+        $this->request->setResource('leadLabels');
 
-        $this->request->setResource($this->getName());
-
-        return $result;
+        return $this->request->get('');
     }
 
     /**
@@ -38,13 +35,13 @@ class Leads extends Resource
      */
     public function addLabel(array $values = [])
     {
-        $this->request->setResource('/');
-        $result = $this->request->post('leadLabels', $values);
+        $this->request->setResource('leadLabels');
 
-        $this->request->setResource($this->getName());
+        $values['json'] = true;
 
-        return $result;
+        return $this->request->post('', $values);
     }
+
 
     /**
      * Delete a label.
@@ -53,12 +50,9 @@ class Leads extends Resource
      */
     public function deleteLabel($id)
     {
-        $this->request->setResource('/');
-        $result = $this->request->delete('leadLabels/' . $id);
+        $this->request->setResource('leadLabels');
 
-        $this->request->setResource($this->getName());
-
-        return $result;
+        return $this->request->delete('' . $id);
     }
 
     /**
@@ -68,12 +62,9 @@ class Leads extends Resource
      */
     public function update($id, array $values = [])
     {
-        $this->request->setResource('/');
-        $result = $this->request->put('leadLabels/' . $id, $values);
+        $this->request->setResource('leadLabels');
 
-        $this->request->setResource($this->getName());
-
-        return $result;
+        return $this->request->put('/' . $id, $values);
     }
 
     /**
@@ -83,11 +74,8 @@ class Leads extends Resource
      */
     public function sources()
     {
-        $this->request->setResource('/');
-        $result = $this->request->get('leadSources');
+        $this->request->setResource('leadSources');
 
-        $this->request->setResource($this->getName());
-
-        return $result;
+        return $this->request->get('');
     }
 }
