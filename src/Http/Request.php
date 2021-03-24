@@ -85,7 +85,7 @@ class Request
         // inludes the success variable, we will return the response data.
         if (!isset($content) || !($response->getStatusCode() == 302 || $response->isSuccess())) {
             if ($response->getStatusCode() == 404) {
-                throw new ItemNotFoundException($content->error);
+                throw new ItemNotFoundException(isset($content->error) ? $content->error : "Error unknown.");
             }
 
             throw new PipedriveException(
