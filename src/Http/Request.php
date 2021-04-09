@@ -89,9 +89,6 @@ class Request
             }
 
             $this->throwPipedriveException($content);
-            throw new PipedriveException(
-                isset($content->error) ? $content->error->message : "Error unknown."
-            );
         }
 
         return $response;
