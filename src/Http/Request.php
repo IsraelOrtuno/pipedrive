@@ -88,12 +88,30 @@ class Request
                 throw new ItemNotFoundException(isset($content->error) ? $content->error : "Error unknown.");
             }
 
-            throw new PipedriveException(
-                isset($content->error) ? $content->error->message : "Error unknown."
-            );
+            $this->throwPipedriveException($content);
         }
 
         return $response;
+    }
+    
+    /**
+     * Throws PipedriveException with message depending on content.
+     *
+     * @param string $content
+     */
+    protected function throwPipedriveException($content)
+    {
+        if (!isset($content->error))
+        {
+            throw new PipedriveException('Error unknown.');
+        }
+        
+        if (property_exists($content->error, 'message'))
+        {
+            throw new PipedriveException($content->error->message);
+        }
+        
+        throw new PipedriveException($content->error);
     }
 
     /**
