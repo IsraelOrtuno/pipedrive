@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Resources\ActivityTypes activityTypes()
  * @method static Resources\Authorizations authorizations()
  * @method static Resources\Currencies currencies()
+ * @method static Resources\CallLogs callLogs()
  * @method static Resources\DealFields dealFields()
  * @method static Resources\Deals deals()
  * @method static Resources\EmailMessages emailMessages()
@@ -43,6 +44,7 @@ use Illuminate\Support\Facades\Facade;
  * @property-read Resources\ActivityFields $activityFields
  * @property-read Resources\ActivityTypes $activityTypes
  * @property-read Resources\Authorizations $authorizations
+ * @property-read Resources\CallLogs $callLogs
  * @property-read Resources\Currencies $currencies
  * @property-read Resources\DealFields $dealFields
  * @property-read Resources\Deals $deals

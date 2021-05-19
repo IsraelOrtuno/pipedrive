@@ -7,6 +7,7 @@ use Devio\Pipedrive\Resources\Activities;
 use Devio\Pipedrive\Resources\ActivityFields;
 use Devio\Pipedrive\Resources\ActivityTypes;
 use Devio\Pipedrive\Resources\Authorizations;
+use Devio\Pipedrive\Resources\CallLogs;
 use Devio\Pipedrive\Resources\Currencies;
 use Devio\Pipedrive\Resources\DealFields;
 use Devio\Pipedrive\Resources\Deals;
@@ -48,6 +49,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @method ActivityFields activityFields()
  * @method ActivityTypes activityTypes()
  * @method Authorizations authorizations()
+ * @method CallLogs callLogs()
  * @method Currencies currencies()
  * @method DealFields dealFields()
  * @method Deals deals()
@@ -83,6 +85,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @property-read ActivityFields $activityFields
  * @property-read ActivityTypes $activityTypes
  * @property-read Authorizations $authorizations
+ * @property-read CallLogs $callLogs
  * @property-read Currencies $currencies
  * @property-read DealFields $dealFields
  * @property-read Deals $deals
