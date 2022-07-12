@@ -63,11 +63,23 @@ class Leads extends Resource
      * @param array $values
      * @return Response
      */
-    public function update($id, array $values = [])
+    public function updateLabel($id, array $values = [])
     {
         $this->request->setResource('leadLabels');
 
         return $this->request->put('/' . $id, $values);
+    }
+
+    /**
+     * @param $id
+     * @param array $values
+     * @return Response
+     */
+    public function update($id, array $values = [])
+    {
+        $this->request->setResource('leads');
+
+        return $this->request->get('');
     }
 
     /**
