@@ -77,9 +77,11 @@ class Leads extends Resource
      */
     public function update($id, array $values = [])
     {
-        $this->request->setResource('leads');
+        $values['json'] = true;
 
-        return $this->request->get('');
+        array_set($values, 'id', $id);
+
+        return $this->request->patch(':id', $values);
     }
 
     /**
