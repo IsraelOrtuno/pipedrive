@@ -89,16 +89,24 @@ class Request
                 throw new ItemNotFoundException(isset($content->error) ? $content->error : "Error unknown.");
             }
 
+            if ($response->getStatusCode() == 403) {
+                throw new PipedriveException(
+                    isset($content->error) ? $content->error : 'Forbidden',
+                    $response->getStatusCode()
+                );
+            }
+
             $this->throwPipedriveException($content);
         }
 
         return $response;
     }
-    
+
     /**
      * Throws PipedriveException with message depending on content.
      *
      * @param string $content
+     * @throws \Devio\Pipedrive\Exceptions\PipedriveException
      */
     protected function throwPipedriveException($content)
     {
