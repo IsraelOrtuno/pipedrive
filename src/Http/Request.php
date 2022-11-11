@@ -89,6 +89,13 @@ class Request
                 throw new ItemNotFoundException(isset($content->error) ? $content->error : "Error unknown.");
             }
 
+            if ($response->getStatusCode() == 401) {
+                throw new PipedriveException(
+                    isset($content->error) ? $content->error : 'Unauthorized',
+                    $response->getStatusCode()
+                );
+            }
+
             if ($response->getStatusCode() == 403) {
                 throw new PipedriveException(
                     isset($content->error) ? $content->error : 'Forbidden',
