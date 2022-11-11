@@ -1,5 +1,5 @@
 {
-    "name": "orudenkoas/pipedrive",
+    "name": "devio/pipedrive",
     "description": "Complete Pipedrive API client for PHP and/or Laravel",
     "keywords": ["pipedrive", "api", "client", "laravel"],
     "license": "MIT",
