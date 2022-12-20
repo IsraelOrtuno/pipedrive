@@ -23,6 +23,13 @@ class Request
     protected $client;
 
     /**
+     * The Builder instance.
+     *
+     * @var Builder
+     */
+    protected $builder;
+
+    /**
      * Request constructor.
      *
      * @param Client $client
