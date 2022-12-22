@@ -31,7 +31,7 @@ class PipedriveClient implements Client
      */
     public function __construct($url, $credentials)
     {
-        list($headers, $query) = [[], []];
+        list($headers, $query) = [[], ['limit' => config('services.pipedrive.limit', 500)]];
 
         if (gettype($credentials) == 'object') {
             $this->isOauth = true;
