@@ -28,7 +28,7 @@ class Users extends Resource
     /**
      * Get the user permissions.
      *
-     * @param $id
+     * @param int $id
      * @return Response
      */
     public function permissions($id)
