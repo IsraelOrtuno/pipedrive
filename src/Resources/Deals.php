@@ -120,7 +120,7 @@ class Deals extends Entity
     public function deleteProduct($id, $product_attachment_id)
     {
         return $this->request->delete(
-            ':id/products',
+            ':id/products/:product_attachment_id',
             compact('id', 'product_attachment_id')
         );
     }
