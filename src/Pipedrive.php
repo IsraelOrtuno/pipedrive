@@ -35,6 +35,7 @@ use Devio\Pipedrive\Resources\Recents;
 use Devio\Pipedrive\Resources\Roles;
 use Devio\Pipedrive\Resources\SearchResults;
 use Devio\Pipedrive\Resources\Stages;
+use Devio\Pipedrive\Resources\Subscriptions;
 use Devio\Pipedrive\Resources\UserConnections;
 use Devio\Pipedrive\Resources\Users;
 use Devio\Pipedrive\Resources\UserSettings;
@@ -77,6 +78,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @method Roles roles()
  * @method SearchResults searchResults()
  * @method Stages stages()
+ * @method Subscriptions subscriptions()
  * @method UserConnections userConnections()
  * @method Users users()
  * @method UserSettings userSettings()
@@ -113,6 +115,7 @@ use GuzzleHttp\Client as GuzzleClient;
  * @property-read Roles $roles
  * @property-read SearchResults $searchResults
  * @property-read Stages $stages
+ * @property-read Subscriptions $subscriptions
  * @property-read UserConnections $userConnections
  * @property-read Users $users
  * @property-read UserSettings $userSettings
