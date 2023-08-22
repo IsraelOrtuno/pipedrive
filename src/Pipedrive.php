@@ -43,6 +43,8 @@ use Illuminate\Support\Str;
 use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Http\PipedriveClient;
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\RequestOptions;
+use ReflectionClass;
 
 /**
  * @method Activities activities()
@@ -171,6 +173,13 @@ class Pipedrive
      */
     protected $storage;
 
+    /**
+     * A list of request options.
+     *
+     * @var array
+     */
+    protected $requestOptions;
+
     public function isOauth()
     {
         return $this->isOauth;
@@ -179,15 +188,36 @@ class Pipedrive
     /**
      * Pipedrive constructor.
      *
-     * @param $token
+     * @param string $token
+     * @param string $uri
+     * @param int $guzzleVersion
+     * @param array $requestOptions
      */
-    public function __construct($token = '', $uri = 'https://api.pipedrive.com/v1/', $guzzleVersion = 6)
+    public function __construct($token = '', $uri = 'https://api.pipedrive.com/v1/', $guzzleVersion = 6, $requestOptions = [])
     {
         $this->token = $token;
         $this->baseURI = $uri;
         $this->guzzleVersion = $guzzleVersion;
 
         $this->isOauth = false;
+
+        if (empty($requestOptions) || !is_array($requestOptions)) {
+            $this->requestOptions = [];
+            return;
+        }
+
+        $refRequestOptions     = new ReflectionClass(RequestOptions::class);
+        $requestOptionsAllowed = $refRequestOptions->getConstants();
+
+        $requestOptions = array_filter(
+            $requestOptions,
+            function ($option) use ($requestOptionsAllowed) {
+                return in_array($option, $requestOptionsAllowed);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        $this->requestOptions = $requestOptions;
     }
 
     /**
@@ -198,9 +228,10 @@ class Pipedrive
      */
     public static function OAuth($config)
     {
-        $guzzleVersion = isset($config['guzzleVersion']) ? $config['guzzleVersion'] : 6;
+        $guzzleVersion  = $config['guzzleVersion'] ?? 6;
+        $requestOptions = $config['requestOptions'] ?? [];
 
-        $new = new self('oauth', 'https://api.pipedrive.com/', $guzzleVersion);
+        $new = new self('oauth', 'https://api.pipedrive.com/', $guzzleVersion, $requestOptions);
 
         $new->isOauth = true;
 
@@ -352,7 +383,7 @@ class Pipedrive
         if ($this->guzzleVersion >= 6) {
             return $this->isOauth()
                 ? PipedriveClient::OAuth($this->getBaseURI(), $this->storage, $this)
-                : new PipedriveClient($this->getBaseURI(), $this->token);
+                : new PipedriveClient($this->getBaseURI(), $this->token, $this->requestOptions);
         } else {
             return new PipedriveClient4($this->getBaseURI(), $this->token);
         }
@@ -386,6 +417,14 @@ class Pipedrive
     public function setToken($token)
     {
         $this->token = $token;
+    }
+
+    /**
+     * Get a list of request options.
+     */
+    public function getRequestOptions()
+    {
+        return $this->requestOptions;
     }
 
     /**

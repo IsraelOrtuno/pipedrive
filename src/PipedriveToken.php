@@ -90,12 +90,16 @@ class PipedriveToken
             return;
         }
 
-        $client = new GuzzleClient([
+        $config = [
             'auth' => [
                 $pipedrive->getClientId(),
                 $pipedrive->getClientSecret()
             ]
-        ]);
+        ];
+
+        $config = array_merge($config, $pipedrive->getRequestOptions());
+
+        $client = new GuzzleClient($config);
 
         $response = $client->request('POST', 'https://oauth.pipedrive.com/oauth/token', [
             'form_params' => [
