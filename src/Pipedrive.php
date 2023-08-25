@@ -43,8 +43,6 @@ use Illuminate\Support\Str;
 use Devio\Pipedrive\Http\Request;
 use Devio\Pipedrive\Http\PipedriveClient;
 use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\RequestOptions;
-use ReflectionClass;
 
 /**
  * @method Activities activities()
@@ -201,23 +199,7 @@ class Pipedrive
 
         $this->isOauth = false;
 
-        if (empty($requestOptions) || !is_array($requestOptions)) {
-            $this->requestOptions = [];
-            return;
-        }
-
-        $refRequestOptions     = new ReflectionClass(RequestOptions::class);
-        $requestOptionsAllowed = $refRequestOptions->getConstants();
-
-        $requestOptions = array_filter(
-            $requestOptions,
-            function ($option) use ($requestOptionsAllowed) {
-                return in_array($option, $requestOptionsAllowed);
-            },
-            ARRAY_FILTER_USE_KEY
-        );
-
-        $this->requestOptions = $requestOptions;
+        $this->requestOptions = is_array($requestOptions) ? $requestOptions : [];
     }
 
     /**
@@ -228,8 +210,8 @@ class Pipedrive
      */
     public static function OAuth($config)
     {
-        $guzzleVersion  = $config['guzzleVersion'] ?? 6;
-        $requestOptions = $config['requestOptions'] ?? [];
+        $guzzleVersion  = isset($config['guzzleVersion']) ? $config['guzzleVersion'] : 6;
+        $requestOptions = isset($config['requestOptions']) ? $config['requestOptions'] : [];
 
         $new = new self('oauth', 'https://api.pipedrive.com/', $guzzleVersion, $requestOptions);
 
@@ -385,7 +367,7 @@ class Pipedrive
                 ? PipedriveClient::OAuth($this->getBaseURI(), $this->storage, $this)
                 : new PipedriveClient($this->getBaseURI(), $this->token, $this->requestOptions);
         } else {
-            return new PipedriveClient4($this->getBaseURI(), $this->token);
+            return new PipedriveClient4($this->getBaseURI(), $this->token, $this->requestOptions);
         }
     }
 
