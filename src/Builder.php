@@ -127,8 +127,10 @@ class Builder
     {
         $result = $this->getTarget();
 
-        if (!empty($this->getResource())) {
+        if (!empty($this->getResource()) && !empty($result)) {
             $result = $this->getResource() . '/' . $result;
+        } elseif (!empty($this->getResource())) {
+            $result = $this->getResource();
         }
 
         return $result;
