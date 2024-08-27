@@ -29,9 +29,10 @@ class PipedriveClient implements Client
      * GuzzleClient constructor.
      *
      * @param $url
-     * @param $token
+     * @param $credentials
+     * @param array $requestOptions
      */
-    public function __construct($url, $credentials)
+    public function __construct($url, $credentials, $requestOptions = [])
     {
         list($headers, $query) = [[], []];
 
@@ -42,14 +43,16 @@ class PipedriveClient implements Client
             $query['api_token'] = $credentials;
         }
 
-        $this->client = new GuzzleClient(
-            [
-                'base_uri'        => $url,
-                'allow_redirects' => false,
-                'headers'         => $headers,
-                'query'           => $query
-            ]
-        );
+        $config = [
+            'base_uri'        => $url,
+            'allow_redirects' => false,
+            'headers'         => $headers,
+            'query'           => $query
+        ];
+
+        $config = array_merge($config, $requestOptions);
+
+        $this->client = new GuzzleClient($config);
     }
 
     /**
@@ -70,7 +73,7 @@ class PipedriveClient implements Client
 
         $token->refreshIfNeeded($pipedrive);
 
-        return new self($url, $token);
+        return new self($url, $token, $pipedrive->getRequestOptions());
     }
 
     /**

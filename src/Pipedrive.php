@@ -171,6 +171,13 @@ class Pipedrive
      */
     protected $storage;
 
+    /**
+     * A list of request options.
+     *
+     * @var array
+     */
+    protected $requestOptions;
+
     public function isOauth()
     {
         return $this->isOauth;
@@ -179,15 +186,20 @@ class Pipedrive
     /**
      * Pipedrive constructor.
      *
-     * @param $token
+     * @param string $token
+     * @param string $uri
+     * @param int $guzzleVersion
+     * @param array $requestOptions
      */
-    public function __construct($token = '', $uri = 'https://api.pipedrive.com/v1/', $guzzleVersion = 6)
+    public function __construct($token = '', $uri = 'https://api.pipedrive.com/v1/', $guzzleVersion = 6, $requestOptions = [])
     {
         $this->token = $token;
         $this->baseURI = $uri;
         $this->guzzleVersion = $guzzleVersion;
 
         $this->isOauth = false;
+
+        $this->requestOptions = is_array($requestOptions) ? $requestOptions : [];
     }
 
     /**
@@ -198,9 +210,10 @@ class Pipedrive
      */
     public static function OAuth($config)
     {
-        $guzzleVersion = isset($config['guzzleVersion']) ? $config['guzzleVersion'] : 6;
+        $guzzleVersion  = isset($config['guzzleVersion']) ? $config['guzzleVersion'] : 6;
+        $requestOptions = isset($config['requestOptions']) ? $config['requestOptions'] : [];
 
-        $new = new self('oauth', 'https://api.pipedrive.com/', $guzzleVersion);
+        $new = new self('oauth', 'https://api.pipedrive.com/', $guzzleVersion, $requestOptions);
 
         $new->isOauth = true;
 
@@ -352,9 +365,9 @@ class Pipedrive
         if ($this->guzzleVersion >= 6) {
             return $this->isOauth()
                 ? PipedriveClient::OAuth($this->getBaseURI(), $this->storage, $this)
-                : new PipedriveClient($this->getBaseURI(), $this->token);
+                : new PipedriveClient($this->getBaseURI(), $this->token, $this->requestOptions);
         } else {
-            return new PipedriveClient4($this->getBaseURI(), $this->token);
+            return new PipedriveClient4($this->getBaseURI(), $this->token, $this->requestOptions);
         }
     }
 
@@ -386,6 +399,14 @@ class Pipedrive
     public function setToken($token)
     {
         $this->token = $token;
+    }
+
+    /**
+     * Get a list of request options.
+     */
+    public function getRequestOptions()
+    {
+        return $this->requestOptions;
     }
 
     /**
