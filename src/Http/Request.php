@@ -92,6 +92,10 @@ class Request
         // and include the server error if found. If it is OK and also server
         // inludes the success variable, we will return the response data.
         if (!isset($content) || !($response->getStatusCode() == 302 || $response->isSuccess())) {
+            if ($response->getStatusCode() == 204) {
+                throw new ItemNotFoundException("No Content.");
+            }
+            
             if ($response->getStatusCode() == 404) {
                 throw new ItemNotFoundException(isset($content->error) ? $content->error : "Error unknown.");
             }
