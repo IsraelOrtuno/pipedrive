@@ -33,15 +33,20 @@ class PipedriveClient4 implements Client
      *
      * @param $url
      * @param $token
+     * @param array $requestOptions
      */
-    public function __construct($url, $token)
+    public function __construct($url, $token, $requestOptions = [])
     {
+        $defaults = [
+            'query' => ['api_token' => $token]
+        ];
+
+        $defaults = array_merge($defaults, $requestOptions);
+
         $this->client = new GuzzleClient(
             [
                 'base_url' => $url,
-                'defaults' => [
-                    'query' => ['api_token' => $token],
-                ]
+                'defaults' => $defaults
             ]
         );
     }
