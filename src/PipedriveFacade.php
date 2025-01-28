@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Resources\Roles roles()
  * @method static Resources\SearchResults searchResults()
  * @method static Resources\Stages stages()
+ * @method static Resources\Subscriptions subscriptions()
  * @method static Resources\UserConnections userConnections()
  * @method static Resources\Users users()
  * @method static Resources\UserSettings userSettings()
@@ -72,6 +73,7 @@ use Illuminate\Support\Facades\Facade;
  * @property-read Resources\Roles $roles
  * @property-read Resources\SearchResults $searchResults
  * @property-read Resources\Stages $stages
+ * @property-read Resources\Subscriptions $subscriptions
  * @property-read Resources\UserConnections $userConnections
  * @property-read Resources\Users $users
  * @property-read Resources\UserSettings $userSettings
